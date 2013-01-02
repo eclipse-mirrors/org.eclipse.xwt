@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<link href="../../book.css" rel="stylesheet" type="text/css" />
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>commands</title>
+<style type="text/css">@import url("file:/D:/Develop/Java/Eclipse/340/plugins/org.eclipse.sdk_3.4.0.v200806172000/book.css");</style>
+<style type="text/css">@import url("file:/D:/Develop/Java/Eclipse/340/configuration/org.eclipse.osgi/bundles/203/1/.cp/schema.css");</style>
+</HEAD>
+<BODY>
+<H1>Commands</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.e4.xwt.pde.commands<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>[Enter the first release in which this extension point appears.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>This extension point is used to register a command with a name<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.command">command</a>*)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED<p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED<p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.command">command</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST command</p>
+<p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #REQUIRED<p class="code SchemaDtdAttlist">class&nbsp;CDATA #REQUIRED&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>name</b> - the name</li>
+<li><b>class</b> - The class of command must implement the interface org.eclipse.e4.XWT.ICommand</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6>Here is an example to define a commands: 
+<pre class="Example"><span class="code SchemaTag">
+   &lt;extension
+         point=</span><span class="code SchemaCstring">&quot;org.eclipse.e4.xwt.pde.commands&quot;</span><span class="code SchemaTag">&gt;
+      &lt;command
+            class=</span><span class="code SchemaCstring">&quot;org.eclipse.e4.xwt.demo.MessageCommand&quot;</span><span class="code SchemaTag">
+            name=</span><span class="code SchemaCstring">&quot;Message&quot;</span><span class="code SchemaTag">&gt;
+      &lt;/command&gt;
+   &lt;/extension&gt;
+</span></pre>
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">API Information: </h6>[Enter API information here.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Supplied Implementation: </h6>[Enter information about supplied implementation of this extension point.]
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+</p>
+</BODY>
+<p><img src="../../cpy.png" /></p>
+</HTML>

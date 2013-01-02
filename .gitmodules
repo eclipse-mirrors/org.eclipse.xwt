@@ -1,0 +1,3 @@
+[submodule "plugin"]
+	path = plugin
+	url = git://git.eclipse.org/gitroot/xwt/org.eclipse.xwt.git
