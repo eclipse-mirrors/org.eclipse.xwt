@@ -1,0 +1,8 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+       xmlns:x="http://www.eclipse.org/xwt">
+    <Shell.layout>
+        <FillLayout/>
+    </Shell.layout>
+    <Form name="FormBackground" text="New Form" background="COLOR_YELLOW"/>
+    <Form name="Form" text="New Form"/>
+</Shell>

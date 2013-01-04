@@ -1,0 +1,12 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:j="clr-namespace:org.eclipse.xwt.tests.style.java">
+	<Composite.layout>
+		<GridLayout numColumns="2"/>
+	</Composite.layout>	
+	
+	<Composite.Resources>
+		<j:GreenStyle x:Key="myStyle"/>
+	</Composite.Resources>
+	<Label Text="Hello"/>
+</Composite>

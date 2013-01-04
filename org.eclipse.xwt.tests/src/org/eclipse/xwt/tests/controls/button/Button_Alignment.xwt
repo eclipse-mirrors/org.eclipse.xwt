@@ -1,0 +1,21 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	text="Button Alignment Test">
+	<Shell.layout>
+		<GridLayout numColumns="1"/>
+	</Shell.layout>
+	<Group text="buttons">
+		<Button name="ButtonLeft" text="Alignment(LEFT)" Bounds="10, 10, 200, 50" alignment="LEFT"/>
+		<Button name="ButtonCenter" text="Alignment(CENTER)" Bounds="10, 70, 200, 50" alignment="CENTER"/>
+		<Button name="ButtonRight" text="Alignment(RIGHT)" Bounds="10, 130, 200, 50" alignment="RIGHT"/>
+	</Group>
+	<Group text="arrows">
+		<Group.layout>
+			<GridLayout numColumns="4"/>
+		</Group.layout>
+    	<Button x:style="ARROW" alignment="LEFT" tooltipText="SWT.LEFT"/>
+		<Button x:style="ARROW" alignment="RIGHT" tooltipText="SWT.RIGHT"/>
+		<Button x:style="ARROW" alignment="UP" tooltipText="SWT.UP"/>
+		<Button x:style="ARROW" alignment="DOWN" tooltipText="SWT.DOWN"/>
+	</Group>
+</Shell>

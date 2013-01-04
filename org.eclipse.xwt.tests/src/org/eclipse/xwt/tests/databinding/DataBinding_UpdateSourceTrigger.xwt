@@ -1,0 +1,27 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.databinding"
+	Size="400, 300"
+	DataContext="{StaticResource myData}">
+	<Shell.layout>
+		<GridLayout numColumns="3"/>
+	</Shell.layout>
+	
+	<Shell.Resources>
+		<y:Person x:Key="myData"/>
+	</Shell.Resources>
+	
+	<Label text="Name"/>
+	<Text name="inputText" x:style="BORDER" text="{Binding Path=name,UpdateSourceTrigger=LostFocus}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	<Text name="targetText" text="{Binding Path=name}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+</Shell>

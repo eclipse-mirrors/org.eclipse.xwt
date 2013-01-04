@@ -1,0 +1,20 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    x:Class="org.eclipse.xwt.tests.keybinding.keybinding"
+    text="Menu Styles Test">
+	<Shell.layout>
+		<GridLayout numColumns="1"/>
+	</Shell.layout>
+	<Shell.menuBar>
+		<Menu x:style="BAR">
+			<MenuItem text="Cascade" x:style="CASCADE">
+				<MenuItem.menu>
+					<Menu x:style="DROP_DOWN ">
+						<MenuItem text="Push" x:style="PUSH" accelerator="SWT.CTRL | SWT.SHIFT | A"  image="demo.gif" SelectionEvent="helloWorld"/>
+						<MenuItem text="COM" x:style="PUSH" accelerator="CtrlC"  SelectionEvent="helloWorld"/>						
+					</Menu>
+				</MenuItem.menu>
+			</MenuItem> 
+		</Menu>
+	</Shell.menuBar>
+</Shell>

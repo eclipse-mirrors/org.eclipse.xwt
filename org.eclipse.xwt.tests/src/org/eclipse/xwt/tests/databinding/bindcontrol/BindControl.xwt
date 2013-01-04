@@ -1,0 +1,63 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.databinding" xmlns:j="clr-namespace:java.lang">
+	<Shell.layout>
+		<GridLayout numColumns="2" />
+	</Shell.layout>
+	<!-- Selection property -->
+	<Button x:Style="CHECK" x:Name="StateBox" Text="Selection State"
+		enabled="true" visible="true">
+	</Button>
+	<Button x:style="CHECK" Text="{Binding ElementName=StateBox,Path=Text}"
+		Selection="{Binding ElementName=StateBox, Path=Selection}">
+	</Button>
+	<!-- Text property -->
+	<Text x:Style="BORDER" name="Message" text="Text Binding">
+	</Text>
+	<Text x:Style="BORDER" text="{Binding ElementName=Message, Path=text}"
+		foreground="{Binding ElementName=Message, Path=foreground}">
+	</Text>
+	<!-- Visible property -->
+	<Button x:style="CHECK" x:Name="VisibleBox" Text="Visible"
+		Selection="false">
+	</Button>
+	<Label text="Visible Binding" visible="{Binding ElementName=VisibleBox, Path=Selection}">
+	</Label>
+	<!-- Visible property bound to text -->
+	<Text x:Name="StateText" x:Style="BORDER" Text="true">
+	</Text>
+	<Button text="bound to text" visible="{Binding ElementName=StateText, Path=Text}">
+	</Button>
+	<!-- Enable property -->
+	<Button x:style="CHECK" x:Name="EnabledBox" Text="Enabled"
+		Selection="false">
+	</Button>
+	<Button text="Push me"
+		enabled="{Binding ElementName=EnabledBox, Path=Selection}">
+	</Button>
+	<Group text="Setting">
+		<Group.layout>
+			<GridLayout numColumns="2" />
+		</Group.layout>
+		<Label text="Foreground:"></Label>
+		<Combo text="Black" Name="FGColorSelector">
+			<Combo.items>
+				<j:String>Red</j:String>
+				<j:String>Blue</j:String>
+				<j:String>Green</j:String>
+				<j:String>White</j:String>
+			</Combo.items>
+		</Combo>
+		<Label text="Background:"></Label>
+		<Combo text="White" Name="BGColorSelector">
+			<Combo.items>
+				<j:String>Red</j:String>
+				<j:String>Blue</j:String>
+				<j:String>Green</j:String>
+				<j:String>White</j:String>
+			</Combo.items>
+		</Combo>
+	</Group>
+	<Label name="ColorView" text="Color Viewer"
+		foreground="{Binding ElementName=FGColorSelector, Path=Text}" 
+		background="{Binding ElementName=BGColorSelector, Path=Text}"/>
+</Shell>

@@ -1,0 +1,13 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    xmlns:j="clr-namespace:org.eclipse.xwt.tests.jface.tableviewer">
+	<Composite.layout>
+		<GridLayout numColumns="2"/>
+	</Composite.layout>
+	<TableViewer x:Style="FULL_SELECTION" Name="TableViewer">
+		<TableViewer.control.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</TableViewer.control.layoutData>
+	</TableViewer>
+</Composite>

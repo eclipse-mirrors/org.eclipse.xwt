@@ -1,0 +1,8 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	text="Control Bounds Test">
+	<Label x:style="BORDER" text="Label(10, 10, 100, 40)" Bounds="10, 10, 100, 40" Alignment="CENTER">
+	</Label>
+	<Button text="Button(20, 60, 120, 120)" Bounds="20, 60, 120, 120">
+	</Button>
+</Shell>

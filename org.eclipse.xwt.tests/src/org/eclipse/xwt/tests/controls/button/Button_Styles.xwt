@@ -1,0 +1,13 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	text="Button Styles Test">
+	<Shell.layout>
+		<GridLayout numColumns="7"/>
+	</Shell.layout>
+	<Button name="PushButton" x:style="PUSH" text="SWT.PUSH" />
+	<Button name="CheckButton" x:style="CHECK" text="SWT.CHECK" />
+	<Button name="RadioButton" x:style="RADIO" text="SWT.RADIO" />
+	<Button name="ToggleButton" x:style="TOGGLE" text="SWT.TOGGLE" />
+	<Button name="ArrowButton" x:style="ARROW" text="SWT.ARROW" />
+	<Button name="FlatButton" x:style="FLAT" text="SWT.FLAT" />
+</Shell>

@@ -1,0 +1,10 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    text="CLable Styles Test">
+	<Shell.layout>
+		<GridLayout numColumns="1"/>
+	</Shell.layout>
+	<CLabel x:style="SHADOW_NONE" text="SHADOW_NONE"/>
+	<CLabel x:style="SHADOW_IN" text="SHADOW_IN"/>
+	<CLabel x:style="SHADOW_OUT" text="SHADOW_OUT"/>
+</Shell>

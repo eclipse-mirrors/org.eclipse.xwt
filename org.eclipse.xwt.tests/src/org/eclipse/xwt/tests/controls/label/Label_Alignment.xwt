@@ -1,0 +1,7 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	text="Label Alignment Test">
+	<Label x:style="BORDER" Bounds="10, 10, 200, 50" text="Alignment(LEFT)" alignment="LEFT"/>
+	<Label x:style="BORDER" Bounds="10, 70, 200, 50" text="Alignment(CENTER)" alignment="CENTER"/>
+	<Label x:style="BORDER" Bounds="10, 130, 200, 50" text="Alignment(RIGHT)" alignment="RIGHT"/>
+</Shell>

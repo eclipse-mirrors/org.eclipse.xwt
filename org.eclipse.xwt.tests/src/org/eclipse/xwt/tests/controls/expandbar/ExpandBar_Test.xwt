@@ -1,0 +1,24 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    text="ExpandBar Test">
+    <Shell.layout>
+    	<FillLayout/>
+    </Shell.layout>
+    <ExpandBar x:style="V_SCROLL">
+    	<ExpandItem text="A button add for item1">
+    		<ExpandItem.control>
+	    		<Button text="Item1"/>	
+    		</ExpandItem.control>
+    	</ExpandItem>
+    	<ExpandItem text="A label add for item1" expanded="true" >
+    		<ExpandItem.control>
+    			<Label text="Item2"/>	
+    		</ExpandItem.control>
+    	</ExpandItem>
+    	<ExpandItem text="A text add for item1" >
+    		<ExpandItem.control>
+	    		<Text x:style="BORDER" text="Item3"/>	
+    		</ExpandItem.control>
+    	</ExpandItem>
+	</ExpandBar>
+</Shell>
