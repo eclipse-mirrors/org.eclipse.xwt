@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<link href="../../book.css" rel="stylesheet" type="text/css" />
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Project</title>
+</head>
+
+<body>
+<h1>Project</h1>
+
+<ul>
+	<li><a href="#project_01">What is XWT?</a></li>
+	<li><a href="#project_02">Benefices of XWT for eclipse</a></li>
+	<li><a href="#project_03">Architecture</a></li>
+</ul>
+
+<h3><a name="project_01"></a>What is XWT?</h3>
+<p>Declarative UI is a new programming paradigm, which is widely  used in Web application development. In Eclipse, UI development in Java is  the only proposed solution. This solution presents several drawbacks:</p>
+<ul>
+  <li>High technology pre-requisite as UI developer</li>
+  <li>Difficult to separate UI appearance and business logic</li>
+  <li>Poor reusability</li>
+  <li>Limitation of the dynamic UI support</li>
+  <li>Very hard to integrate with development tools </li>
+</ul>
+<p align="center"><img src="images/XWTPosition.png" width="800" height="435"></p>
+<p>XWT is designed specially for eclipse to resolve these  problems by providing a foundation infrastructure. It is a UI framework based on an extensible markup language for  application development in declarative programming paradism.
+  It adopts directly SWT/JFace UI model as XML serialization model. It uses in fact a direct mapping approach between  XML grammar and UI runtime libraries.</p>
+<p>XWT simplifies UI programming. You can create visible UI elements
+in the declarative XML markup with a physical separation of the UI
+definition from the run-time logic. An XML based declarative language is
+very intuitive for creating interfaces ranging from prototype to
+production, especially for people with a background in web design and
+technologies. Unlike most other markup languages, XWT directly
+represents the instantiation of managed objects.</p>
+<p align="center"><img src="images/XWTComponent.png" width="627" height="388"></p>
+<p>XWT is XML UI for eclipse.</p>
+<ul>
+	<li>XWT is a XML dialect</li>
+	<li>Designed for human-editable and tooling</li>
+	<li>Dynamic mapping with programming model</li>
+	<li>Complete declarative UI framework integrated natively with SWT/JFace</li>
+    <li>Powerful Declarative Data Binding solution on top of JFace data binding</li>
+    <li>Reusable data presentation component</li>
+</ul>
+
+<h3><a name="project_02"></a>Benefices of XWT for eclipse</h3>
+<p>The main benefices of XWT are following:</p>
+<ul>
+	<li>More human-readable and light-weight markup without ambiguity
+	between properties and child type</li>
+	<li>High Extensible</li>
+	<li>Well defined and complete specification</li>
+	<li>Mature and Generic Declarative UI solution</li>
+</ul>
+
+<h3><a name="project_03"></a>Architecture</h3>
+
+<div align="center"><img src="images/architecture.png" />
+  
+</div>
+<ul>
+	<li>SWT Model as XWT Model<br />
+	- This model comes from the JavaBean reflection and additional models
+	to enhance the limitations of SWT API.</li>
+	<li>This model can be changed to another</li>
+	<li>XWT provides more concepts on top of XML<br />
+	<ul>
+		<li>Resource separation between UI and Event handling</li>
+		<li>Dynamic mapping with UI Model and programming language</li>
+		<li>Resource management</li>
+		<li>Markup extensions</li>
+		<li>Binding expression language</li>
+	</ul>
+	</li>
+</ul>
+
+</body>
+<p><img src="../../cpy.png" /></p>
+</html>

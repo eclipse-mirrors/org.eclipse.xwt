@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<link href="../../book.css" rel="stylesheet" type="text/css" />
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Component</title>
+</head>
+
+<body>
+<h1>Component</h1>
+<p>UI Component in XWT is not a simple UI widget such as Button,
+Label or List. It is in fact a <strong>Presentation</strong> <strong>unit</strong>
+that manages the ways of data display and edition. A UI Component is <strong>flexible</strong>
+and <strong>connectable</strong> software element, which is
+characterized at least by following aspects:</p>
+<ul>
+  <li>Independence </li>
+  <li>Reusable</li>
+  <li>Embeddable</li>
+</ul>
+<p>Precisely, a UI component is composed of three elements: UI
+Views, Presentation Data and Java controllers.</p>
+<ul>
+	<li>UI View<br />
+	UI View is UI controls defined in XWT XML, instead of low level SWT in
+	Java. It corresponds with a XML file.</li>
+	<li>Java controller<br />
+	It is a class associated to a UI View to handle UI events and it
+	handles the relationship between the Presentation data and the business
+	logic services.</li>
+	<li>Presentation Data<br />
+	It is the main information to manage by users via UI View and Java
+	controller.</li>
+</ul>
+
+<p>Hence, a component has an implicit &quot;data context&quot;
+comparing traditional UI framework.</p>
+<!-- 
+<p>In the following example, we create a simple component of Person.</p>
+ -->
+<p>The following example is a custom UI component.</p>
+
+<pre>
+<span class="XMLElementTag">&lt;j:PersonView</span> <span
+	class="XMLAttrTag">xmlns</span>=<span class="XMLAttrValue">"http://www.eclipse.org/xwt/presentation"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">xmlns:j</span>=<span
+	class="XMLAttrValue">"clr-namespace:ui"</span><span
+	class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;j:PersonView.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;GridLayout</span> <span class="XMLAttrTag">numColumns</span>=<span
+	class="XMLAttrValue">"2"</span> <span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/j:PersonView.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Label</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"First name:"</span> <span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Text</span> <span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Label</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"Last name:"</span> <span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Text</span>  <span
+	class="XMLElementTag">/&gt;</span>
+<span class="XMLElementTag">&lt;/j:PersonView&gt;</span>
+</pre>
+
+<p>The component above defined two columns with each has a Label and
+a Text. It is a pure UI component. In XWT, the component can establish a
+connection with business logic using data binding. The contents of the
+Text can synchronized with binding target.</p>
+
+<pre>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Label</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"First name:"</span> <span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Text</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"{Binding Path=firstName}"</span> <span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Label</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"Last name:"</span> <span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Text</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"{Binding Path=lastName}"</span> <span
+	class="XMLElementTag">/&gt;</span>
+
+<!-- 
+<span class="XMLElementTag">&lt;Shell</span> <span class="XMLAttrTag">xmlns</span>=<span class="XMLAttrValue">"http://www.eclipse.org/xwt/presentation"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">xmlns:x</span>=<span class="XMLAttrValue">"http://www.eclipse.org/xwt"</span> 
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">xmlns:y</span>=<span class="XMLAttrValue">"clr-namespace:org.eclipse.e4.xwt.tests.view"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">DataContext</span>=<span class="XMLAttrValue">"{StaticResource Data}"</span><span class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Shell.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;GridLayout</span> <span class="XMLAttrTag">numColumns</span>=<span class="XMLAttrValue">"2"</span> <span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Shell.layout&gt;</span>
+	
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;x:Shell.Resources&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;y:Person</span> <span class="XMLAttrTag">x:Key</span>=<span class="XMLAttrValue">"Data"</span><span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/x:Shell.Resources&gt;</span>
+	
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Label</span> <span class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"First name:"</span> <span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Text</span> <span class="XMLAttrTag">x:Style</span>=<span class="XMLAttrValue">"BORDER"</span> <span class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"{Binding Path=firstName}"</span> <span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Label</span> <span class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"Last name:"</span> <span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Text</span> <span class="XMLAttrTag">x:Style</span>=<span class="XMLAttrValue">"BORDER"</span> <span class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"{Binding Path=lastName}"</span> <span class="XMLElementTag">/&gt;</span>
+<span class="XMLElementTag">&lt;/Shell&gt;</span>
+-->
+</pre>
+
+<p>Implicitly, the dataContext this view is Person. The first Text
+binds to the property &quot;firstName&quot; and the second to
+&quot;lastName&quot;.</p>
+<p><image src="images/component_01.png" /></p>
+
+
+<h3>Independence, Reusable and Embeddable</h3>
+<p>UI component in XWT are independence, reusable and embeddable.
+The characters are correlative with each other. Independence is the
+necessary condition of reusable and embeddable, reusable and embeddable
+decide the component is independence. A defined UI component is like an
+unit, it can be reused in other applications or be embedded as a child
+in a new component.</p>
+<p>For example, we embed the above component into another View
+Component. First, create a new class named Company and then new a Person
+instance like the code below.</p>
+
+<pre>
+<span class="JavaKeyword">public class</span> Company {
+&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="JavaKeyword">protected</span> String <span
+	class="JavaMember">name</span>;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="JavaKeyword">protected</span> Person <span
+	class="JavaMember">manager</span> = <span class="JavaKeyword">new</span> Person();
+&nbsp;&nbsp;&nbsp;&nbsp;...
+}
+</pre>
+<!-- 
+<p>In the next, we create another View Component for Company, which
+reuses the component above. The PersonView is bounds to the property
+&quot;manager&quot; of the Company.</p>
+ -->
+<p>In XWT XML, put the PersonView component into a Group. Then put
+the Group on the place where you want.</p>
+
+<pre>
+<span class="XMLElementTag">&lt;j:CompanyView</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">xmlns</span>=<span
+	class="XMLAttrValue">"http://www.eclipse.org/xwt/presentation"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">xmlns:x</span>=<span
+	class="XMLAttrValue">"http://www.eclipse.org/xwt"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">xmlns:j</span>=<span
+	class="XMLAttrValue">"clr-namespace:org.eclipse.e4.xwt.tests.view"</span><span
+	class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;j:CompanyView.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;GridLayout</span> <span class="XMLAttrTag">numColumns</span>=<span
+	class="XMLAttrValue">"2"</span><span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/j:CompanyView.layout&gt;</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Label</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"Company name:"</span><span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Text</span> <span
+	class="XMLAttrTag">x:Style</span>=<span class="XMLAttrValue">"BORDER"</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"{Binding Path=name}"</span><span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Label</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"Manager:"</span><span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Group</span> <span
+	class="XMLAttrTag">text</span>=<span class="XMLAttrValue">"Person View:"</span><span
+	class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Group.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;FillLayout/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;/Group.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;j:PersonView</span> <span class="XMLAttrTag">DataContext</span>=<span
+	class="XMLAttrValue">"{Binding Path=manager}"</span><span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Group&gt;</span>
+<span class="XMLElementTag">&lt;/j:CompanyView&gt;</span>
+</pre>
+
+<p>The UI views like below. The content in red pane is PersonView.</p>
+<p><image src="images/component_02.png" /></p>
+
+
+
+
+
+
+
+
+
+</body>
+<p><img src="../../cpy.png" /></p>
+</html>

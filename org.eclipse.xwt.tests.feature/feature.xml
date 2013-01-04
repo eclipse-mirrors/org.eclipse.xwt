@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.xwt.tests.feature"
+      label="%featureName"
+      version="0.9.1.qualifier"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.e4.xwt.feature" version="0.9.0" match="compatible"/>
+      <import feature="org.eclipse.e4.xwt.css.feature" version="0.9.0" match="compatible"/>
+      <import plugin="org.eclipse.e4.xwt.emf" version="0.9.0" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.e4.xwt.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.e4.xwt.emf.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>
