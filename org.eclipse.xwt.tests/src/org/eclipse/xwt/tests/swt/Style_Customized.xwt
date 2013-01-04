@@ -1,0 +1,10 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    x:Class="org.eclipse.xwt.tests.name.Name"
+    xmlns:j="clr-namespace:org.eclipse.xwt.tests.swt"
+    text="NameT test">
+    <Shell.layout>
+		<GridLayout numColumns="2"/>
+    </Shell.layout>
+    <j:MyElement Name="MyElement" x:Style="(j:MyElement).MY_STYLE"/>
+</Shell>

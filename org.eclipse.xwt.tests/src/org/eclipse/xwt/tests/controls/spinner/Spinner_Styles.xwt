@@ -1,0 +1,8 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt">
+	<Composite.layout>
+		<GridLayout numColumns="2"/>
+	</Composite.layout>
+	<Label text="Spinner(READ_ONLY): "/><Spinner x:style="READ_ONLY"/>
+	<Label text="Spinner(BORDER): "/><Spinner x:style="BORDER"/>
+</Composite>

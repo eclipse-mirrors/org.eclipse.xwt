@@ -1,0 +1,42 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    xmlns:j="clr-namespace:java.lang"
+    text="Table Test">
+	<Shell.layout>
+		<GridLayout numColumns="1"/>
+	</Shell.layout>
+	<Table x:style="BORDER|SINGLE|FULL_SELECTION" HeaderVisible="true" LinesVisible="true">
+		<TableColumn width="150" text="Name"/> 
+		<TableColumn width="150" text="Age"/>
+
+		<TableItem Name="editItem">
+			<TableItem.texts >
+				<x:Array Type="j:String">
+					<j:String>Line-Name1</j:String>
+					<j:String>Line-Age1</j:String>
+				</x:Array>
+			</TableItem.texts>
+		    <TableItem.editors>
+		    	<!-- Change 'editor' to 'editors', it seems that, we can add more than one TableEditors for a TableItem.-->
+				<TableEditor grabHorizontal= "true" column = "1" dynamic="true">
+					<CCombo>
+						<CCombo.items>
+							<x:Array Type="j:String">
+			                   <j:String>"Item1"</j:String>
+			                   <j:String>"Item2"</j:String>
+			          	    </x:Array>
+			            </CCombo.items> 
+					</CCombo>
+				</TableEditor>
+		    </TableItem.editors>
+		</TableItem>
+		<TableItem>
+			<TableItem.texts>
+				<x:Array Type="j:String">
+					<j:String>Line-Name2</j:String>
+					<j:String>Line-Age2</j:String>
+				</x:Array>
+			</TableItem.texts>	
+		</TableItem>
+	</Table>
+</Shell>

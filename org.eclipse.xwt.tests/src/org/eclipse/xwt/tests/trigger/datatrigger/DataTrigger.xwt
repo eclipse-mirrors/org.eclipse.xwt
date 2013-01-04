@@ -1,0 +1,32 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.trigger.datatrigger"
+	DataContext="{StaticResource myData}">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	
+	<Shell.Resources>
+		<y:Person x:Key="myData"/>
+	</Shell.Resources>
+	
+	<Label text="Name"/>
+	<Text x:style="BORDER" text="{Binding Path=name}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	
+	<Button name="Button" x:style="SWT.CHECK" selection="{Binding Path=maried}">
+		<Button.triggers>
+			<DataTrigger binding="{Binding Path=maried}" value="false" >
+				<Setter property="text" value="Alone"/>
+			</DataTrigger>
+		</Button.triggers>
+		<Button.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Button.layoutData>
+	</Button>
+</Shell>

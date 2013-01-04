@@ -1,0 +1,32 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:j="clr-namespace:java.lang" text="List Styles Test">
+	<Shell.layout>
+		<GridLayout numColumns="2" />
+	</Shell.layout>
+	<Label text="List(SINGLE): " />
+	<List x:style="SINGLE|BORDER|V_SCROLL|H_SCROLL">
+		<List.items>
+			<x:Array Type="j:String">
+				<j:String>"Line number foreground"</j:String>
+				<j:String>"Matching bracketshighlight"</j:String>
+				<j:String>"Current line highlight"</j:String>
+				<j:String>"Print margin"</j:String>
+				<j:String>"Find scope"</j:String>
+				<j:String>"Linked position"</j:String>
+				<j:String>"Link"</j:String>
+			</x:Array>
+		</List.items>
+	</List>
+	<Label text="List(MULTI): " />
+	<List x:style="MULTI|BORDER|V_SCROLL|H_SCROLL">
+		<List.items>
+			<j:String>"Line number foreground"</j:String>
+			<j:String>"Matching bracketshighlight"</j:String>
+			<j:String>"Current line highlight"</j:String>
+			<j:String>"Print margin"</j:String>
+			<j:String>"Find scope"</j:String>
+			<j:String>"Linked position"</j:String>
+			<j:String>"Link"</j:String>
+		</List.items>
+	</List>
+</Shell>

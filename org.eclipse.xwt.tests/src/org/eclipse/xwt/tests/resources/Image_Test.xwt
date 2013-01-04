@@ -1,0 +1,9 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    text="Image Test">
+	<Shell.layout>
+		<GridLayout numColumns="1"/>
+	</Shell.layout>
+	<Label name="targetLabel" x:style="BORDER" Image="demo.gif"/>
+	<Button name="targetButton" text="Hello SWT: " Image="demo.gif"/>
+</Shell>

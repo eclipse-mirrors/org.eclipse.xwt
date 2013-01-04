@@ -1,0 +1,57 @@
+/*******************************************************************************
+ * Copyright (c) 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
+/**
+ *
+ */
+package org.eclipse.xwt.tests;
+
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
+/**
+ * A Base bean that implements the JavaBean change support
+ *
+ * @author hceylan
+ *
+ */
+public class BaseBean {
+
+	protected final PropertyChangeSupport changeSupport;
+
+	/**
+	 *
+	 */
+	public BaseBean() {
+		super();
+
+		this.changeSupport = new PropertyChangeSupport(this);
+	}
+
+	/**
+	 * Adds the listener for the property with the name propertyName
+	 *
+	 * @param propertyName
+	 * @param listener
+	 */
+	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		this.changeSupport.addPropertyChangeListener(propertyName, listener);
+	}
+
+	/**
+	 * Removes the listener for the property with the name propertyName
+	 *
+	 * @param propertyName
+	 * @param listener
+	 */
+	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		this.changeSupport.removePropertyChangeListener(propertyName, listener);
+	}
+}

@@ -1,0 +1,37 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    text="Group Styles Test">
+    <Shell.layout>
+    	<GridLayout numColumns="1"/>
+    </Shell.layout>
+    <Group text="SWT.SHADOW_ETCHED_IN" x:style="SHADOW_ETCHED_IN">
+    	<Group.layout>
+    		<FillLayout/>
+    	</Group.layout>
+    	<Text  x:style="BORDER" text="Group style is SWT.SHADOW_ETCHED_IN"/>
+    </Group>
+    <Group text="SWT.SHADOW_ETCHED_OUT" x:style="SHADOW_ETCHED_OUT">
+    	<Group.layout>
+    		<FillLayout/>
+    	</Group.layout>
+    	<Text x:style="BORDER" text="Group style is SWT.SHADOW_ETCHED_OUT"/>
+    </Group>
+    <Group text="SWT.SHADOW_IN" x:style="SHADOW_IN">
+    	<Group.layout>
+    		<FillLayout/>
+    	</Group.layout>
+    	<Text x:style="BORDER" text="Group style is SWT.SHADOW_IN"/>
+    </Group>
+    <Group text="SWT.SHADOW_OUT" x:style="SHADOW_OUT">
+   		 <Group.layout>
+    		<FillLayout/>
+    	</Group.layout>
+    	<Text x:style="BORDER"  text="Group style is SWT.SHADOW_OUT"/>
+    </Group>
+    <Group text="SWT.SHADOW_NONE" x:style="SHADOW_NONE">
+   		 <Group.layout>
+    		<FillLayout/>
+    	</Group.layout>
+    	<Text x:style="BORDER"  text="Group style is SWT.SHADOW_NONE"/>
+    </Group>
+</Shell>

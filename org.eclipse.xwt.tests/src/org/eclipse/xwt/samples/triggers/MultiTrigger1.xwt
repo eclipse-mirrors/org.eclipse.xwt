@@ -1,0 +1,27 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    x:Class="org.eclipse.xwt.tests.xaml.Name">
+	<Composite.layout>
+		<GridLayout numColumns="1"/>
+	</Composite.layout>
+	
+   <Button Name="button1" x:Style="CHECK" text="Condition 1"/>
+   <Button Name="button2" x:Style="CHECK" text="Condition 2"/>
+   <Label Name="messageLabel">
+		<Label.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Label.layoutData>
+   </Label>
+   
+   <Composite.triggers>
+      <MultiTrigger>
+          <MultiTrigger.conditions>
+              <Condition property="selection" value="True" sourceName="button1" />
+              <Condition property="selection" value="True" sourceName="button2" />
+          </MultiTrigger.conditions>
+          <Setter property="text" value="OK" targetName="messageLabel" />
+      </MultiTrigger>
+   </Composite.triggers>
+
+</Composite>

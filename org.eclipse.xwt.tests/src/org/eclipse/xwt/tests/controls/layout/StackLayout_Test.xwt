@@ -1,0 +1,46 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	x:Class="org.eclipse.xwt.tests.controls.layout.StackLayout_Test"
+	text="RowLayout - Test">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	<Group text="layout">
+		<Group.layout>
+		    <StackLayout/>
+		</Group.layout>
+		<Group.layoutData>
+			<GridData horizontalAlignment="FILL" verticalAlignment="FILL">
+			</GridData>
+		</Group.layoutData>
+		<Button text="button1"/>
+		<Button text="button2"/>
+		<Button text="button3"/>
+		<Button text="LongTextButton1"/>
+		<Button text="LongTextButton2"/>
+	</Group>
+	<Group text ="Parameters">
+		<Group.layout>
+		    <GridLayout numColumns="2"/>
+		</Group.layout>
+		<Group text ="topControl">
+			<Group.layoutData>
+				<GridData horizontalAlignment="FILL" verticalAlignment="FILL">
+				</GridData>
+			</Group.layoutData>
+			<Group.layout>
+	  	 		<GridLayout numColumns="3"/>
+			</Group.layout>
+			<Button x:style="PUSH" text="Below" selection="true" SelectionEvent="updateStackBelow"/>
+			<Label x:style="BORDER" text="              "/>
+			<Button x:style="PUSH" text="Top" SelectionEvent="updateStackAbove"/>
+		</Group>
+		<Group text ="Margins">
+			<Group.layout>
+		    	<GridLayout numColumns="2"/>
+			</Group.layout>
+			<Label text="marginWidth"/><Spinner x:Name="marginWidth" x:style="BORDER" selection="0" SelectionEvent="updateMarginWidth"/>
+			<Label text="marginHeight"/><Spinner x:style="BORDER" selection="0" SelectionEvent="updateMarginHeight"/>
+		</Group>
+	</Group>
+</Shell>

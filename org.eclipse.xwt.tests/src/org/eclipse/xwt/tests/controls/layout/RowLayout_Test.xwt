@@ -1,0 +1,69 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	x:Class="org.eclipse.xwt.tests.controls.layout.RowLayout_Test"
+	text="RowLayout - Test">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	<Group text="layout">
+		<Group.layout>
+		    <RowLayout/>
+		</Group.layout>
+		<Group.layoutData>
+			<GridData horizontalAlignment="FILL" verticalAlignment="FILL">
+			</GridData>
+		</Group.layoutData>
+		<Button text="button1"/>
+		<Button text="button2"/>
+		<Button text="button3"/>
+		<Button text="LongTextButton1"/>
+		<Button text="LongTextButton2"/>
+	</Group>
+	<Group text ="Parameters">
+		<Group.layout>
+		    <GridLayout numColumns="2"/>
+		</Group.layout>
+		<Composite>
+			<Composite.layout>
+			    <GridLayout numColumns="1"/>
+			</Composite.layout>
+			<Group text ="Type">
+				<Group.layoutData>
+					<GridData horizontalAlignment="FILL" verticalAlignment="FILL">
+					</GridData>
+				</Group.layoutData>
+				<Group.layout>
+		    		<FillLayout type="VERTICAL"/>
+				</Group.layout>
+				<Button x:style="RADIO" text="SWT.HORIZONTAL" selection="true" SelectionEvent="updateTypeHorizontal"/>
+				<Button x:style="RADIO" text="SWT.VERTICAL" SelectionEvent="updateTypeVertical"/>
+			</Group>
+			<Group text ="Properties">
+				<Group.layoutData>
+					<GridData horizontalAlignment="FILL" verticalAlignment="FILL">
+					</GridData>
+				</Group.layoutData>
+				<Group.layout>
+		    		<FillLayout type="VERTICAL"/>
+				</Group.layout>
+				<Button x:style="CHECK" text="Wrap" selection="true" SelectionEvent="updatePropWrap"/>
+				<Button x:style="CHECK" text="Pack" selection="true" SelectionEvent="updatePropPack"/>
+				<Button x:style="CHECK" text="Fill" selection="false" SelectionEvent="updatePropFill"/>
+				<Button x:style="CHECK" text="Justify" SelectionEvent="updatePropJustify"/>
+				<Button x:style="CHECK" text="Center" selection="false" SelectionEvent="updatePropCenter"/>
+			</Group>
+		</Composite>
+		<Group text ="Margins and Spacings">
+			<Group.layout>
+		    	<GridLayout numColumns="2"/>
+			</Group.layout>
+			<Label text="marginWidth"/><Spinner x:Name="marginWidth" x:style="BORDER" selection="0" SelectionEvent="updateMarginWidth"/>
+			<Label text="marginHeight"/><Spinner x:style="BORDER" selection="0" SelectionEvent="updateMarginHeight"/>
+			<Label text="marginLeft"/><Spinner x:style="BORDER" selection="3" SelectionEvent="updateMarginLeft"/>
+			<Label text="marginRight"/><Spinner x:style="BORDER" selection="3" SelectionEvent="updateMarginRight"/>
+			<Label text="marginTop"/><Spinner x:style="BORDER" selection="3" SelectionEvent="updateMarginTop"/>
+			<Label text="marginBottom"/><Spinner x:style="BORDER" selection="3" SelectionEvent="updateMarginBottom"/>
+			<Label text="spacing"/><Spinner x:style="BORDER" selection="3" SelectionEvent="updateSpacing"/>
+		</Group>
+	</Group>
+</Shell>

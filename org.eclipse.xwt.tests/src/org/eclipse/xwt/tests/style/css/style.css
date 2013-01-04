@@ -1,0 +1,15 @@
+Text {
+   color:white;
+   background-color:#98cbbc;
+}
+
+Text:focus {
+   	color:yellow;
+	background-color:#008080;
+	font:bold;
+}
+
+Text:hover {
+   	color:black;
+	background-color:#edb5f4;
+}

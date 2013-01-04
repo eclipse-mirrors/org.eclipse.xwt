@@ -1,0 +1,40 @@
+<ScrolledForm xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:j="clr-namespace:org.eclipse.xwt.tests.forms.tableviewer.master.detail.set"
+	DataContext="{StaticResource myCompany}"
+	title="Master Detail - Forms">
+	<ScrolledForm.resources>
+		<j:Company x:Key="myCompany">
+			<j:Company.employees>
+				<j:Employee Name="Thomas" Age="32" />
+				<j:Employee Name="Jin" Age="27" />
+			</j:Company.employees>
+		</j:Company>
+	</ScrolledForm.resources>
+	<ScrolledForm.body>
+		<ScrolledForm.body.layout>
+			<GridLayout numColumns="1" />
+		</ScrolledForm.body.layout>
+		<TableViewer Name="TableViewer" input="{Binding Path=employees}">
+			<TableViewer.columns>
+				<TableViewerColumn width="150" text="Name"
+					bindingPath="name" />
+				<TableViewerColumn width="150" text="Age"
+					bindingPath="age" />
+			</TableViewer.columns>
+			<TableViewer.table HeaderVisible="true">
+			</TableViewer.table>
+			<TableViewer.control.layoutData>
+				<GridData horizontalAlignment="FILL"
+					grabExcessHorizontalSpace="true" />
+			</TableViewer.control.layoutData>
+		</TableViewer>
+		<Label name="Label"
+			text="{Binding ElementName=TableViewer,path=singleSelection.(j:Employee.name)}">
+			<Label.layoutData>
+				<GridData horizontalAlignment="FILL"
+					grabExcessHorizontalSpace="true" />
+			</Label.layoutData>
+		</Label>
+	</ScrolledForm.body>
+</ScrolledForm>

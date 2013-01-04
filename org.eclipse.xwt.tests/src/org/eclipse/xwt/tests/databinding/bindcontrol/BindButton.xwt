@@ -1,0 +1,24 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.databinding" Size="400, 300">
+	<Shell.layout>
+		<GridLayout numColumns="2" />
+	</Shell.layout>
+	<Button x:Style="CHECK" x:Name="theTextBox" Text="Hello" enabled="true" visible="true"
+		background="COLOR_CYAN" foreground="COLOR_BLACK" font="3">
+		<Button.layoutData>
+			<GridData horizontalAlignment="FILL"
+				grabExcessHorizontalSpace="true" />
+		</Button.layoutData>
+	</Button>
+	<Button x:style="CHECK" Text="Hello Clone"
+		Selection="{Binding ElementName=theTextBox, Path=Selection}"
+		enabled="{Binding ElementName=theTextBox, Path=enabled}"
+		background="{Binding ElementName=theTextBox,Path=background}" foreground="{Binding ElementName=theTextBox,Path=foreground}"
+		font="{Binding ElementName=theTextBox,Path=font}">
+
+		<Button.layoutData>
+			<GridData horizontalAlignment="FILL"
+				grabExcessHorizontalSpace="true" />
+		</Button.layoutData>
+	</Button>
+</Shell>

@@ -1,0 +1,54 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	x:Class="org.eclipse.xwt.tests.controls.layout.GridLayout_Test"
+	text="GridLayout - Test">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	<Group text="layout">
+		<Group.layout>
+		    <GridLayout numColumns="1" 
+		     	makeColumnsEqualWidth="true" marginWidth="5" 
+		     	marginHeight="5" marginLeft="0" marginTop="0" 
+		     	marginRight="0" marginBottom="0" 
+		     	horizontalSpacing="5" verticalSpacing="5"/>
+		</Group.layout>
+		<Group.layoutData>
+			<GridData horizontalAlignment="GridData.FILL" verticalAlignment="GridData.FILL">
+			</GridData>
+		</Group.layoutData>
+		<Button text="button1"/>
+		<Button text="button2"/>
+		<Button text="button3"/>
+		<Button text="LongTextButton1"/>
+		<Button text="LongTextButton2"/>
+	</Group>
+	<Group text ="Parameters">
+		<Group.layout>
+		    <GridLayout numColumns="2"/>
+		</Group.layout>
+		<Group text ="Columns">
+			<Group.layoutData>
+				<GridData horizontalAlignment="FILL" verticalAlignment="FILL"/>
+			</Group.layoutData>
+		    <Group.layout>
+		    	<GridLayout numColumns="2"/>
+			</Group.layout>
+			<Label text="numColumns"/><Spinner x:style="BORDER" selection="1" SelectionEvent="updateNumColumns"/>
+			<Button x:style="CHECK" selection="true" text="makeColunsEqualWidth" SelectionEvent="updateMakeColunsEqual"/>
+		</Group>
+		<Group text ="Margins and Spacings">
+			<Group.layout>
+		    	<GridLayout numColumns="2"/>
+			</Group.layout>
+			<Label text="marginWidth"/><Spinner x:Name="marginWidth" x:style="BORDER" selection="5" SelectionEvent="updateMarginWidth"/>
+			<Label text="marginHeight"/><Spinner x:style="BORDER" selection="5" SelectionEvent="updateMarginHeight"/>
+			<Label text="marginLeft"/><Spinner x:style="BORDER" SelectionEvent="updateMarginLeft"/>
+			<Label text="marginRight"/><Spinner x:style="BORDER" SelectionEvent="updateMarginRight"/>
+			<Label text="marginTop"/><Spinner x:style="BORDER" SelectionEvent="updateMarginTop"/>
+			<Label text="marginBottom"/><Spinner x:style="BORDER" SelectionEvent="updateMarginBottom"/>
+			<Label text="horizontalSpacing"/><Spinner x:style="BORDER" selection="5" SelectionEvent="updateHSpacing"/>
+			<Label text="verticalSpacing"/><Spinner x:style="BORDER" selection="5" SelectionEvent="updateVSpacing"/>
+		</Group>
+	</Group>
+</Shell>
