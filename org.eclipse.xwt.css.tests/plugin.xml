@@ -28,7 +28,7 @@
          </menu>
          <action
                label="Style Open"
-               class="org.eclipse.e4.xwt.css.tests.popup.actions.StyleOpen"
+               class="org.eclipse.xwt.css.tests.popup.actions.StyleOpen"
                menubarPath="org.eclipse.e4.xwt.css.tests.XWT/group1"
                enablesFor="1"
                id="org.eclipse.e4.xwt.css.tests.popup.actions.StyleOpen">

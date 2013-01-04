@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.eclipse.e4.xwt.css.tests;
+package org.eclipse.xwt.css.tests;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -19,7 +19,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.eclipse.e4.xwt.css.tests";
+	public static final String PLUGIN_ID = "org.eclipse.xwt.css.tests";
 
 	// The shared instance
 	private static Activator plugin;

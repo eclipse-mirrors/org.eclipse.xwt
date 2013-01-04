@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.eclipse.e4.xwt.css.tests.popup.actions;
+package org.eclipse.xwt.css.tests.popup.actions;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.xwt.XWT;

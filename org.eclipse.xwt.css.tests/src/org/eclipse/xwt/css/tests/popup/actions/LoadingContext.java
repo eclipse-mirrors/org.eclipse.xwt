@@ -8,7 +8,7 @@
  * Contributors:
  *     Soyatec - initial API and implementation
  *******************************************************************************/
-package org.eclipse.e4.xwt.css.tests.popup.actions;
+package org.eclipse.xwt.css.tests.popup.actions;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
