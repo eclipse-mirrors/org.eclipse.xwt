@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: XWT Base Snippets
+Bundle-SymbolicName: org.eclipse.xwt.snippets
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Eclipse XWT Team
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.xwt;bundle-version="0.9.1",
+ com.ibm.icu;bundle-version="4.4.2"
+Export-Package: org.eclipse.xwt.snippets,
+ org.eclipse.xwt.snippets.base,
+ org.eclipse.xwt.snippets.controls
