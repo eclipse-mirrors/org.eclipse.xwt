@@ -7,17 +7,18 @@
  *
  * Contributors:
  *     IBM Corporation - initial API and implementation
+ *     Erdal Karaca - removed dependency on org.eclipse.ui
  *******************************************************************************/
 package org.eclipse.xwt.xml;
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xwt.XWT;
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class Activator implements BundleActivator {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.xwt.xml";
@@ -39,7 +40,6 @@ public class Activator extends AbstractUIPlugin {
 	 * )
 	 */
 	public void start(BundleContext context) throws Exception {
-		super.start(context);
 		plugin = this;
 
 		XWT.registerMetaclass(XmlDataProvider.class);
@@ -54,7 +54,6 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
-		super.stop(context);
 	}
 
 	/**
