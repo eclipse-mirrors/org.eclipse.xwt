@@ -4,7 +4,6 @@ Bundle-Name: XWT Tests Plug-in (Incubation)
 Bundle-SymbolicName: org.eclipse.xwt.tests
 Bundle-Version: 0.9.1.qualifier
 Require-Bundle: org.eclipse.swt,
- org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.xwt;bundle-version="0.9.0",
  org.eclipse.ui.forms;bundle-version="3.3.100",
@@ -19,7 +18,8 @@ Require-Bundle: org.eclipse.swt,
  org.eclipse.xwt.xml;bundle-version="0.9.0",
  com.ibm.icu;bundle-version="3.8.0",
  org.eclipse.core.databinding.property;bundle-version="1.2.0",
- org.eclipse.xwt.forms;bundle-version="0.9.1"
+ org.eclipse.xwt.forms;bundle-version="0.9.1",
+ org.eclipse.jface;bundle-version="3.8.101"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.e4.xwt.tests.snippet017,
