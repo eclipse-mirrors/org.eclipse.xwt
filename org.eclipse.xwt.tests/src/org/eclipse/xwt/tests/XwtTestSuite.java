@@ -13,8 +13,6 @@ package org.eclipse.xwt.tests;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.eclipse.e4.xwt.tests.snippet017.Snippet017TestSuite;
-import org.eclipse.e4.xwt.tests.snippet019.Snippet019TestSuite;
 import org.eclipse.xwt.tests.animation.AnimationSuite;
 import org.eclipse.xwt.tests.annotation.AnnotationTests;
 import org.eclipse.xwt.tests.attachedproperty.AttachedPropertyTests;
@@ -32,6 +30,8 @@ import org.eclipse.xwt.tests.name.NameTestSuite;
 import org.eclipse.xwt.tests.namespace.handler.NamespacehandlerTestSuite;
 import org.eclipse.xwt.tests.resources.ResourcesTestSuite;
 import org.eclipse.xwt.tests.resourcesdictionary.ResourcesDictionaryTestSuite;
+import org.eclipse.xwt.tests.snippet017.Snippet017TestSuite;
+import org.eclipse.xwt.tests.snippet019.Snippet019TestSuite;
 import org.eclipse.xwt.tests.swt.SWTTestSuite;
 import org.eclipse.xwt.tests.threading.ThreadingSuite;
 import org.eclipse.xwt.tests.trigger.TriggerTestSuite;
