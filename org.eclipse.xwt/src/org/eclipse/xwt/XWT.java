@@ -1018,13 +1018,10 @@ public class XWT {
 	 */
 	public static void runOnUIThread(final Runnable runnable) {
 		String platform = SWT.getPlatform();
-		if (platform.startsWith("win")) {
+		if (platform.startsWith("win") || platform.endsWith("cocoa") || platform.startsWith("rap")) {
 			XWTLoaderManager.getDefault();
 			runnable.run();
-		} else if (platform.startsWith("rap")) {
-			XWTLoaderManager.getDefault();
-			runnable.run();
-		} else if (platform.endsWith("gtk") || platform.endsWith("cocoa")) {
+		} else if (platform.endsWith("gtk")) {
 			synchronized (displayLock) {
 				if (displayThread == null || !displayThread.isAlive()) {
 					try {
