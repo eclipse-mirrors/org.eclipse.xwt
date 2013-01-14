@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0" xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
+  <rm:locator pattern="^org\.eclipse\.xwt\..*$" searchPathRef="xwt-git"/>
+  <rm:searchPath name="xwt-git">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="gits">
+      <rm:property key="git.remote.uri" value="git://git.eclipse.org/gitroot/xwt/org.eclipse.xwt.git"/>
+      <rm:property key="git.remote.name" value="master"/>
+      <rm:uri format="{0}/org.eclipse.xwt.git,{1}">
+        <bc:propertyRef key="workspace.root"/>
+        <bc:propertyRef key="buckminster.component"/>
+      </rm:uri>
+    </rm:provider>
+  </rm:searchPath>
+</rm:rmap>
