@@ -17,6 +17,10 @@
       %license
    </license>
 
+   <requires>
+      <import feature="org.eclipse.rcp" version="4.2.0" match="greaterOrEqual"/>
+   </requires>
+
    <plugin
          id="org.eclipse.xwt"
          download-size="0"
