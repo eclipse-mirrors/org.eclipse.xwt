@@ -3,6 +3,7 @@
 	xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
 	<rm:locator pattern="^org\.eclipse\.xwt.*$" searchPathRef="xwt-workspace" />
 	<rm:locator pattern="^org\.eclipse\.e4\..*$" searchPathRef="e4-0-12-p2" />
+	<rm:locator pattern="^org\.pushingpixels\.trident$" searchPathRef="e4-0-12-p2" />
 	
 	<rm:searchPath name="xwt-git">
 		<rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster"
