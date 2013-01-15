@@ -17,7 +17,10 @@
 	<rm:searchPath name="xwt-workspace">
 		<rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster"
 			readerType="local">
-			<rm:uri format="${WORKSPACE}"/>
+			<rm:uri format="{0}/{1}">
+				<bc:propertyRef key="workspace.root" />
+				<bc:propertyRef key="buckminster.component" />
+			</rm:uri>
 		</rm:provider>
 	</rm:searchPath>
 </rm:rmap>
