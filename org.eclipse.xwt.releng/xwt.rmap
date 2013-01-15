@@ -2,8 +2,9 @@
 <rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0"
 	xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
 	<rm:locator pattern="^org\.eclipse\.xwt.*$" searchPathRef="xwt-workspace" />
-	<rm:locator pattern="^org\.eclipse\.e4\..*$" searchPathRef="e4-0-12-p2" />
+<!-- 	<rm:locator pattern="^org\.eclipse\.e4\..*$" searchPathRef="e4-0-12-p2" /> -->
 	<rm:locator pattern="^org\.pushingpixels\.trident$" searchPathRef="e4-0-12-p2" />
+	<rm:locator pattern=".*" searchPathRef="kepler-release" />
 	
 	<rm:searchPath name="xwt-git">
 		<rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster"
@@ -32,6 +33,14 @@
 			<rm:uri format="{0}/{1}">
 				<bc:propertyRef key="workspace.root" />
 				<bc:propertyRef key="buckminster.component" />
+			</rm:uri>
+		</rm:provider>
+	</rm:searchPath>
+	
+	<rm:searchPath name="kepler-release">
+		<rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster"
+			readerType="p2" mutable="false" source="false">
+			<rm:uri format="http://download.eclipse.org/releases/kepler">
 			</rm:uri>
 		</rm:provider>
 	</rm:searchPath>
