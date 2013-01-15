@@ -2,6 +2,8 @@
 <rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0"
 	xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
 	<rm:locator pattern="^org\.eclipse\.xwt.*$" searchPathRef="xwt-workspace" />
+	<rm:locator pattern="^org\.eclipse\.e4\..*$" searchPathRef="e4-0-12-p2" />
+	
 	<rm:searchPath name="xwt-git">
 		<rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster"
 			readerType="git" mutable="true" source="true">
@@ -14,6 +16,15 @@
 			</rm:uri>
 		</rm:provider>
 	</rm:searchPath>
+
+	<rm:searchPath name="e4-0-12-p2">
+		<rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster"
+			readerType="p2" mutable="false" source="false">
+			<rm:uri format="http://download.eclipse.org/e4/updates/0.12/">
+			</rm:uri>
+		</rm:provider>
+	</rm:searchPath>
+	
 	<rm:searchPath name="xwt-workspace">
 		<rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster"
 			readerType="local">
