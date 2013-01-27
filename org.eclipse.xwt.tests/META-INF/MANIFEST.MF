@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: XWT Tests Plug-in (Incubation)
 Bundle-SymbolicName: org.eclipse.xwt.tests
-Bundle-Version: 0.9.1.qualifier
+Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.swt,
  org.eclipse.core.runtime,
  org.eclipse.xwt;bundle-version="0.9.0",

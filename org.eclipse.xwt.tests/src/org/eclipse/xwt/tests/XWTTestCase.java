@@ -37,7 +37,7 @@ import org.eclipse.xwt.XWT;
  * @author yyang (yves.yang@soyatec.com)
  */
 public abstract class XWTTestCase extends TestCase {
-	protected Control root;
+	public Control root;
 	static boolean simulateMThreading = false;
 
 	static {
@@ -271,7 +271,7 @@ public abstract class XWTTestCase extends TestCase {
 		}
 	}
 
-	protected void selectButton(Button button) {
+	public void selectButton(Button button) {
 		selectButton(button, true);
 	}
 
