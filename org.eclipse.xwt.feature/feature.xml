@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.xwt.feature"
       label="%featureName"
-      version="1.0.0.qualifier"
+      version="0.9.1.qualifier"
       provider-name="%providerName">
 
    <description>
@@ -25,14 +25,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xwt.emf"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xwt.forms"
+         id="org.eclipse.xwt.pde"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -46,7 +39,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xwt.css"
+         id="org.eclipse.xwt.forms"
          download-size="0"
          install-size="0"
          version="0.0.0"

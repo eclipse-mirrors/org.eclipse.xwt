@@ -33,7 +33,7 @@
    </requires>
 
    <plugin
-         id="org.eclipse.e4.xwt.ui.workbench"
+         id="org.eclipse.xwt.ui.workbench"
          download-size="0"
          install-size="0"
          version="0.0.0"
