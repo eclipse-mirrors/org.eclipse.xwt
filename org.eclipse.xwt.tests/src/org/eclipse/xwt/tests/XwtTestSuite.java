@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2010 Soyatec (http://www.soyatec.com) and others.
+ * Copyright (c) 2006, 2013 Soyatec (http://www.soyatec.com), CEA LIST, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *     Soyatec - initial API and implementation
+ *     CEA LIST - add regression tests for URL handling in XML parsing
  *******************************************************************************/
 package org.eclipse.xwt.tests;
 
@@ -24,6 +25,7 @@ import org.eclipse.xwt.tests.controls.uiresource.UIResourceTestSuite;
 import org.eclipse.xwt.tests.databinding.BindingTestSuite;
 import org.eclipse.xwt.tests.events.EventsTestSuite;
 import org.eclipse.xwt.tests.forms.FormsTestSuite;
+import org.eclipse.xwt.tests.internal.xml.XMLTestSuite;
 import org.eclipse.xwt.tests.jface.JFaceTestSuite;
 import org.eclipse.xwt.tests.metaclass.Metaclass_Tests;
 import org.eclipse.xwt.tests.name.NameTestSuite;
@@ -59,6 +61,9 @@ public class XwtTestSuite extends TestSuite {
 
 		// XWT
 		addXWTTests();
+
+		// internal XML parsing
+		addInternalXMLTests();
 
 		// annotations
 		addTest(new TestSuite(AnnotationTests.class));
@@ -170,5 +175,9 @@ public class XwtTestSuite extends TestSuite {
 
 	protected void addCustomizationTests() {
 		addTest(NamespacehandlerTestSuite.suite());
+	}
+	
+	protected void addInternalXMLTests() {
+		addTest(XMLTestSuite.suite());
 	}
 }
