@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2010 Soyatec (http://www.soyatec.com) and others.
+ * Copyright (c) 2006, 2013 Soyatec (http://www.soyatec.com), CEA, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *     Soyatec - initial API and implementation
+ *     Christian W. Damus (CEA) - Fix failure to propagate stream handlers of URLs (CDO)
  *******************************************************************************/
 package org.eclipse.xwt.internal.xml;
 
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PushbackInputStream;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipEntry;
@@ -135,7 +137,10 @@ public class DocumentRoot {
 		case FORMAT_GZIP:
 			return new GZIPInputStream(new URL(basePath + "/" + baseFile).openStream());
 		default:
-			return new URL(basePath + "/" + baseFile).openStream();
+			if ((basePath != null) && (basePath.length() > 0)) {
+				return new URL(baseURL, basePath + "/" + baseFile).openStream(); // preserve the stream handler
+			}
+			return new URL(baseURL, baseFile).openStream(); // preserve the stream handler
 		}
 	}
 
@@ -222,16 +227,22 @@ public class DocumentRoot {
 	 * @param file
 	 *            the xaml file path.
 	 */
-	protected void init(InputStream inputStream, String path) throws IOException {
-		path = path.replace('\\', '/');
-		File file = new File(path);
-		if (inputStream == null && file.exists()) {
+	protected void init(InputStream inputStream, URL url) throws IOException {
+		File file = null;
+		
+		try {
+			file = "file".equals(url.getProtocol()) ? new File(url.toURI()) : null;
+		} catch (URISyntaxException e) {
+			// not a valid file URL.  Fine
+		}
+		
+		if((inputStream == null) && (file != null) && file.exists()) {
 			// Is file
 			init(file);
 		} else {
 			// Is URL
 			basePath = null;
-			baseURL = new URL(path);
+			baseURL = url;
 			PushbackInputStream pis = null;
 			boolean shouldClose_pis = false;
 			if (inputStream instanceof PushbackInputStream) {
@@ -257,6 +268,7 @@ public class DocumentRoot {
 			}
 
 			if (basePath == null) {
+				String path = url.getPath();
 				while (path.endsWith("/")) {
 					path = path.substring(0, path.length() - 1);
 				}
@@ -265,11 +277,15 @@ public class DocumentRoot {
 				if (lastIndex > 0) {
 					basePath = path.substring(0, lastIndex);
 					baseFile = path.substring(lastIndex + 1);
-					baseURL = new URL(basePath);
-				} else {
+					baseURL = new URL(url, basePath); // be sure to preserve the stream handler
+				} else if ("file".equals(url.getProtocol())) {
 					basePath = System.getProperty("user.dir");
 					baseURL = new File(basePath).toURI().toURL();
 					baseFile = path;
+				} else {
+					basePath = "";
+					baseFile = path;
+					baseURL = new URL(url, basePath); // be sure to preserve the stream handler
 				}
 			}
 
