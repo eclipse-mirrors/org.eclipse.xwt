@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: XWT E4 Higher Integration Layer
+Bundle-SymbolicName: org.eclipse.xwt.e4
+Bundle-Version: 0.9.0.qualifier
+Bundle-Vendor: Eclipse XWT Project
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .
+Import-Package: org.eclipse.core.runtime;version="3.4.0",
+ org.eclipse.e4.core.contexts,
+ org.eclipse.e4.core.di.annotations,
+ org.eclipse.jface.dialogs,
+ org.eclipse.jface.viewers,
+ org.eclipse.jface.window,
+ org.eclipse.jface.wizard,
+ org.eclipse.swt,
+ org.eclipse.swt.browser,
+ org.eclipse.swt.custom,
+ org.eclipse.swt.graphics,
+ org.eclipse.swt.layout,
+ org.eclipse.swt.widgets
+Require-Bundle: org.eclipse.xwt,
+ javax.inject;bundle-version="1.0.0",
+ javax.annotation;bundle-version="1.1.0",
+ org.eclipse.core.databinding;bundle-version="1.4.1"
+Export-Package: org.eclipse.xwt.e4,
+ org.eclipse.xwt.e4.internal.converters,
+ org.eclipse.xwt.e4.internal.widgets
+Bundle-ActivationPolicy: lazy
