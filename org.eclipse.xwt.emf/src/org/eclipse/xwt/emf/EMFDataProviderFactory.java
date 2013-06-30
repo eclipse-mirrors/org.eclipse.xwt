@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2010 Soyatec (http://www.soyatec.com) and others.
+ * Copyright (c) 2006, 2013 Eclipse XWT Project.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,11 @@
  * 
  * Contributors:
  *     Soyatec - initial API and implementation
+ *     Erdal Karaca - bugs fixes, enhancements
  *******************************************************************************/
 package org.eclipse.xwt.emf;
 
+import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.databinding.EObjectObservableList;
 import org.eclipse.emf.databinding.EObjectObservableMap;
@@ -25,7 +27,7 @@ import org.eclipse.xwt.IDataProviderFactory;
  */
 public class EMFDataProviderFactory implements IDataProviderFactory {
 	public static final String EMF_DATA_PROVIDER_FACTORY = "EMF.DataProvider.Factory";
-	
+
 	public IDataProvider create(Object dataContext) {
 		if (dataContext instanceof EObject) {
 			EMFDataProvider dataProvider = createEMFDataProvider();
@@ -44,10 +46,11 @@ public class EMFDataProviderFactory implements IDataProviderFactory {
 			return dataProvider;
 		} else if (dataContext instanceof Class<?>) {
 			Class<?> classType = (Class<?>) dataContext;
-			if (EObject.class.isAssignableFrom(classType)) {
-				EMFDataProvider dataProvider = createEMFDataProvider();
-				return dataProvider;
-			}	
+			EClassifier classifier = (EClassifier) EMFDataModelService
+					.determineModelType(classType);
+			EMFDataProvider dataProvider = createEMFDataProvider();
+			dataProvider.setTypeURI(EcoreUtil.getURI(classifier));
+			return dataProvider;
 		} else if (dataContext instanceof IObservableValue) {
 			Object valueType = ((IObservableValue) dataContext).getValueType();
 			if (valueType instanceof EObject) {
@@ -55,11 +58,15 @@ public class EMFDataProviderFactory implements IDataProviderFactory {
 				dataProvider.setObjectInstance(dataContext);
 				return dataProvider;
 			}
+		} else if (dataContext instanceof IObservableList) {
+			EMFDataProvider dataProvider = createEMFDataProvider();
+			dataProvider.setObjectInstance(dataContext);
+			return dataProvider;
 		}
-		
+
 		return null;
 	}
-	
+
 	protected EMFDataProvider createEMFDataProvider() {
 		return new EMFDataProvider();
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2010 Soyatec (http://www.soyatec.com) and others.
+ * Copyright (c) 2006, 2013 Eclipse XWT Project.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,12 @@
  * 
  * Contributors:
  *     Soyatec - initial API and implementation
+ *     Erdal Karaca - bugs fixes, enhancements
  *******************************************************************************/
 package org.eclipse.xwt.emf;
 
+import org.eclipse.core.databinding.observable.list.IObservableList;
+import org.eclipse.core.databinding.observable.set.IObservableSet;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.property.value.IValueProperty;
 import org.eclipse.core.internal.databinding.observable.masterdetail.DetailObservableValue;
@@ -20,6 +23,7 @@ import org.eclipse.emf.databinding.EObjectObservableValue;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -33,7 +37,7 @@ import org.eclipse.xwt.internal.core.UpdateSourceTrigger;
  */
 public class EMFDataProvider extends AbstractDataProvider {
 	private DataModelService dataModelService;
-	
+
 	private URI typeURI;
 	private URI objectURI;
 
@@ -45,17 +49,21 @@ public class EMFDataProvider extends AbstractDataProvider {
 	public EMFDataProvider(DataModelService dataModelService) {
 		this.dataModelService = dataModelService;
 	}
-	
+
 	public EMFDataProvider() {
 	}
-	
+
 	@Override
 	protected IObservableValue observeDetailValue(IObservableValue bean,
 			Object ownerType, String propertyName, Object propertyType) {
 		EClass type = null;
 		if (ownerType instanceof EClass) {
 			type = (EClass) ownerType;
+		} else if (ownerType instanceof Class<?>) {
+			type = (EClass) getModelService().loadModelType(
+					((Class<?>) ownerType).getName());
 		}
+
 		if (type == null) {
 			type = (EClass) getModelService().toModelType(bean);
 		}
@@ -78,6 +86,35 @@ public class EMFDataProvider extends AbstractDataProvider {
 		}
 		return EMFObservables.observeValue(XWT.getRealm(), (EObject) bean,
 				feature);
+	}
+
+	@Override
+	protected IObservableList observeDetailList(IObservableValue bean,
+			Object elementType, String propertyName, Object propertyType) {
+		EClass type = (EClass) elementType;
+		EStructuralFeature feature = type.getEStructuralFeature(propertyName);
+		IObservableList observeDetailList = EMFObservables.observeDetailList(
+				XWT.getRealm(), bean, feature);
+		return observeDetailList;
+	}
+
+	@Override
+	protected IObservableSet observeDetailSet(IObservableValue bean,
+			Object elementType, String propertyName, Object propertyType) {
+		// TODO
+		throw new UnsupportedOperationException("not yet implemented");
+	}
+
+	@Override
+	protected IObservableList observeList(Object bean, String propertyName) {
+		// TODO
+		throw new UnsupportedOperationException("not yet implemented");
+	}
+
+	@Override
+	protected IObservableSet observeSet(Object bean, String propertyName) {
+		// TODO
+		throw new UnsupportedOperationException("not yet implemented");
 	}
 
 	public IValueProperty observeValueProperty(Object valueType, String path,
@@ -193,8 +230,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 	public boolean isPropertyReadOnly(String path) {
 		EClass classifier = getCurrentType();
 		if (classifier != null && path != null) {
-			EStructuralFeature feature = classifier
-					.getEStructuralFeature(path);
+			EStructuralFeature feature = classifier.getEStructuralFeature(path);
 			if (feature != null) {
 				return !feature.isChangeable();
 			}
@@ -211,7 +247,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 					.getValueType();
 			EClassifier classifier = valueType.getEType();
 			if (classifier instanceof EClass) {
-				eObj = (EClass) classifier;				
+				eObj = (EClass) classifier;
 			} else {// EDataType, maybe we should change the return type to
 					// access EDataType.
 				return null;
@@ -323,7 +359,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 	protected DataModelService createDataModelService() {
 		return new EMFDataModelService();
 	}
-	
+
 	public DataModelService getModelService() {
 		if (dataModelService == null) {
 			dataModelService = createDataModelService();
@@ -336,7 +372,10 @@ public class EMFDataProvider extends AbstractDataProvider {
 			return null;
 		}
 		EClass eClass = null;
-		if (type instanceof EClass) {
+		if (type instanceof EReference) {
+			EReference ref = (EReference) type;
+			eClass = ref.getEReferenceType();
+		} else if (type instanceof EClass) {
 			eClass = (EClass) type;
 		} else if (type instanceof EObject) {
 			eClass = ((EObject) type).eClass();
