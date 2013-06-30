@@ -55,6 +55,8 @@ public class Controller implements Listener, IEventController {
 						// support old style
 						if (method.getParameterTypes().length == 1) {
 							method.invoke(receivers[i], e);
+						} else if (method.getParameterTypes().length == 0) {
+							method.invoke(receivers[i]);
 						} else {
 							method.invoke(receivers[i], args[i], e);
 						}

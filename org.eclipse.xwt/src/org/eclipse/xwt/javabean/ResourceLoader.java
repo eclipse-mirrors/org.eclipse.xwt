@@ -261,6 +261,9 @@ public class ResourceLoader implements IVisualElementLoader {
 						method = ObjectUtil.findMethod(clazz, handler,
 								Event.class);
 					}
+					if (method == null) {
+						method = ObjectUtil.findMethod(clazz, handler);
+					}
 					if (method != null) {
 						clrObject = receiver;
 						eventController.setEvent(event, control, clrObject,
@@ -1116,6 +1119,16 @@ public class ResourceLoader implements IVisualElementLoader {
 
 		for (String attrName : element.attributeNames()) {
 			IProperty property = metaclass.findProperty(attrName);
+			
+			if (property == null) {
+				IMetaclass mc = XWT.getMetaclass(targetObject);
+				property = mc.findProperty(attrName);
+				
+				if (property != null) {
+					metaclass = mc;
+				}
+			}
+			
 			if (IConstants.XWT_X_NAMESPACE.equals(element
 					.getAttribute(attrName).getNamespace())) {
 				continue;
