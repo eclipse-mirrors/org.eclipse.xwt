@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.jface.viewers.CellEditor;
+import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.custom.CTabItem;
@@ -277,6 +279,9 @@ public class UserData {
 
 	public static String getElementName(Object object) {
 		Widget widget = getWidget(object);
+		if (widget == null) {
+			return null;
+		}
 		UserData dataDictionary = (UserData) widget
 				.getData(IUserDataConstants.XWT_USER_DATA_KEY);
 		if (dataDictionary != null) {
@@ -490,6 +495,11 @@ public class UserData {
 			return ((TableViewerColumn) target).getColumn();
 		} else if (target instanceof ControlEditor) {
 			return ((ControlEditor) target).getEditor();
+		} else if (target instanceof EditingSupport) {
+			return JFacesHelper.getControl(((EditingSupport) target)
+					.getViewer());
+		} else if (target instanceof CellEditor) {
+			return ((CellEditor) target).getControl();
 		}
 		return null;
 	}
