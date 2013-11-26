@@ -1875,17 +1875,21 @@ public class XWTLoader implements IXWTLoader {
 		registerMetaclass(RectangleAnimation.class);
 		registerMetaclass(SizeAnimation.class);
 
-		registerMetaclass(BackEase.class);
-		registerMetaclass(BounceEase.class);
-		registerMetaclass(CircleEase.class);
-		registerMetaclass(CubicEase.class);
-		registerMetaclass(ElasticEase.class);
-		registerMetaclass(ExponentialEase.class);
-		registerMetaclass(PowerEase.class);
-		registerMetaclass(QuadraticEase.class);
-		registerMetaclass(QuarticEase.class);
-		registerMetaclass(QuinticEase.class);
-		registerMetaclass(SineEase.class);
+		try {
+			Class.forName("org.pushingpixels.trident.Timeline");
+			registerMetaclass(BackEase.class);
+			registerMetaclass(BounceEase.class);
+			registerMetaclass(CircleEase.class);
+			registerMetaclass(CubicEase.class);
+			registerMetaclass(ElasticEase.class);
+			registerMetaclass(ExponentialEase.class);
+			registerMetaclass(PowerEase.class);
+			registerMetaclass(QuadraticEase.class);
+			registerMetaclass(QuarticEase.class);
+			registerMetaclass(QuinticEase.class);
+			registerMetaclass(SineEase.class);
+		} catch (ClassNotFoundException e) {
+		}
 
 		registerConvertor(StringToDuration.instance);
 		registerConvertor(StringToTimeSpan.instance);
