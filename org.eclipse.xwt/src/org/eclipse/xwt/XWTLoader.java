@@ -1875,6 +1875,7 @@ public class XWTLoader implements IXWTLoader {
 		registerMetaclass(RectangleAnimation.class);
 		registerMetaclass(SizeAnimation.class);
 
+		
 		registerMetaclass(BackEase.class);
 		registerMetaclass(BounceEase.class);
 		registerMetaclass(CircleEase.class);
