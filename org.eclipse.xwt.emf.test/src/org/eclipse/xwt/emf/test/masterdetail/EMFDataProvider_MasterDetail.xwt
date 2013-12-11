@@ -1,0 +1,30 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt" xmlns:y="clr-namespace:org.eclipse.xwt.emf.test.books"
+	Size="400, 300">
+	<Composite.layout>
+		<GridLayout numColumns="1" />
+	</Composite.layout>
+	<TableViewer x:style="FULL_SELECTION" Name="TableViewer"
+		input="{Binding Path=books}">
+		<TableViewer.columns>
+			<TableViewerColumn width="150" text="Author"
+				bindingPath="author" />
+			<TableViewerColumn width="150" text="Title"
+				bindingPath="title.text" />
+		</TableViewer.columns>
+		<TableViewer.table HeaderVisible="true">
+		</TableViewer.table>
+		<TableViewer.control.layoutData>
+			<GridData horizontalAlignment="FILL"
+				grabExcessHorizontalSpace="true" verticalAlignment="FILL"
+				grabExcessVerticalSpace="true" />
+		</TableViewer.control.layoutData>
+	</TableViewer>
+	<Label name="Price"
+		text="{Binding ElementName=TableViewer,path=singleSelection.(y:Book.price)}">
+		<Label.layoutData>
+			<GridData horizontalAlignment="FILL"
+				grabExcessHorizontalSpace="true" />
+		</Label.layoutData>
+	</Label>
+</Composite>
