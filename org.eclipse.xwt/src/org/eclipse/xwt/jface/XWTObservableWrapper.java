@@ -7,6 +7,7 @@
  *
  * Contributors:
  *     IBM Corporation - initial API and implementation
+ *     Erdal Karaca - bug 423749
  *******************************************************************************/
 package org.eclipse.xwt.jface;
 
@@ -30,36 +31,36 @@ import org.eclipse.xwt.internal.core.ScopeManager;
 
 public class XWTObservableWrapper implements IObservableMap {
 	private IObservableMap delegate;
-	
+
 	private IObservableSet domain;
 	private Object control;
 	private Object data;
 	private String path;
-	
+
 	private List<IMapChangeListener> changeListeners = Collections.EMPTY_LIST;
 
-	public XWTObservableWrapper(IObservableSet domain, Object control, String path) {
+	public XWTObservableWrapper(IObservableSet domain, Object control,
+			String path) {
 		this.control = control;
 		this.domain = domain;
 		this.path = path;
 	}
-	
+
 	public Object getData() {
 		return data;
 	}
-	
+
 	public void setData(Object data) {
 		this.data = data;
 	}
-	
+
 	public void addMapChangeListener(IMapChangeListener listener) {
 		if (delegate == null) {
 			if (changeListeners.isEmpty()) {
 				changeListeners = new ArrayList<IMapChangeListener>();
 			}
 			changeListeners.add(listener);
-		}
-		else {
+		} else {
 			delegate.addMapChangeListener(listener);
 		}
 	}
@@ -106,7 +107,7 @@ public class XWTObservableWrapper implements IObservableMap {
 		checkDelegated();
 		return delegate.getValueType();
 	}
-	
+
 	public int hashCode() {
 		checkDelegated();
 		return delegate.hashCode();
@@ -116,7 +117,7 @@ public class XWTObservableWrapper implements IObservableMap {
 		checkDelegated();
 		return delegate.isEmpty();
 	}
-	
+
 	public Set keySet() {
 		checkDelegated();
 		return delegate.keySet();
@@ -131,7 +132,7 @@ public class XWTObservableWrapper implements IObservableMap {
 		checkDelegated();
 		delegate.putAll(t);
 	}
-	
+
 	public Object remove(Object key) {
 		checkDelegated();
 		return delegate.remove(key);
@@ -140,12 +141,11 @@ public class XWTObservableWrapper implements IObservableMap {
 	public void removeMapChangeListener(IMapChangeListener listener) {
 		if (delegate == null) {
 			changeListeners.remove(listener);
-		}
-		else {
+		} else {
 			delegate.removeMapChangeListener(listener);
 		}
 	}
-	
+
 	public int size() {
 		checkDelegated();
 		return delegate.size();
@@ -154,8 +154,8 @@ public class XWTObservableWrapper implements IObservableMap {
 	public Collection values() {
 		checkDelegated();
 		return delegate.values();
-	}	
-	
+	}
+
 	public void addChangeListener(IChangeListener listener) {
 		checkDelegated();
 		delegate.addChangeListener(listener);
@@ -209,8 +209,20 @@ public class XWTObservableWrapper implements IObservableMap {
 
 	protected void checkDelegated() {
 		if (delegate == null) {
-			IValueProperty property = ScopeManager.createValueProperty(control, data, new BindingExpressionPath(path));
-			delegate = property.observeDetail(domain);				
+			BindingExpressionPath expressionPath = new BindingExpressionPath(
+					path);
+
+			// FIXME bug 423749: workaround for supporting nested properties: if
+			// stripped path does not equal to provided path, then re-parse the
+			// expression
+			if (!expressionPath.getStripedPath().equals(path)) {
+				expressionPath = new BindingExpressionPath(
+						expressionPath.getStripedPath());
+			}
+
+			IValueProperty property = ScopeManager.createValueProperty(control,
+					data, expressionPath);
+			delegate = property.observeDetail(domain);
 			for (IMapChangeListener listener : changeListeners) {
 				delegate.addMapChangeListener(listener);
 			}
