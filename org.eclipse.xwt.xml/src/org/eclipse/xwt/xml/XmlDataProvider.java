@@ -106,7 +106,7 @@ public class XmlDataProvider extends AbstractDataProvider implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.e4.xwt.dataproviders.IXmlDataProvider#setSource(java.io.
+	 * @seeorg.eclipse.xwt.dataproviders.IXmlDataProvider#setSource(java.io.
 	 * InputStream)
 	 */
 	public void setSource(URL xmlSource) {
