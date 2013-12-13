@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.xwt.tools.ui.palette.resourceProvider">
+      <resource
+            editorId="org.eclipse.e4.tools.ui.designer.E4Designer"
+            uri="palette/e4XWT.palette">
+      </resource>
+   </extension>
+   
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/e4/xwt/workbench/desiger"
+            class="org.eclipse.xwt.tools.ui.model.workbench.WorkbenchPackage"
+            genModel="model/workbench.genmodel"/>
+   </extension>
+</plugin>

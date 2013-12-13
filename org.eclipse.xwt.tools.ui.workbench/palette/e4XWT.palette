@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<palette:Palette xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" 
+	xmlns:palette="http://www.eclipse.org/e4/xwt/tools/palette.xmi"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	xmlns:wb="http://www.eclipse.org/e4/xwt/workbench/desiger">
+  <entries name="XWT">
+    <entries toolTip="Create a Static Part." name="Static Part" 
+    	icon="platform:/plugin/org.eclipse.xwt.tools.ui.workbench/icons/full/obj16/Part.gif" 
+    	scope="MPartStack" type="ecore:EClass http://www.eclipse.org/ui/2008/UIModel#//Part">
+    	<initializer xsi:type="wb:XWTPartInitializer" contentForm="org.eclipse.xwt.tools.ui.workbench.PartInitializerForm" />
+    </entries>	
+    <entries toolTip="Create a Dynamic Part." name="Dynamic Part" 
+    	icon="platform:/plugin/org.eclipse.xwt.tools.ui.workbench/icons/full/obj16/Part.gif" 
+    	scope="MPartStack" type="ecore:EClass http://www.eclipse.org/ui/2008/UIModel#//Part">
+    	<initializer xsi:type="wb:XWTPartInitializer" contentForm="org.eclipse.xwt.tools.ui.workbench.PartInitializerForm" />
+    </entries>	
+    <entries toolTip="Create a Editor Part." name="Editor Part" icon="platform:/plugin/org.eclipse.xwt.tools.ui.workbench/icons/full/obj16/Editor.gif" 
+    	scope="MPartStack" type="ecore:EClass http://www.eclipse.org/ui/2008/UIModel#//Part">
+    	<initializer xsi:type="wb:XWTPartInitializer" contentForm="org.eclipse.xwt.tools.ui.workbench.PartInitializerForm" />
+    </entries>	
+  </entries>
+</palette:Palette>

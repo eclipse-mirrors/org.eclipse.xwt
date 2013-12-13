@@ -1,0 +1,38 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt" xmlns:c="clr-namespace:org.eclipse.xwt.tools.ui.workbench"
+	xmlns:j="clr-namespace:java.lang" x:Class="c:StaticPartInitializerForm"
+	loadedEvent="onloadedEvent">
+	<Composite.layout>
+		<GridLayout numColumns="3" />
+	</Composite.layout>
+	<Label text="Data Context:" x:style="SWT.NONE" toolTipText="XWT UI Resource file"
+		foreground="SWT.COLOR_BLUE">
+	</Label>
+	<Text x:style="SWT.NONE|BORDER">
+		<Text.layoutData>
+			<GridData grabExcessVerticalSpace="true"
+				grabExcessHorizontalSpace="true" horizontalAlignment="GridData.FILL" />
+		</Text.layoutData>
+	</Text>
+	<Button text="..." x:style="SWT.PUSH"></Button>
+	<Label Text="Data Input:" x:Style="SWT.NONE" foreground="SWT.COLOR_BLUE">
+		<Label.layoutData>
+			<GridData verticalAlignment="GRIDDATA.CENTER"
+				horizontalAlignment="SWT.LEFT"></GridData>
+		</Label.layoutData>
+	</Label>
+	<Composite>
+		<Composite.layout>
+			<GridLayout numColumns="1"></GridLayout>
+		</Composite.layout>
+		<Composite.layoutData>
+			<GridData horizontalAlignment="SWT.FILL" verticalAlignment="SWT.FILL"
+				horizontalSpan="2" verticalSpan="1"></GridData>
+		</Composite.layoutData>
+		<Button text="Selection" x:style="SWT.CHECK">
+			<Button.layoutData>
+				<GridData horizontalSpan="1" verticalAlignment="SWT.FILL"></GridData>
+			</Button.layoutData>
+		</Button>
+	</Composite>
+</Composite>

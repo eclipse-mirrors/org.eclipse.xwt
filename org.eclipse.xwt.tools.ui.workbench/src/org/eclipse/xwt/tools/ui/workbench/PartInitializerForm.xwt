@@ -1,0 +1,27 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt" xmlns:c="clr-namespace:org.eclipse.xwt.tools.ui.workbench"
+	xmlns:j="clr-namespace:java.lang" x:Class="c:PartInitializerForm"
+	loadedEvent="onloadedEvent">
+	<Composite.layout>
+		<GridLayout numColumns="3" />
+	</Composite.layout>
+	<Label Text="Part type:" x:Style="SWT.NONE" ToolTipText="XWT UI Resource file"
+		Foreground="SWT.COLOR_BLUE"></Label>
+	<Combo x:style="SWT.NONE|READ_ONLY" text="Static Part">
+		<Combo.layoutData>
+			<GridData horizontalSpan="2" horizontalAlignment="SWT.FILL"></GridData>
+		</Combo.layoutData>
+		<Combo.items>
+			<j:String>Static Part</j:String>
+			<j:String>Editor</j:String>
+		</Combo.items>
+	</Combo>
+	<Composite x:style="SWT.NONE" name="partContent">
+		<Composite.layout>
+			<GridLayout></GridLayout>
+		</Composite.layout>
+		<Composite.layoutData>
+			<GridData horizontalSpan="3" horizontalAlignment="SWT.FILL"></GridData>
+		</Composite.layoutData>
+	</Composite>
+</Composite>
