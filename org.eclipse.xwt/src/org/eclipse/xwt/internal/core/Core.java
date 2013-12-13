@@ -537,7 +537,7 @@ public class Core {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.e4.xwt.IXWTLoader#setLoadingContext(org.eclipse.xwt.
+	 * @seeorg.eclipse.xwt.IXWTLoader#setLoadingContext(org.eclipse.xwt.
 	 * ILoadingContext)
 	 */
 	public void setLoadingContext(ILoadingContext loadingContext) {

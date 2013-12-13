@@ -16,12 +16,12 @@ the integration with standard SWT application is really straight
 forward.</p>
 
 <h2>Stand-alone Java application</h2>
-The module "org.eclipse.e4.xwt" is the core engine of XWT. It depends
+The module "org.eclipse.xwt" is the core engine of XWT. It depends
 only on SWT/JFace and JFace data binding. It can be used directly in any
 stand-alone Java application.
 
 <h2>Eclipse integration</h2>
-The plugin "org.eclipse.e4.xwt.pde" takes over this bridge role between
+The plugin "org.eclipse.xwt.pde" takes over this bridge role between
 XWT and eclipse environment. It implements mainly all extensions points
 to extend XWT at the current stage, more integration facilities will be
 provided in next releases.
@@ -46,7 +46,7 @@ component directly. See the screenshot below.
 application class path and name in the place where you want. See the
 example below, it using <tt>&lt;y:UserControl /&gt;</tt>, <tt>y</tt> is
 the class path specified in the root as <tt>xmlns:y =
-"clr-namespace:org.eclipse.e4.xwt.test.usercontrol"</tt>.</p>
+"clr-namespace:org.eclipse.xwt.test.usercontrol"</tt>.</p>
 <p><img src="images/mac-feature_10.png" /></p>
 
 <p>Run the Container application and click the button. Implicitly,

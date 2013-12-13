@@ -38,15 +38,15 @@
       <topic label="Object mapping">
       </topic>
       <topic label="Extension Points Reference">
-         <topic href="reference/extension_points/commands.html" label="org.eclipse.e4.xwt.pde.commands">
+         <topic href="reference/extension_points/commands.html" label="org.eclipse.xwt.pde.commands">
          </topic>
-         <topic href="reference/extension_points/converters.html" label="org.eclipse.e4.xwt.pde.converters">
+         <topic href="reference/extension_points/converters.html" label="org.eclipse.xwt.pde.converters">
          </topic>
-         <topic href="reference/extension_points/logger.html" label="org.eclipse.e4.xwt.pde.logger">
+         <topic href="reference/extension_points/logger.html" label="org.eclipse.xwt.pde.logger">
          </topic>
-         <topic href="reference/extension_points/metaclassfactories.html" label="org.eclipse.e4.xwt.pde.metaclassfactories">
+         <topic href="reference/extension_points/metaclassfactories.html" label="org.eclipse.xwt.pde.metaclassfactories">
          </topic>
-         <topic href="reference/extension_points/metaclasses.html" label="org.eclipse.e4.xwt.pde.metaclasses">
+         <topic href="reference/extension_points/metaclasses.html" label="org.eclipse.xwt.pde.metaclasses">
          </topic>
       </topic>
       <topic href="javadoc/index.html" label="Java documentation">

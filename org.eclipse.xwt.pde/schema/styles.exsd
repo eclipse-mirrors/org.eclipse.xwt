@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.e4.xwt.pde" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.xwt.pde" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.eclipse.e4.xwt.pde" id="style" name="styles"/>
+         <meta.schema plugin="org.eclipse.xwt.pde" id="style" name="styles"/>
       </appinfo>
       <documentation>
          This extension point is used to define a new Default Styles

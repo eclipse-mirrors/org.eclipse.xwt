@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.e4.xwt.pde" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.xwt.pde" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.eclipse.e4.xwt.pde" id="logger" name="logger"/>
+         <meta.schema plugin="org.eclipse.xwt.pde" id="logger" name="logger"/>
       </appinfo>
       <documentation>
          The logger class will be used by XWT framework. 
@@ -57,10 +57,10 @@
          <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
-                  The logger class must implements the interface org.eclipse.e4.xwt.ILogger
+                  The logger class must implements the interface org.eclipse.xwt.ILogger
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.e4.xwt.ILogger"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.xwt.ILogger"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -84,9 +84,9 @@
          Here is an example to declare the logger: 
 &lt;pre&gt;
    &lt;extension
-         point=&quot;org.eclipse.e4.xwt.pde.logger&quot;&gt;
+         point=&quot;org.eclipse.xwt.pde.logger&quot;&gt;
       &lt;logger
-            class=&quot;org.eclipse.e4.xwt.demo.Logger&quot;&gt;
+            class=&quot;org.eclipse.xwt.demo.Logger&quot;&gt;
       &lt;/logger&gt;
    &lt;/extension&gt;
 &lt;/pre&gt;

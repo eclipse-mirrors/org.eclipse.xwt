@@ -18,19 +18,19 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.e4.xwt.feature" version="0.9.0" match="compatible"/>
-      <import feature="org.eclipse.e4.xwt.css.feature" version="0.9.0" match="compatible"/>
-      <import plugin="org.eclipse.e4.xwt.emf" version="0.9.0" match="compatible"/>
+      <import feature="org.eclipse.xwt.feature" version="0.9.0" match="compatible"/>
+      <import feature="org.eclipse.xwt.css.feature" version="0.9.0" match="compatible"/>
+      <import plugin="org.eclipse.xwt.emf" version="0.9.0" match="compatible"/>
    </requires>
 
    <plugin
-         id="org.eclipse.e4.xwt.tests"
+         id="org.eclipse.xwt.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.e4.xwt.emf.test"
+         id="org.eclipse.xwt.emf.test"
          download-size="0"
          install-size="0"
          version="0.0.0"/>

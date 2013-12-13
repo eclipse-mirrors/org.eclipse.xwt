@@ -9,7 +9,7 @@
 <BODY>
 <H1>Converters</H1>
 <p></p>
-<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.e4.xwt.pde.converters<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.xwt.pde.converters<p></p>
 <h6 class="CaptionFigColumn SchemaHeader">Since: </h6>[Enter the first release in which this extension point appears.]
 <p></p>
 
@@ -36,9 +36,9 @@ Data converter element</p>
 <br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6>Here is an example to define the converter from String to URL: 
 <pre class="Example"><span class="code SchemaTag">
    &lt;extension
-         point=</span><span class="code SchemaCstring">&quot;org.eclipse.e4.xwt.pde.converters&quot;</span><span class="code SchemaTag">&gt;
+         point=</span><span class="code SchemaCstring">&quot;org.eclipse.xwt.pde.converters&quot;</span><span class="code SchemaTag">&gt;
       &lt;converter
-            class=</span><span class="code SchemaCstring">&quot;org.eclipse.e4.xwt.demo.URLConverter&quot;</span><span class="code SchemaTag">
+            class=</span><span class="code SchemaCstring">&quot;org.eclipse.xwt.demo.URLConverter&quot;</span><span class="code SchemaTag">
             name=</span><span class="code SchemaCstring">&quot;URLConverter&quot;</span><span class="code SchemaTag">&gt;
       &lt;/converter&gt;
    &lt;/extension&gt;
@@ -46,7 +46,7 @@ Data converter element</p>
 
 <p>The class implementation should be: </p>
 <pre class="Example"><span class="code SchemaTag">
-package org.eclipse.e4.xwt.demo;
+package org.eclipse.xwt.demo;
 
 import java.net.MalformedURLException;
 import java.net.URL;

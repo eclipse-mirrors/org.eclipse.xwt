@@ -21,7 +21,7 @@
          <menu
                label="XWT CSS"
                path="additions"
-               id="org.eclipse.e4.xwt.css.tests.XWT">
+               id="org.eclipse.xwt.css.tests.XWT">
             <separator
                   name="group1">
             </separator>
@@ -29,9 +29,9 @@
          <action
                label="Style Open"
                class="org.eclipse.xwt.css.tests.popup.actions.StyleOpen"
-               menubarPath="org.eclipse.e4.xwt.css.tests.XWT/group1"
+               menubarPath="org.eclipse.xwt.css.tests.XWT/group1"
                enablesFor="1"
-               id="org.eclipse.e4.xwt.css.tests.popup.actions.StyleOpen">
+               id="org.eclipse.xwt.css.tests.popup.actions.StyleOpen">
          </action>
       </objectContribution>
    </extension>

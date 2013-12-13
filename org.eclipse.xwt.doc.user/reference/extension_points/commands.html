@@ -9,7 +9,7 @@
 <BODY>
 <H1>Commands</H1>
 <p></p>
-<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.e4.xwt.pde.commands<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.xwt.pde.commands<p></p>
 <h6 class="CaptionFigColumn SchemaHeader">Since: </h6>[Enter the first release in which this extension point appears.]
 <p></p>
 
@@ -28,14 +28,14 @@
 <p></p>
 <ul class="ConfigMarkupAttlistDesc">
 <li><b>name</b> - the name</li>
-<li><b>class</b> - The class of command must implement the interface org.eclipse.e4.XWT.ICommand</li>
+<li><b>class</b> - The class of command must implement the interface org.eclipse.xwt.ICommand</li>
 </ul>
 <br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6>Here is an example to define a commands: 
 <pre class="Example"><span class="code SchemaTag">
    &lt;extension
-         point=</span><span class="code SchemaCstring">&quot;org.eclipse.e4.xwt.pde.commands&quot;</span><span class="code SchemaTag">&gt;
+         point=</span><span class="code SchemaCstring">&quot;org.eclipse.xwt.pde.commands&quot;</span><span class="code SchemaTag">&gt;
       &lt;command
-            class=</span><span class="code SchemaCstring">&quot;org.eclipse.e4.xwt.demo.MessageCommand&quot;</span><span class="code SchemaTag">
+            class=</span><span class="code SchemaCstring">&quot;org.eclipse.xwt.demo.MessageCommand&quot;</span><span class="code SchemaTag">
             name=</span><span class="code SchemaCstring">&quot;Message&quot;</span><span class="code SchemaTag">&gt;
       &lt;/command&gt;
    &lt;/extension&gt;

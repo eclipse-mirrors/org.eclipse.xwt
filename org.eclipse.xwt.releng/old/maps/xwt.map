@@ -1,33 +1,33 @@
 !**** e4 XWT tools
-plugin@org.eclipse.e4.xwt=v20110218-0800,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt
-plugin@org.eclipse.e4.xwt.css=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.css
-plugin@org.eclipse.e4.tools.ui.designer=v20110218-0800,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.tools.ui.designer
-plugin@org.eclipse.e4.xwt.tools.ui=v20101021,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.tools.ui
-plugin@org.eclipse.e4.xwt.tools.ui.editor=v20101021,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.tools.ui.editor
-plugin@org.eclipse.e4.xwt.tools.categorynode=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.tools.categorynode
-plugin@org.eclipse.e4.xwt.tools.categorynode.edit=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.tools.categorynode.edit
-plugin@org.eclipse.e4.xwt.tools.ui.designer=v20101021,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.tools.ui.designer
-plugin@org.eclipse.e4.xwt.tools.ui.designer.core=v20101021,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.tools.ui.designer.core
-plugin@org.eclipse.e4.xwt.tools.ui.imagecapture=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.tools.ui.imagecapture
-plugin@org.eclipse.e4.xwt.tools.ui.palette=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.tools.ui.palette
-plugin@org.eclipse.e4.xwt.tools.ui.xaml=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.tools.ui.xaml
-plugin@org.eclipse.e4.xwt.vex=v20100627-1530,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.vex
-plugin@org.eclipse.e4.xwt.pde=v20101119-0800,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.pde
-plugin@org.eclipse.e4.xwt.doc.user=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/doc/org.eclipse.e4.xwt.doc.user
-plugin@org.eclipse.e4.xwt.xml=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.xml
-plugin@org.eclipse.e4.xwt.forms=v20101021,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.forms
-plugin@org.eclipse.e4.xwt.emf=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.emf
-plugin@org.eclipse.e4.xwt.ui.workbench=v20101119-0800,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/bundles/org.eclipse.e4.xwt.ui.workbench
+plugin@org.eclipse.xwt=v20110218-0800,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt
+plugin@org.eclipse.xwt.css=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.css
+plugin@org.eclipse.e4.tools.ui.designer=v20110218-0800,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.e4.tools.ui.designer
+plugin@org.eclipse.xwt.tools.ui=v20101021,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.tools.ui
+plugin@org.eclipse.xwt.tools.ui.editor=v20101021,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.tools.ui.editor
+plugin@org.eclipse.xwt.tools.categorynode=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.tools.categorynode
+plugin@org.eclipse.xwt.tools.categorynode.edit=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.tools.categorynode.edit
+plugin@org.eclipse.xwt.tools.ui.designer=v20101021,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.tools.ui.designer
+plugin@org.eclipse.xwt.tools.ui.designer.core=v20101021,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.tools.ui.designer.core
+plugin@org.eclipse.xwt.tools.ui.imagecapture=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.tools.ui.imagecapture
+plugin@org.eclipse.xwt.tools.ui.palette=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.tools.ui.palette
+plugin@org.eclipse.xwt.tools.ui.xaml=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.tools.ui.xaml
+plugin@org.eclipse.xwt.vex=v20100627-1530,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.vex
+plugin@org.eclipse.xwt.pde=v20101119-0800,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.pde
+plugin@org.eclipse.xwt.doc.user=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/doc/org.eclipse.xwt.doc.user
+plugin@org.eclipse.xwt.xml=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.xml
+plugin@org.eclipse.xwt.forms=v20101021,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.forms
+plugin@org.eclipse.xwt.emf=v20100617-2100,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.emf
+plugin@org.eclipse.xwt.ui.workbench=v20101119-0800,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/bundles/org.eclipse.xwt.ui.workbench
 
 
 !**** and build it
-feature@org.eclipse.e4.xwt.feature=v20091126-1500,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/features/org.eclipse.e4.xwt.feature
-feature@org.eclipse.e4.xwt.tests.feature=v20091009-1415,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/features/org.eclipse.e4.xwt.tests.feature
-feature@org.eclipse.e4.xwt.tools.feature=v20100705-2130,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/features/org.eclipse.e4.xwt.tools.feature
-feature@org.eclipse.e4.xwt.css.feature=v20090609-1530,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/features/org.eclipse.e4.xwt.css.feature
-feature@org.eclipse.e4.xwt.emf.feature=v20090624-1330,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/features/org.eclipse.e4.xwt.emf.feature
-feature@org.eclipse.e4.xwt.workbench.feature=v20100618,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/features/org.eclipse.e4.xwt.workbench.feature
+feature@org.eclipse.xwt.feature=v20091126-1500,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/features/org.eclipse.xwt.feature
+feature@org.eclipse.xwt.tests.feature=v20091009-1415,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/features/org.eclipse.xwt.tests.feature
+feature@org.eclipse.xwt.tools.feature=v20100705-2130,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/features/org.eclipse.xwt.tools.feature
+feature@org.eclipse.xwt.css.feature=v20090609-1530,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/features/org.eclipse.xwt.css.feature
+feature@org.eclipse.xwt.emf.feature=v20090624-1330,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/features/org.eclipse.xwt.emf.feature
+feature@org.eclipse.xwt.workbench.feature=v20100618,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/features/org.eclipse.xwt.workbench.feature
 
 !**** Test Suites
-plugin@org.eclipse.e4.xwt.tests=v20110218-0800,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/tests/org.eclipse.e4.xwt.tests
-plugin@org.eclipse.e4.xwt.emf.test=v20101025,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.xwt/tests/org.eclipse.e4.xwt.emf.test
+plugin@org.eclipse.xwt.tests=v20110218-0800,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/tests/org.eclipse.xwt.tests
+plugin@org.eclipse.xwt.emf.test=v20101025,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.xwt/tests/org.eclipse.xwt.emf.test

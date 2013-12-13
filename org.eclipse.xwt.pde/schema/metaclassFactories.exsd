@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.e4.xwt.pde" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.xwt.pde" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.eclipse.e4.xwt.pde" id="metaclassFactories" name="Metaclass Factory"/>
+         <meta.schema plugin="org.eclipse.xwt.pde" id="metaclassFactories" name="Metaclass Factory"/>
       </appinfo>
       <documentation>
          This extension point is used to register a MetaclassFactory
@@ -67,7 +67,7 @@
                   The factopry class
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.e4.xwt.IMetaclassFactory"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.xwt.IMetaclassFactory"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -91,9 +91,9 @@
          Here is an example to declare the Metaclassfactory class to create the specific metaclasses for JFreeChart library: 
 &lt;pre&gt;
    &lt;extension
-         point=&quot;org.eclipse.e4.xwt.pde.metaclassFactories&quot;&gt;
+         point=&quot;org.eclipse.xwt.pde.metaclassFactories&quot;&gt;
       &lt;metaclassFactory
-            metaclass=&quot;org.eclipse.e4.xwt.demo.JFreeChartFactory&quot;
+            metaclass=&quot;org.eclipse.xwt.demo.JFreeChartFactory&quot;
             name=&quot;JFreeChart&quot;&gt;
       &lt;/metaclassFactory&gt;
    &lt;/extension&gt;

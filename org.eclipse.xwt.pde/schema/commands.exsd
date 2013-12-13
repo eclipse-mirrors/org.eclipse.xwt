@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.e4.xwt.pde" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.xwt.pde" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.eclipse.e4.xwt.pde" id="commands" name="commands"/>
+         <meta.schema plugin="org.eclipse.xwt.pde" id="commands" name="commands"/>
       </appinfo>
       <documentation>
          This extension point is used to register a command with a name
@@ -63,10 +63,10 @@
          <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
-                  The class of command must implement the interface org.eclipse.e4.XWT.ICommand
+                  The class of command must implement the interface org.eclipse.xwt.ICommand
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.e4.XWT.ICommand"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.xwt.ICommand"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -90,9 +90,9 @@
          Here is an example to define a commands: 
 &lt;pre&gt;
    &lt;extension
-         point=&quot;org.eclipse.e4.xwt.pde.commands&quot;&gt;
+         point=&quot;org.eclipse.xwt.pde.commands&quot;&gt;
       &lt;command
-            class=&quot;org.eclipse.e4.xwt.demo.MessageCommand&quot;
+            class=&quot;org.eclipse.xwt.demo.MessageCommand&quot;
             name=&quot;Message&quot;&gt;
       &lt;/command&gt;
    &lt;/extension&gt;
