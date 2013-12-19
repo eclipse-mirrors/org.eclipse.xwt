@@ -17,6 +17,10 @@
       %license
    </license>
 
+   <url>
+      <update label="XWT Tests Update Site" url="http://download.eclipse.org/xwt/updates/"/>
+   </url>
+
    <requires>
       <import feature="org.eclipse.xwt.feature" version="0.9.0" match="compatible"/>
       <import feature="org.eclipse.xwt.css.feature" version="0.9.0" match="compatible"/>
