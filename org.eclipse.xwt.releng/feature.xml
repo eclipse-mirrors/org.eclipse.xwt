@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.xwt.releng"
-      label="XWT Releng Feature (Buckminster Root)"
+      label="XWT Releng Feature"
       version="1.0.0.qualifier"
       provider-name="%providerName">
 
@@ -16,6 +16,10 @@
    <license url="%licenseURL">
       %license
    </license>
+
+   <url>
+      <update label="XWT Releng Feature" url="http://download.eclipse.org/xwt/updates/"/>
+   </url>
 
    <includes
          id="org.eclipse.xwt.feature"
