@@ -96,12 +96,14 @@ public class DefaultViewerLabelProvider implements ITableLabelProvider, ILabelPr
 		Viewer viewer = getViewer();
 		if (viewer instanceof AbstractTableViewer) {
 			Object[] objects = ((AbstractTableViewer) getViewer()).getColumnProperties();
-			for (int i = 0; i < objects.length; i++) {
-				if ((objects[i] == null)) {
-					objects[i] = getBindingPath();
+			if (objects != null) {
+				for (int i = 0; i < objects.length; i++) {
+					if ((objects[i] == null)) {
+						objects[i] = getBindingPath();
+					}
 				}
+				return objects;
 			}
-			return objects;
 		}
 		String path = bindingPath;
 		if (path == null) {
