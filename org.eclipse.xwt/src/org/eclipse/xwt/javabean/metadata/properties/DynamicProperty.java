@@ -62,6 +62,11 @@ public class DynamicProperty extends AbstractProperty {
 		return null;
 	}
 
+	@Override
+	public boolean isReadOnly() {
+		return this.setter == null;
+	}
+	
 	public static Method createSetter(Class<?> type, Class<?> propertyType, String name) throws SecurityException, NoSuchMethodException {
 		return type.getMethod("set" + Character.toUpperCase(name.charAt(0)) + name.substring(1), propertyType);
 	}

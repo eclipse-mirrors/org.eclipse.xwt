@@ -228,23 +228,28 @@ public abstract class AbstractMetaclass implements IMetaclass {
 			property = superClass.findProperty(name);
 		}
 		if (property == null) {
+			Method getter = null;
+			Method setter = null;
+			Class<?> propertyType = null;
 			try {
-				Method getter = DynamicProperty.createGetter(type, name);
-				if (getter == null) {
-					return null;
-				}
-				Class<?> propertyType = getter.getReturnType();
-				if (shouldIgnored(getter.getDeclaringClass(), name,
-						propertyType)) {
-					return null;
-				}
-				Method setter = DynamicProperty.createSetter(type,
-						propertyType, name);
-				return new DynamicProperty(propertyType, setter, getter, name);
+				getter = DynamicProperty.createGetter(type, name);
 			} catch (NoSuchMethodException e) {
+			}
+			if (getter == null) {
 				return null;
 			}
+			propertyType = getter.getReturnType();
+			if (shouldIgnored(getter.getDeclaringClass(), name, propertyType)) {
+				return null;
+			}
+			try {
+				setter = DynamicProperty.createSetter(type, propertyType, name);
+			} catch (NoSuchMethodException e) {
 
+			}
+			if (getter != null) {
+				return new DynamicProperty(propertyType, setter, getter, name);
+			}
 		}
 		return property;
 	}

@@ -64,7 +64,7 @@ public abstract class AbstractProperty extends Behavior implements IProperty {
 	}
 
 	public boolean isReadOnly() {
-		return true;
+		return false;
 	}
 
 	/*

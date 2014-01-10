@@ -49,7 +49,7 @@ public class FieldProperty extends AbstractProperty {
 		if (value != null) {
 			Class<?> fieldType = field.getType();
 			Class<?> valueType = value.getClass();
-			if (!ObjectUtil.isAssignableFrom(fieldType, value.getClass())) {
+			if (!ObjectUtil.isAssignableFrom(fieldType, valueType)) {
 				IConverter converter = XWT.findConvertor(valueType, fieldType);
 				if (converter != null) {
 					value = converter.convert(value);

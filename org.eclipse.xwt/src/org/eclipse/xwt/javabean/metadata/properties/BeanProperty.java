@@ -134,7 +134,7 @@ public class BeanProperty extends AbstractProperty {
 		return containment;
 	}
 
-	public boolean isReadOnly() {
+	public boolean isReadOnly(Object target, Object value) {
 		return descriptor.getWriteMethod() == null;
 	}
 }
