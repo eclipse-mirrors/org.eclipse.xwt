@@ -66,6 +66,6 @@ public class TableViewerColumnMetaClass extends Metaclass {
 			} catch (InvocationTargetException e) {
 			}
 
-		return super.newInstance(parameters);
+		return super.doNewInstance(parameters);
 	}
 }
