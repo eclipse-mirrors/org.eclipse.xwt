@@ -107,8 +107,16 @@ public class EMFDataProvider extends AbstractDataProvider {
 
 	@Override
 	protected IObservableList observeList(Object bean, String propertyName) {
-		// TODO
-		throw new UnsupportedOperationException("not yet implemented");
+		if (bean instanceof EObject) {
+			EObject owner = (EObject) bean;
+			EStructuralFeature feature = owner.eClass().getEStructuralFeature(
+					propertyName);
+			if (feature != null) {
+				return EMFObservables.observeList(XWT.getRealm(), owner,
+						feature);
+			}
+		}
+		return null;
 	}
 
 	@Override

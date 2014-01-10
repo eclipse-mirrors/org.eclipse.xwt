@@ -12,6 +12,7 @@
 package org.eclipse.xwt.emf;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -110,6 +111,12 @@ public class EMFDataModelService implements DataModelService {
 			throw new XWTException(" Property \"" + propertyName
 					+ "\" is not found in the class " + type.getName());
 		}
-		return structuralFeature.getEType();
+		if (((EStructuralFeature.Internal) structuralFeature).isFeatureMap()) {
+			return Map.class;
+		} else if (structuralFeature.isMany()) {
+			return Collection.class;
+		} else {
+			return structuralFeature.getEType();
+		}
 	}
 }
