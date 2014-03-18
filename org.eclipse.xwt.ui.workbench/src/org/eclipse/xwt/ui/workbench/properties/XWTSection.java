@@ -26,6 +26,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.xwt.DefaultLoadingContext;
 import org.eclipse.xwt.ILoadingContext;
 import org.eclipse.xwt.XWT;
+import org.eclipse.xwt.emf.EMFBinding;
 
 public class XWTSection extends AbstractPropertySection {
 	private ILoadingContext loadingContext = new DefaultLoadingContext(
@@ -87,6 +88,7 @@ public class XWTSection extends AbstractPropertySection {
 	}
 
 	private Control createSection(Composite parent, URL xwtFile, Object source) {
+		EMFBinding.initialze();
 		ILoadingContext xwtContext = XWT.getLoadingContext();
 		XWT.setLoadingContext(loadingContext);
 
