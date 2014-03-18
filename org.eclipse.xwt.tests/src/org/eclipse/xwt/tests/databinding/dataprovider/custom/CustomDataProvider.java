@@ -25,15 +25,15 @@ import org.eclipse.xwt.internal.core.UpdateSourceTrigger;
 public class CustomDataProvider extends AbstractDataProvider {
 	static DataModelService dataModelService = new DataModelService() {
 		public Object toModelType(Object data) {
-			throw new UnsupportedOperationException();
+			return null;
 		}
 
 		public Object loadModelType(String className) {
-			throw new UnsupportedOperationException();
+			return null;
 		}
 
 		public Object toModelPropertyType(Object object, String propertyName) {
-			throw new UnsupportedOperationException();
+			return null;
 		}
 	};
 
@@ -41,6 +41,9 @@ public class CustomDataProvider extends AbstractDataProvider {
 	protected DynamicObject object;
 
 	public Object getData(String path) {
+		if (path == null) {
+			return this;
+		}
 		return getData(getObjectInstance(), path);
 	}
 
@@ -108,7 +111,7 @@ public class CustomDataProvider extends AbstractDataProvider {
 	}
 
 	public DynamicObject getObjectInstance() {
-		if (object == null) {
+		if (object == null && objectType != null) {
 			try {
 				object = (DynamicObject) objectType.newInstance();
 			} catch (Exception e) {

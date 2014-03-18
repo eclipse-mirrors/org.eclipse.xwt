@@ -31,6 +31,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.xwt.IDataProvider;
 import org.eclipse.xwt.XWT;
 import org.eclipse.xwt.XWTException;
 import org.eclipse.xwt.internal.core.ScopeManager;
@@ -225,11 +226,12 @@ public class JFaceXWTDataBinding {
 			if (valueType instanceof Class<?>) {
 				type = (Class<?>) valueType;
 			}
-		}
-		else if (target instanceof Class<?>) {
+		} else if (target instanceof Class<?>) {
 			type = (Class<?>)target;			
-		}
-		else {
+		} else if (target instanceof IDataProvider) {
+			IDataProvider dataProvider = (IDataProvider) target;
+			type = (Class<?>) toType(dataProvider.getData(null));			
+		} else {
 			type = target.getClass();
 		}
 		if (type == null) {

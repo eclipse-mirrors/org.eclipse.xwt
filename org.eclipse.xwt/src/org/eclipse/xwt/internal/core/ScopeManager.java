@@ -174,6 +174,10 @@ public class ScopeManager {
 			}
 			dataProvider = XWT.findDataProvider(value);
 			Object dataValue = value;
+			if (value instanceof IDataProvider) {
+				IDataProvider dataProvider = (IDataProvider) value;
+				dataValue = dataProvider.getData(null);
+			}
 			currentPath = null;
 			Object type = elementType;
 			String[] segments = expressionPath.getSegments();
