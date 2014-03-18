@@ -25,7 +25,7 @@ public class Bookstore {
 	 */
 	public Bookstore() {
 		Book b = new Book();
-		b.title = new Title("en", "Everyday Italian");
+		b.setTitle(new Title("en", "Everyday Italian"));
 		b.setYear(2005);
 		b.setPrice(30.00f);
 		ArrayList<String> authors = new ArrayList<String>();
@@ -34,7 +34,7 @@ public class Bookstore {
 		books.add(b);
 
 		b = new Book();
-		b.title = new Title("en", "Harry Potter");
+		b.setTitle(new Title("en", "Harry Potter"));
 		b.setYear(2005);
 		b.setPrice(29.99f);
 		authors = new ArrayList<String>();
@@ -43,7 +43,7 @@ public class Bookstore {
 		books.add(b);
 
 		b = new Book();
-		b.title = new Title("en", "Learning XML");
+		b.setTitle(new Title("en", "Learning XML"));
 		b.setYear(2003);
 		b.setPrice(39.95f);
 		authors = new ArrayList<String>();
@@ -62,7 +62,7 @@ public class Bookstore {
 
 	public Book getBook(String title) {
 		for (Book b : books) {
-			if (title.equals(b.title.getText())) {
+			if (title.equals(b.getTitle().getText())) {
 				return b;
 			}
 		}

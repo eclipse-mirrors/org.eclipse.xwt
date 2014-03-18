@@ -16,7 +16,15 @@ import java.util.List;
  * @author jliu (jin.liu@soyatec.com)
  */
 public class Book {
-	public Title title;
+	private Title title;
+	public Title getTitle() {
+		return title;
+	}
+
+	public void setTitle(Title title) {
+		this.title = title;
+	}
+
 	public List<String> authors;
 	private int year;
 	private float price;
