@@ -25,4 +25,8 @@
          id="org.eclipse.xwt.feature"
          version="0.0.0"/>
 
+   <includes
+         id="org.eclipse.xwt.workbench.feature"
+         version="0.0.0"/>
+
 </feature>
