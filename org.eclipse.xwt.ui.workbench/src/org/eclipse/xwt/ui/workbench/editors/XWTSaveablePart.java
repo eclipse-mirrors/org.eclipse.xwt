@@ -19,7 +19,6 @@ import org.eclipse.core.databinding.observable.ChangeEvent;
 import org.eclipse.core.databinding.observable.IChangeListener;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.e4.core.di.annotations.Optional;
-import org.eclipse.e4.ui.di.Persist;
 import org.eclipse.e4.ui.model.application.ui.MDirtyable;
 import org.eclipse.e4.ui.model.application.ui.MUILabel;
 import org.eclipse.jface.databinding.swt.ISWTObservable;
@@ -54,7 +53,7 @@ public abstract class XWTSaveablePart extends XWTStaticPart {
 	}
 
 	// TBD is this the right place for the @Persist tag?
-	@Persist
+	// org.eclipse.e4.ui.di.Persist @Persist
 	public abstract void doSave(@Optional IProgressMonitor monitor) throws IOException,
 	InterruptedException;
  	
