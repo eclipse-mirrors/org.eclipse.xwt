@@ -18,7 +18,7 @@
    </license>
 
    <url>
-      <update label="XWT Tests Update Site" url="http://download.eclipse.org/xwt/updates/"/>
+      <update label="XWT Tests Update Site" url="http://www.eclipse.org/downloads/download.php?format=xml&amp;file=/xwt/updates"/>
    </url>
 
    <requires>
