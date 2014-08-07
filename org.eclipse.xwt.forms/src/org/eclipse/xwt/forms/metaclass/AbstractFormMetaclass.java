@@ -60,7 +60,7 @@ public abstract class AbstractFormMetaclass extends Metaclass {
 			return control;
 		}
 
-		return super.newInstance(parameters);
+		return super.doNewInstance(parameters);
 	}
 
 	protected abstract Control doCreateControl(FormToolkit tk,
