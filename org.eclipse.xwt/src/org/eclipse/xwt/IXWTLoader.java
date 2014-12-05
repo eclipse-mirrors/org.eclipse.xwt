@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2010 Soyatec (http://www.soyatec.com) and others.
+ * Copyright (c) 2006, 2014 Soyatec (http://www.soyatec.com), CEA, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,8 @@
  *
  * Contributors:
  *     Soyatec - initial API and implementation
+ *     Christian W. Damus (CEA) - bug 435432
+ *     
  *******************************************************************************/
 package org.eclipse.xwt;
 
@@ -33,6 +35,7 @@ import org.eclipse.xwt.databinding.BindingContext;
 import org.eclipse.xwt.databinding.IBindingContext;
 import org.eclipse.xwt.input.ICommand;
 import org.eclipse.xwt.internal.core.UpdateSourceTrigger;
+import org.eclipse.xwt.internal.xml.IElementCache;
 import org.eclipse.xwt.metadata.IMetaclass;
 import org.eclipse.xwt.metadata.IProperty;
 
@@ -119,6 +122,35 @@ public interface IXWTLoader {
 	 * 
 	 */
 	String BEFORE_PARSING_CALLBACK = IBeforeParsingCallback.class.getName();
+	
+	/**
+	 * Parsed XML element caching option. In the public API, this may be only either a {@link Boolean} indicating whether to cache the XML content
+	 * parsed from XWT resources (the cache having some unspecified default size) or a positive {@link Integer} indicating the size of XML cache.
+	 * This load option is a bit odd in that, if specified, it is replaced by the actual cache, which then should be supplied as the option value
+	 * for subsequent calls. Thus, the following idiom is recommended:
+	 * 
+	 * <pre>
+	 *   private Object xmlCache; // the XML cache
+	 *   
+	 *   // other fields ...
+	 *   
+	 *   void whatever() {
+	 *       Map<String, Object> options = new HashMap&lt;String, Object&gt;();
+	 *       options.put(IXWTLoader.XML_CACHE_PROPERTY, (xmlCache != null) ? xmlCache : Boolean.TRUE);
+	 *       // ... set other options as needed ...
+	 *   
+	 *       URL url = getResourceURL(); // however this is obtained
+	 *       
+	 *       Object ui = XWT.loadWithOptions(url, options);
+	 *       
+	 *       // Get the cache to reuse next time
+	 *       xmlCache = options.get(IXWTLoader.XML_CACHE_PROPERTY);
+	 *       
+	 *       doSomethingWithTheUI(ui);
+	 *   }
+	 * </pre>
+	 */
+	String XML_CACHE_PROPERTY = IElementCache.class.getName();
 
 	String[] ALL_PROPERTIES = { URL_PROPERTY, 
 			CONTAINER_PROPERTY,
@@ -131,7 +163,8 @@ public interface IXWTLoader {
 			LOADED_CALLBACK,
 			CREATED_CALLBACK,
 			BEFORE_PARSING_CALLBACK,
-			DESIGN_MODE_PROPERTY};
+			DESIGN_MODE_PROPERTY,
+			XML_CACHE_PROPERTY};
 	
 	/**
 	 * Register an Observable IChangeListener for a given UI element. The second

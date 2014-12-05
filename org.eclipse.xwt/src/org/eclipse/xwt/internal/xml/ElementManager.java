@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2013 Soyatec (http://www.soyatec.com), CEA, and others.
+ * Copyright (c) 2006, 2014 Soyatec (http://www.soyatec.com), CEA, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,8 @@
  * Contributors:
  *     Soyatec - initial API and implementation
  *     Christian W. Damus (CEA) - Fix failure to propagate stream handlers of URLs (CDO)
+ *     Christian W. Damus (CEA) - bug 435432
+ *     
  *******************************************************************************/
 package org.eclipse.xwt.internal.xml;
 
@@ -210,6 +212,16 @@ public class ElementManager {
 	 */
 	public Element getRootElement() {
 		return rootElement;
+	}
+	
+	/**
+	 * Sets my root element (either loaded by me or perhaps obtained from some cache or other source).
+	 * 
+	 * @param rootElement
+	 *        my root element
+	 */
+	public void setRootElement(Element rootElement) {
+		this.rootElement = rootElement;
 	}
 
 	/*

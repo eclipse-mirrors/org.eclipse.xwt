@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2010 Soyatec (http://www.soyatec.com) and others.
+ * Copyright (c) 2006, 2014 Soyatec (http://www.soyatec.com), CEA, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,12 @@
  * 
  * Contributors:
  *     Soyatec - initial API and implementation
+ *     Christian W. Damus (CEA) - bug 435432
+ *     
  *******************************************************************************/
 package org.eclipse.xwt.internal.core;
+
+import static org.eclipse.xwt.IXWTLoader.XML_CACHE_PROPERTY;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -53,13 +57,14 @@ import org.eclipse.xwt.core.IVisualElementLoader;
 import org.eclipse.xwt.dataproviders.ObjectDataProvider;
 import org.eclipse.xwt.input.ICommand;
 import org.eclipse.xwt.internal.xml.Attribute;
+import org.eclipse.xwt.internal.xml.DefaultElementCache;
 import org.eclipse.xwt.internal.xml.DocumentObject;
 import org.eclipse.xwt.internal.xml.DocumentRoot;
 import org.eclipse.xwt.internal.xml.Element;
 import org.eclipse.xwt.internal.xml.ElementManager;
+import org.eclipse.xwt.internal.xml.IElementCache;
 import org.eclipse.xwt.javabean.ValueConvertorRegister;
 import org.eclipse.xwt.metadata.IMetaclass;
-import org.eclipse.xwt.metadata.ModelUtils;
 
 public class Core {
 	static public final Object[] EMPTY_ARRAY = new Object[0];
@@ -730,24 +735,37 @@ public class Core {
 		ElementManager manager = new ElementManager();
 		if (input != null) {
 			Element element = null;
-			if (stream == null) {
-				element = manager.load(input, (IBeforeParsingCallback) options
-						.get(IXWTLoader.BEFORE_PARSING_CALLBACK));
-			} else {
-				IBeforeParsingCallback callback = (IBeforeParsingCallback) options
-						.get(IXWTLoader.BEFORE_PARSING_CALLBACK);
-				InputStream inputStream = stream;
-				if (callback != null) {
-					int size = stream.read();
-					byte[] buffer = new byte[size];
-					stream.read(buffer);
-					String content = new String(buffer);
+			IElementCache cache = getCache(options);
+			element = cache.getElement(input);
+			if (element != null) {
+				manager.setRootElement(element);
+				
+				// Got an element from the cache, so we don't need an input stream
+				if (stream != null) {
 					stream.close();
-					content = callback.onParsing(content);
-					inputStream = new ByteArrayInputStream(content.getBytes());
-					element = manager.load(stream, input);
 				}
-				element = manager.load(inputStream, input);
+			} else {
+				if (stream == null) {
+					element = manager.load(input, (IBeforeParsingCallback) options
+							.get(IXWTLoader.BEFORE_PARSING_CALLBACK));
+				} else {
+					IBeforeParsingCallback callback = (IBeforeParsingCallback) options
+							.get(IXWTLoader.BEFORE_PARSING_CALLBACK);
+					InputStream inputStream = stream;
+					if (callback != null) {
+						int size = stream.read();
+						byte[] buffer = new byte[size];
+						stream.read(buffer);
+						String content = new String(buffer);
+						stream.close();
+						content = callback.onParsing(content);
+						inputStream = new ByteArrayInputStream(content.getBytes());
+						element = manager.load(stream, input);
+					}
+					element = manager.load(inputStream, input);
+				}
+
+				cache.cache(input, element);
 			}
 			IRenderingContext context = new ExtensionContext(loadingContext,
 					manager, manager.getRootElement().getNamespace());
@@ -797,6 +815,28 @@ public class Core {
 		return control;
 	}
 
+	private IElementCache getCache(Map<String, Object> options) {
+		Object option = (options == null) ? IElementCache.NULL : options.get(XML_CACHE_PROPERTY);
+		if (option instanceof Boolean) {
+			// Enable caching according to the option
+			if (((Boolean)option).booleanValue()) {
+				option = new DefaultElementCache();
+			} else {
+				option = IElementCache.NULL;
+			}
+			options.put(XML_CACHE_PROPERTY, option);
+		} else if (option instanceof Number) {
+			// create a default cache of this size
+			option = new DefaultElementCache(((Number)option).intValue());
+			options.put(XML_CACHE_PROPERTY, option);
+		} else if (!(option instanceof IElementCache)) {
+			option = IElementCache.NULL;
+			options.put(XML_CACHE_PROPERTY, option);
+		}
+
+		return (IElementCache)option;
+	}
+	
 	protected void autoLayout(Control composite, Element element) {
 		if (element == null) {
 			return;
