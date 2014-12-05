@@ -11,6 +11,7 @@
 package org.eclipse.xwt.ui.workbench.properties;
 
 import java.net.URL;
+import java.util.HashMap;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -26,6 +27,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.xwt.DefaultLoadingContext;
 import org.eclipse.xwt.ILoadingContext;
 import org.eclipse.xwt.XWT;
+import org.eclipse.xwt.XWTLoader;
 import org.eclipse.xwt.emf.EMFBinding;
 
 public class XWTSection extends AbstractPropertySection {
@@ -36,6 +38,8 @@ public class XWTSection extends AbstractPropertySection {
 
 	private Composite self;
 
+	private boolean xwtCaching = true;
+	
 	public XWTSection(URL sectionURL) {
 		this.sectionURL = sectionURL;
 	}
@@ -81,6 +85,14 @@ public class XWTSection extends AbstractPropertySection {
 		}
 		layout(self);
 	}
+	
+	public boolean isXWTCaching() {
+		return xwtCaching;
+	}
+
+	public void setXWTCaching(boolean pmfCaching) {
+		this.xwtCaching = pmfCaching;
+	}
 
 	private Object getDataObject() {
 		IStructuredSelection selection = getSelection();
@@ -94,7 +106,14 @@ public class XWTSection extends AbstractPropertySection {
 
 		Control control = null;
 		try {
-			control = (Control) XWT.load(parent, xwtFile, source);
+			HashMap<String, Object> newOptions = new HashMap<String, Object>();
+			newOptions.put(XWTLoader.CONTAINER_PROPERTY, parent);
+			newOptions.put(XWTLoader.DATACONTEXT_PROPERTY, source);
+			newOptions.put(XWTLoader.CLASS_PROPERTY, this);
+			if (isXWTCaching()) {
+				newOptions.put(XWTLoader.XML_CACHE_PROPERTY, this);
+			}
+			control = (Control) XWT.loadWithOptions(xwtFile, newOptions);
 
 			if (control != null) {
 				control.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,

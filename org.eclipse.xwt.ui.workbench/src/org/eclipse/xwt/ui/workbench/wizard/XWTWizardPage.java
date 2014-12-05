@@ -38,6 +38,8 @@ public abstract class XWTWizardPage extends WizardPage {
 	private PageStateManager pageStateManager = new PageStateManager();
 
 	private UIResource uiResource;
+	
+	private boolean xwtCaching = true;
 
 	class PageStateManager implements IChangeListener {
 		public void handleChange(ChangeEvent event) {
@@ -46,6 +48,14 @@ public abstract class XWTWizardPage extends WizardPage {
 				setPageComplete(false);
 			}
 		}
+	}
+
+	public boolean isXWTCaching() {
+		return xwtCaching;
+	}
+
+	public void setXWTCaching(boolean pmfCaching) {
+		this.xwtCaching = pmfCaching;
 	}
 
 	protected XWTWizardPage(String pageName, String title,
@@ -93,6 +103,9 @@ public abstract class XWTWizardPage extends WizardPage {
 			if (bindingContext != null) {
 				newOptions.put(XWTLoader.BINDING_CONTEXT_PROPERTY,
 						bindingContext);
+			}
+			if (isXWTCaching()) {
+				newOptions.put(XWTLoader.XML_CACHE_PROPERTY, this);
 			}
 
 			InputStream inputStream = getContentInputStream();

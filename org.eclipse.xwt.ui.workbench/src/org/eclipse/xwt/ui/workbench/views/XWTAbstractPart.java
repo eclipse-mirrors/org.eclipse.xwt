@@ -45,6 +45,8 @@ public abstract class XWTAbstractPart implements IContentPart {
 			this);
 	
 	private boolean constructing = true;
+
+	private boolean xwtCaching = true;
 	
 	@Inject
 	private Composite parent;
@@ -98,6 +100,14 @@ public abstract class XWTAbstractPart implements IContentPart {
 	public IStylingEngine getStyleEngine() {
 		return engine;
 	}
+	
+	public boolean isXWTCaching() {
+		return xwtCaching;
+	}
+
+	public void setXWTCaching(boolean pmfCaching) {
+		this.xwtCaching = pmfCaching;
+	}
 
 	public EHandlerService getHandlerService() {
 		return handlerService;
@@ -110,6 +120,7 @@ public abstract class XWTAbstractPart implements IContentPart {
 	public Object getDataContext() {
 		return dataContext;
 	}
+	
 	
 	public void setDataContext(Object dataContext) {
 		this.dataContext = dataContext;
@@ -161,6 +172,9 @@ public abstract class XWTAbstractPart implements IContentPart {
 			newOptions.put(XWTLoader.CONTAINER_PROPERTY, parent);
 			newOptions.put(XWTLoader.DATACONTEXT_PROPERTY, dataContext);
 			newOptions.put(XWTLoader.CLASS_PROPERTY, this);
+			if (isXWTCaching()) {
+				newOptions.put(XWTLoader.XML_CACHE_PROPERTY, this);
+			}
 			XWT.loadWithOptions(url, newOptions);
 			GridLayoutFactory.fillDefaults().generateLayout(parent);
 			parent.layout(true, true);
