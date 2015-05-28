@@ -34,16 +34,6 @@ import org.eclipse.xwt.internal.utils.UserData;
 public class Binding extends DynamicBinding {
 	public static Binding[] EMPTY_ARRAY = new Binding[0];
 
-	private String name;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	private String path;
 
 	private Object source;

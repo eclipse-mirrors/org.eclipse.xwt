@@ -111,11 +111,11 @@ public class ResourceLoader implements IVisualElementLoader {
 
 	private Map<String, Object> options;
 
-	private Collection<Binding> bindings;
+	private Collection<IDynamicBinding> bindings;
 	
 	private Collection<ValidationStatus> status;
 
-	public Collection<Binding> getBindings() {
+	public Collection<IDynamicBinding> getBindings() {
 		return bindings;
 	}
 
@@ -767,8 +767,8 @@ public class ResourceLoader implements IVisualElementLoader {
 
 		if (targetObject instanceof IDynamicBinding) {
 			if (bindings == null)
-				bindings = new ArrayList<Binding>();
-			bindings.add((Binding) targetObject);
+				bindings = new ArrayList<IDynamicBinding>();
+			bindings.add((IDynamicBinding) targetObject);
 		}
 	}
 
@@ -797,7 +797,7 @@ public class ResourceLoader implements IVisualElementLoader {
 		if (status != null && !status.isEmpty()) {
 			for (ValidationStatus validationStatus : status) {
 				if (bindings != null && !bindings.isEmpty()) {
-					for (Binding binding : bindings) {
+					for (IDynamicBinding binding : bindings) {
 						if (binding.getName() != null
 								&& validationStatus.getSourceName() != null
 								&& validationStatus.getSourceName().equals(

@@ -42,6 +42,16 @@ public abstract class DynamicBinding implements IDynamicBinding {
 
 	private IXWTLoader xwtLoader;
 
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	/**
 	 * The name of the {@link DataBindingContext} that we will look up in static
 	 * resources
