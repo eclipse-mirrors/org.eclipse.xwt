@@ -793,7 +793,7 @@ public class ResourceLoader implements IVisualElementLoader {
 
 		// after create a binding with validationstatus tag, the datasource of
 		// the binding should be updated to the corresponding bindingcontext
-		Collection<ValidationStatus> removedStatus = new ArrayList<>();
+		Collection<ValidationStatus> removedStatus = new ArrayList<ValidationStatus>();
 		if (status != null && !status.isEmpty()) {
 			for (ValidationStatus validationStatus : status) {
 				if (bindings != null && !bindings.isEmpty()) {
@@ -1843,7 +1843,7 @@ public class ResourceLoader implements IVisualElementLoader {
 						ValidationStatus validationStatus = (ValidationStatus) value;
 						validationStatus.setParent(target);
 						if (status == null)
-							status = new ArrayList<>();
+							status = new ArrayList<ValidationStatus>();
 						status.add(validationStatus);
 					} else {
 						property.setValue(target, value);
