@@ -128,6 +128,7 @@ import org.eclipse.xwt.core.Setter;
 import org.eclipse.xwt.core.Style;
 import org.eclipse.xwt.core.Trigger;
 import org.eclipse.xwt.core.TriggerBase;
+import org.eclipse.xwt.core.ValidationStatus;
 import org.eclipse.xwt.databinding.BindingContext;
 import org.eclipse.xwt.databinding.IBindingContext;
 import org.eclipse.xwt.dataproviders.ObjectDataProvider;
@@ -222,7 +223,7 @@ public class XWTLoader implements IXWTLoader {
 	}
 
 	public Realm getRealm() {
-		if(realm != null)
+		if (realm != null)
 			return realm;
 		Display display = Display.getCurrent();
 		if (display == null) {
@@ -460,8 +461,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#findElementByName(org.eclipse.swt.widgets
+	 * @see org.eclipse.xwt.IXWTLoader#findElementByName(org.eclipse.swt.widgets
 	 * .Widget, java.lang.String)
 	 */
 	public Object findElementByName(Object context, String name) {
@@ -471,8 +471,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#getDataBindingContext(java.lang.Object,
+	 * @see org.eclipse.xwt.IXWTLoader#getDataBindingContext(java.lang.Object,
 	 * java.lang.String)
 	 */
 	public IBindingContext getBindingContext(Object element) {
@@ -502,8 +501,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#getDataContext(org.eclipse.swt.widgets.
+	 * @see org.eclipse.xwt.IXWTLoader#getDataContext(org.eclipse.swt.widgets.
 	 * Widget)
 	 */
 	public Object getDataContext(Object element) {
@@ -513,8 +511,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#getDataContext(org.eclipse.swt.widgets.
+	 * @see org.eclipse.xwt.IXWTLoader#getDataContext(org.eclipse.swt.widgets.
 	 * Widget)
 	 */
 	public TriggerBase[] getTriggers(Object element) {
@@ -524,8 +521,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#setDataBindingContext(java.lang.Object,
+	 * @see org.eclipse.xwt.IXWTLoader#setDataBindingContext(java.lang.Object,
 	 * java.lang.Object)
 	 */
 	public void setDataBindingContext(Object widget, Object dataBindingContext) {
@@ -535,8 +531,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#setDataContext(org.eclipse.swt.widgets.
+	 * @see org.eclipse.xwt.IXWTLoader#setDataContext(org.eclipse.swt.widgets.
 	 * Widget, java.lang.Object)
 	 */
 	public void setDataContext(Object widget, Object dataContext) {
@@ -610,15 +605,15 @@ public class XWTLoader implements IXWTLoader {
 		return load(null, file, dataContext);
 	}
 
-	public Object load(IUIResource resource, Object dataContext) throws Exception {
+	public Object load(IUIResource resource, Object dataContext)
+			throws Exception {
 		return load(null, resource, dataContext);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#load(org.eclipse.swt.widgets.Composite,
+	 * @see org.eclipse.xwt.IXWTLoader#load(org.eclipse.swt.widgets.Composite,
 	 * java.net.URL)
 	 */
 	public Object load(Object parent, URL file) throws Exception {
@@ -636,8 +631,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#load(org.eclipse.swt.widgets.Composite,
+	 * @see org.eclipse.xwt.IXWTLoader#load(org.eclipse.swt.widgets.Composite,
 	 * java.net.URL, java.lang.Object)
 	 */
 	public Object load(Object parent, URL file, Object dataContext)
@@ -656,8 +650,8 @@ public class XWTLoader implements IXWTLoader {
 		return loadWithOptions(resource, options);
 	}
 
-	public Object load(Object parent, IUIResource resource, Map<String, Object> options)
-			throws Exception {
+	public Object load(Object parent, IUIResource resource,
+			Map<String, Object> options) throws Exception {
 		if (options.isEmpty()) {
 			options = new HashMap<String, Object>();
 		}
@@ -668,8 +662,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#load(org.eclipse.swt.widgets.Composite,
+	 * @see org.eclipse.xwt.IXWTLoader#load(org.eclipse.swt.widgets.Composite,
 	 * java.lang.Class, java.lang.Object)
 	 */
 	public Object load(Object parent, Class<?> viewType, Object dataContext)
@@ -732,8 +725,8 @@ public class XWTLoader implements IXWTLoader {
 	 * @see org.eclipse.xwt.IXWTLoader#loadWithOptions(java.lang.Class,
 	 * java.util.Map)
 	 */
-	public Object loadWithOptions(Class<?> viewType,
-			Map<String, Object> options) throws Exception {
+	public Object loadWithOptions(Class<?> viewType, Map<String, Object> options)
+			throws Exception {
 		ILoadingContext context = getLoadingContext();
 		try {
 			setLoadingContext(new DefaultLoadingContext(
@@ -773,8 +766,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#load(org.eclipse.swt.widgets.Composite,
+	 * @see org.eclipse.xwt.IXWTLoader#load(org.eclipse.swt.widgets.Composite,
 	 * java.io.InputStream, java.net.URL, java.lang.Object)
 	 */
 	public Object load(Object parent, InputStream stream, URL file,
@@ -785,7 +777,8 @@ public class XWTLoader implements IXWTLoader {
 		return loadWithOptions(stream, file, options);
 	}
 
-	public IUIResource loadAsResource(InputStream stream, URL input) throws Exception {
+	public IUIResource loadAsResource(InputStream stream, URL input)
+			throws Exception {
 		return loadAsResource(stream, input, null);
 	}
 
@@ -798,8 +791,8 @@ public class XWTLoader implements IXWTLoader {
 		return loadAsResource(null, input, null);
 	}
 
-	public IUIResource loadAsResource(URL input, IBeforeParsingCallback parsingCallback)
-			throws Exception {
+	public IUIResource loadAsResource(URL input,
+			IBeforeParsingCallback parsingCallback) throws Exception {
 		return loadAsResource(null, input, parsingCallback);
 	}
 
@@ -823,8 +816,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.xwt.IXWTLoader#open(java.lang.Class,
-	 * java.lang.Object)
+	 * @see org.eclipse.xwt.IXWTLoader#open(java.lang.Class, java.lang.Object)
 	 */
 	public void open(Class<?> type, Object dataContext) throws Exception {
 		open(type.getResource(type.getSimpleName()
@@ -851,7 +843,8 @@ public class XWTLoader implements IXWTLoader {
 						Object element = loadWithOptions(url, options);
 						Shell shell = XWT.findShell(element);
 						if (shell == null) {
-							throw new XWTException("Root element must be a control.");
+							throw new XWTException(
+									"Root element must be a control.");
 						}
 						shell.addDisposeListener(new DisposeListener() {
 							public void widgetDisposed(DisposeEvent e) {
@@ -919,7 +912,8 @@ public class XWTLoader implements IXWTLoader {
 								Object element = loadWithOptions(url, options);
 								Shell shell = XWT.findShell(element);
 								if (shell == null) {
-									throw new XWTException("Root element must be a control.");
+									throw new XWTException(
+											"Root element must be a control.");
 								}
 								shell.open();
 							} catch (Exception e) {
@@ -932,8 +926,8 @@ public class XWTLoader implements IXWTLoader {
 		}
 	}
 
-	public void open(final IUIResource resource, final Map<String, Object> options)
-			throws Exception {
+	public void open(final IUIResource resource,
+			final Map<String, Object> options) throws Exception {
 		if (SWT.getPlatform().startsWith("win")) {
 			if (Display.getCurrent() == null) {
 				new Display();
@@ -944,7 +938,8 @@ public class XWTLoader implements IXWTLoader {
 						Object element = loadWithOptions(resource, options);
 						Shell shell = XWT.findShell(element);
 						if (shell == null) {
-							throw new XWTException("Root element must be a control.");
+							throw new XWTException(
+									"Root element must be a control.");
 						}
 						shell.addDisposeListener(new DisposeListener() {
 							public void widgetDisposed(DisposeEvent e) {
@@ -975,7 +970,8 @@ public class XWTLoader implements IXWTLoader {
 						Object element = loadWithOptions(resource, options);
 						Shell shell = XWT.findShell(element);
 						if (shell == null) {
-							throw new XWTException("Root element must be a control.");
+							throw new XWTException(
+									"Root element must be a control.");
 						}
 						shell.open();
 						long startTime = -1;
@@ -1005,10 +1001,12 @@ public class XWTLoader implements IXWTLoader {
 					Realm.runWithDefault(getRealm(), new Runnable() {
 						public void run() {
 							try {
-								Object element = loadWithOptions(resource, options);
+								Object element = loadWithOptions(resource,
+										options);
 								Shell shell = XWT.findShell(element);
 								if (shell == null) {
-									throw new XWTException("Root element must be a control.");
+									throw new XWTException(
+											"Root element must be a control.");
 								}
 								shell.open();
 							} catch (Exception e) {
@@ -1024,8 +1022,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#convertFrom(org.eclipse.xwt.metadata
+	 * @see org.eclipse.xwt.IXWTLoader#convertFrom(org.eclipse.xwt.metadata
 	 * .IMetaclass, java.lang.String)
 	 */
 	public Object convertFrom(IMetaclass type, String string) {
@@ -1074,8 +1071,8 @@ public class XWTLoader implements IXWTLoader {
 		return visualObject;
 	}
 
-	public Object loadWithOptions(IUIResource resource, Map<String, Object> options)
-			throws Exception {
+	public Object loadWithOptions(IUIResource resource,
+			Map<String, Object> options) throws Exception {
 		UIResource uiResource = (UIResource) resource;
 		Object object = options.get(CONTAINER_PROPERTY);
 		ILoadingContext loadingContext = (object != null ? getLoadingContext(object)
@@ -1089,8 +1086,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.xwt.IXWTLoader#load(java.io.InputStream,
-	 * java.net.URL)
+	 * @see org.eclipse.xwt.IXWTLoader#load(java.io.InputStream, java.net.URL)
 	 */
 	public Object load(InputStream stream, URL url) throws Exception {
 		return loadWithOptions(stream, url, Collections.EMPTY_MAP);
@@ -1130,6 +1126,7 @@ public class XWTLoader implements IXWTLoader {
 					.getAllMetaclasses(IConstants.XWT_NAMESPACE);
 			collector.addAll(metaclasses);
 		}
+
 		return collector.toArray(new IMetaclass[collector.size()]);
 	}
 
@@ -1140,6 +1137,7 @@ public class XWTLoader implements IXWTLoader {
 	 * java.lang.String)
 	 */
 	public IMetaclass getMetaclass(String tagName, String ns) {
+
 		for (int i = cores.size() - 1; i >= 0; i--) {
 			Core core = cores.get(i);
 			IMetaclass metaclass = core.getMetaclass(getLoadingContext(),
@@ -1173,8 +1171,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#registerMetaclassFactory(org.eclipse.e4
+	 * @see org.eclipse.xwt.IXWTLoader#registerMetaclassFactory(org.eclipse.e4
 	 * .xwt.IMetaclassFactory)
 	 */
 	public void registerMetaclassFactory(IMetaclassFactory metaclassFactory) {
@@ -1235,8 +1232,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#addTracking(org.eclipse.xwt.Tracking)
+	 * @see org.eclipse.xwt.IXWTLoader#addTracking(org.eclipse.xwt.Tracking)
 	 */
 	public void addTracking(Tracking tracking) {
 		getCurrentCore().addTracking(tracking);
@@ -1245,8 +1241,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#isTracking(org.eclipse.xwt.Tracking)
+	 * @see org.eclipse.xwt.IXWTLoader#isTracking(org.eclipse.xwt.Tracking)
 	 */
 	public boolean isTracking(Tracking tracking) {
 		return getCurrentCore().isTracking(tracking);
@@ -1264,8 +1259,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#removeTracking(org.eclipse.xwt.Tracking)
+	 * @see org.eclipse.xwt.IXWTLoader#removeTracking(org.eclipse.xwt.Tracking)
 	 */
 	public void removeTracking(Tracking tracking) {
 		getCurrentCore().removeTracking(tracking);
@@ -1337,8 +1331,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#addDefaultStyle(org.eclipse.xwt.IStyle)
+	 * @see org.eclipse.xwt.IXWTLoader#addDefaultStyle(org.eclipse.xwt.IStyle)
 	 */
 	public void addDefaultStyle(IStyle style) {
 		getCurrentCore().addDefaultStyle(style);
@@ -1347,8 +1340,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#removeDefaultStyle(org.eclipse.xwt.IStyle
+	 * @see org.eclipse.xwt.IXWTLoader#removeDefaultStyle(org.eclipse.xwt.IStyle
 	 * )
 	 */
 	public void removeDefaultStyle(IStyle style) {
@@ -1367,8 +1359,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#addDataProviderFactory(org.eclipse.xwt
+	 * @see org.eclipse.xwt.IXWTLoader#addDataProviderFactory(org.eclipse.xwt
 	 * .IDataProviderFactory)
 	 */
 	public void addDataProviderFactory(String name,
@@ -1380,8 +1371,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#removeDataProviderFactory(org.eclipse.e4
+	 * @see org.eclipse.xwt.IXWTLoader#removeDataProviderFactory(org.eclipse.e4
 	 * .xwt.IDataProviderFactory)
 	 */
 	public void removeDataProviderFactory(String name) {
@@ -1391,8 +1381,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#removeDataProviderFactory(org.eclipse.e4
+	 * @see org.eclipse.xwt.IXWTLoader#removeDataProviderFactory(org.eclipse.e4
 	 * .xwt.IDataProviderFactory)
 	 */
 	public void removeDataProviderFactory(
@@ -1592,7 +1581,7 @@ public class XWTLoader implements IXWTLoader {
 		ILoadingType loadingType = new DefaultLoadingType(
 				IValueLoading.PostChildren,
 				new IProperty[] { dataContextProperty });
-		
+
 		metaclass.addProperty(new DataProperty(IConstants.XAML_BINDING_CONTEXT,
 				IUserDataConstants.XWT_BINDING_CONTEXT_KEY));
 		metaclass.addProperty(new TriggersProperty(loadingType));
@@ -1861,6 +1850,7 @@ public class XWTLoader implements IXWTLoader {
 		registerMetaclass(MultiDataTrigger.class);
 		registerMetaclass(Condition.class);
 
+		registerMetaclass(ValidationStatus.class);
 		// Animation
 		registerMetaclass(Storyboard.class);
 		registerMetaclass(BeginStoryboard.class);
@@ -1924,8 +1914,7 @@ public class XWTLoader implements IXWTLoader {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.xwt.IXWTLoader#getLoadingContext(org.eclipse.swt.widgets
+	 * @see org.eclipse.xwt.IXWTLoader#getLoadingContext(org.eclipse.swt.widgets
 	 * .Composite)
 	 */
 	public ILoadingContext getLoadingContext(Object object) {
