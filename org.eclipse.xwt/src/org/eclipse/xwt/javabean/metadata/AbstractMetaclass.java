@@ -26,6 +26,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.core.databinding.validation.ValidationStatus;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Region;
 import org.eclipse.swt.widgets.Composite;
@@ -41,6 +42,7 @@ import org.eclipse.xwt.XWT;
 import org.eclipse.xwt.XWTException;
 import org.eclipse.xwt.XWTMaps;
 import org.eclipse.xwt.core.IBinding;
+import org.eclipse.xwt.internal.core.Binding;
 import org.eclipse.xwt.internal.utils.UserData;
 import org.eclipse.xwt.javabean.metadata.properties.BeanProperty;
 import org.eclipse.xwt.javabean.metadata.properties.DynamicProperty;
@@ -139,35 +141,47 @@ public abstract class AbstractMetaclass implements IMetaclass {
 			addTypedEvent(IEventConstants.DEACTIVATE, SWT.Deactivate);
 			addTypedEvent(IEventConstants.DEFAULT_SELECTION,
 					SWT.DefaultSelection);
-			addTypedEvent(IEventConstants.DEICONIFY, XWTMaps.getEvent("swt.deiconify"));
+			addTypedEvent(IEventConstants.DEICONIFY,
+					XWTMaps.getEvent("swt.deiconify"));
 			addTypedEvent(IEventConstants.DISPOSE, SWT.Dispose);
 			addTypedEvent(IEventConstants.DRAG_SELECT, SWT.DragDetect);
-			addTypedEvent(IEventConstants.ERASE_ITEM, XWTMaps.getEvent("swt.eraseitem"));
+			addTypedEvent(IEventConstants.ERASE_ITEM,
+					XWTMaps.getEvent("swt.eraseitem"));
 			addTypedEvent(IEventConstants.EXPAND, SWT.Expand);
 			addTypedEvent(IEventConstants.FOCUS_IN, SWT.FocusIn);
 			addTypedEvent(IEventConstants.FOCUS_OUT, SWT.FocusOut);
-			addTypedEvent(IEventConstants.HARD_KEY_DOWN, XWTMaps.getEvent("swt.hardkeydown"));
-			addTypedEvent(IEventConstants.HARD_KEY_UP, XWTMaps.getEvent("swt.hardkeyup"));
+			addTypedEvent(IEventConstants.HARD_KEY_DOWN,
+					XWTMaps.getEvent("swt.hardkeydown"));
+			addTypedEvent(IEventConstants.HARD_KEY_UP,
+					XWTMaps.getEvent("swt.hardkeyup"));
 			addTypedEvent(IEventConstants.HELP, SWT.Help);
 			addTypedEvent(IEventConstants.HIDE, SWT.Hide);
-			addTypedEvent(IEventConstants.ICONIFY, XWTMaps.getEvent("swt.iconify"));
+			addTypedEvent(IEventConstants.ICONIFY,
+					XWTMaps.getEvent("swt.iconify"));
 			addTypedEvent(IEventConstants.KEY_DOWN, SWT.KeyDown);
 			addTypedEvent(IEventConstants.KEY_UP, SWT.KeyUp);
-			addTypedEvent(IEventConstants.MEASURE_ITEM, XWTMaps.getEvent("swt.measureitem"));
+			addTypedEvent(IEventConstants.MEASURE_ITEM,
+					XWTMaps.getEvent("swt.measureitem"));
 			addTypedEvent(IEventConstants.MENU_DETECT, SWT.MenuDetect);
 			addTypedEvent(IEventConstants.MODIFY, SWT.Modify);
 			addTypedEvent(IEventConstants.MOUSE_DOUBLE_CLICK,
 					SWT.MouseDoubleClick);
 			addTypedEvent(IEventConstants.MOUSE_DOWN, SWT.MouseDown);
-			addTypedEvent(IEventConstants.MOUSE_ENTER, XWTMaps.getEvent("swt.mouseenter"));
-			addTypedEvent(IEventConstants.MOUSE_EXIT, XWTMaps.getEvent("swt.mouseexit"));
-			addTypedEvent(IEventConstants.MOUSE_HOVER, XWTMaps.getEvent("swt.mousehover"));
-			addTypedEvent(IEventConstants.MOUSE_MOVE, XWTMaps.getEvent("swt.mousemove"));
+			addTypedEvent(IEventConstants.MOUSE_ENTER,
+					XWTMaps.getEvent("swt.mouseenter"));
+			addTypedEvent(IEventConstants.MOUSE_EXIT,
+					XWTMaps.getEvent("swt.mouseexit"));
+			addTypedEvent(IEventConstants.MOUSE_HOVER,
+					XWTMaps.getEvent("swt.mousehover"));
+			addTypedEvent(IEventConstants.MOUSE_MOVE,
+					XWTMaps.getEvent("swt.mousemove"));
 			addTypedEvent(IEventConstants.MOUSE_UP, SWT.MouseUp);
-			addTypedEvent(IEventConstants.MOUSE_WHEEL, XWTMaps.getEvent("swt.mousewheel"));
+			addTypedEvent(IEventConstants.MOUSE_WHEEL,
+					XWTMaps.getEvent("swt.mousewheel"));
 			addTypedEvent(IEventConstants.MOVE, SWT.Move);
 			addTypedEvent(IEventConstants.PAINT, XWTMaps.getEvent("swt.paint"));
-			addTypedEvent(IEventConstants.PAINT_ITEM, XWTMaps.getEvent("swt.paintitem"));
+			addTypedEvent(IEventConstants.PAINT_ITEM,
+					XWTMaps.getEvent("swt.paintitem"));
 			addTypedEvent(IEventConstants.RESIZE, SWT.Resize);
 			addTypedEvent(IEventConstants.SELECTION, SWT.Selection); // sash
 			addTypedEvent(IEventConstants.SET_DATA, SWT.SetData);
@@ -176,7 +190,8 @@ public abstract class AbstractMetaclass implements IMetaclass {
 			addTypedEvent(IEventConstants.SHOW, SWT.Show);
 			addTypedEvent(IEventConstants.TRAVERSE, SWT.Traverse);
 			addTypedEvent(IEventConstants.VERIFY, SWT.Verify);
-			addTypedEvent(IEventConstants.IME_COMPOSITION, XWTMaps.getEvent("swt.imecomposition"));
+			addTypedEvent(IEventConstants.IME_COMPOSITION,
+					XWTMaps.getEvent("swt.imecomposition"));
 		}
 		buildTypedEvents = true;
 	}
@@ -404,7 +419,26 @@ public abstract class AbstractMetaclass implements IMetaclass {
 			int count = 0;
 			Class<?> childType = childElement.getClass();
 
+			// deal with the ValidationStatus tag
+			IMetaclass childMetaclass = XWT.getMetaclass(childElement);
+
+			if (childMetaclass.getType().equals(
+					org.eclipse.xwt.core.ValidationStatus.class)
+					&& parentMetaclass.getClass()
+							.equals(BindingMetaclass.class)) {
+				IProperty childControlProperty = childMetaclass
+						.findProperty("control");
+				IProperty parentControlProperty = parentMetaclass
+						.findProperty("control");
+				
+				
+
+				childControlProperty.setValue(childElement,
+						parentControlProperty.getValue(parent));
+			}
+
 			for (IProperty property : properties) {
+				
 				Class<?> propertyType = property.getType();
 				if (propertyType == null || propertyType == Object.class) {
 					continue;

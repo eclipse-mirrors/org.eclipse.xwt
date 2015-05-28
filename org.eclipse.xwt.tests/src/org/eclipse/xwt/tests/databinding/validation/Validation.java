@@ -21,7 +21,11 @@ public class Validation {
 		URL url = Validation.class.getResource(Validation.class.getSimpleName()
 				+ IConstants.XWT_EXTENSION_SUFFIX);
 		try {
-			XWT.open(url);
+			Object object = XWT.load(url);
+			
+			Object child = XWT.findElementByName(object, "bbb");
+			
+			System.out.println(child.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

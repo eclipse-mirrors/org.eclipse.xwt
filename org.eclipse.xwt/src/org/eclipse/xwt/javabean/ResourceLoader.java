@@ -71,7 +71,9 @@ import org.eclipse.xwt.core.IRenderingContext;
 import org.eclipse.xwt.core.IVisualElementLoader;
 import org.eclipse.xwt.core.Setter;
 import org.eclipse.xwt.core.Style;
+import org.eclipse.xwt.core.ValidationStatus;
 import org.eclipse.xwt.input.ICommand;
+import org.eclipse.xwt.internal.core.Binding;
 import org.eclipse.xwt.internal.core.Core;
 import org.eclipse.xwt.internal.core.DataBindingTrack;
 import org.eclipse.xwt.internal.core.IEventController;
@@ -101,11 +103,21 @@ import org.eclipse.xwt.utils.PathHelper;
 public class ResourceLoader implements IVisualElementLoader {
 	static Map<String, Object> EMPTY_MAP = Collections.EMPTY_MAP;
 
+	static private String VALIDATION_STATUS_CONSTANT = "status";
+
 	static final String RESOURCE_LOADER_PROPERTY = "XWT.ResourceLoader";
 
 	private static final String COLUMN = "Column";
 
 	private Map<String, Object> options;
+
+	private Collection<Binding> bindings;
+	
+	private Collection<ValidationStatus> status;
+
+	public Collection<Binding> getBindings() {
+		return bindings;
+	}
 
 	protected ResourceLoader parentLoader;
 	protected IRenderingContext context;
@@ -752,6 +764,12 @@ public class ResourceLoader implements IVisualElementLoader {
 	 *            the created visual object.
 	 */
 	protected void postCreation0(Element element, Object targetObject) {
+
+		if (targetObject instanceof IDynamicBinding) {
+			if (bindings == null)
+				bindings = new ArrayList<Binding>();
+			bindings.add((Binding) targetObject);
+		}
 	}
 
 	private void invokeCreatededAction(Element element, Object targetObject) {
@@ -772,6 +790,40 @@ public class ResourceLoader implements IVisualElementLoader {
 	 * creating its instance, applying its attributes and creating children.
 	 */
 	protected void postCreation(Object target) {
+
+		// after create a binding with validationstatus tag, the datasource of
+		// the binding should be updated to the corresponding bindingcontext
+		Collection<ValidationStatus> removedStatus = new ArrayList<>();
+		if (status != null && !status.isEmpty()) {
+			for (ValidationStatus validationStatus : status) {
+				if (bindings != null && !bindings.isEmpty()) {
+					for (Binding binding : bindings) {
+						if (binding.getName() != null
+								&& validationStatus.getSourceName() != null
+								&& validationStatus.getSourceName().equals(
+										binding.getName())) {
+							removedStatus.add(validationStatus);
+							Control control = (Control) validationStatus
+									.getControl();
+							if (binding.getControl().equals(control))
+								if (binding != null) {
+									Binding targetBinding = (Binding) validationStatus
+											.getParent();
+									targetBinding.setSource(binding
+											.getBindingContext());
+									targetBinding
+											.setPath(VALIDATION_STATUS_CONSTANT);
+								}
+						}
+					}
+				}
+			}
+			if (removedStatus != null) {
+				status.removeAll(removedStatus);
+				removedStatus.clear();
+			}
+		}
+
 	}
 
 	protected void setDataContext(IMetaclass metaclass, Object targetObject,
@@ -1006,6 +1058,7 @@ public class ResourceLoader implements IVisualElementLoader {
 		// x:DataContext
 		try {
 			{
+
 				Attribute dataContextAttribute = element
 						.getAttribute(IConstants.XAML_BINDING_CONTEXT);
 				if (dataContextAttribute != null) {
@@ -1119,16 +1172,16 @@ public class ResourceLoader implements IVisualElementLoader {
 
 		for (String attrName : element.attributeNames()) {
 			IProperty property = metaclass.findProperty(attrName);
-			
+
 			if (property == null) {
 				IMetaclass mc = XWT.getMetaclass(targetObject);
 				property = mc.findProperty(attrName);
-				
+
 				if (property != null) {
 					metaclass = mc;
 				}
 			}
-			
+
 			if (IConstants.XWT_X_NAMESPACE.equals(element
 					.getAttribute(attrName).getNamespace())) {
 				continue;
@@ -1237,19 +1290,22 @@ public class ResourceLoader implements IVisualElementLoader {
 		if (type == Object.class) {
 			if (docObject instanceof Element) {
 				Element element = (Element) docObject;
-				Attribute attribute = element.getAttribute(IConstants.XWT_NAMESPACE, IConstants.XAML_X_TYPE);
+				Attribute attribute = element.getAttribute(
+						IConstants.XWT_NAMESPACE, IConstants.XAML_X_TYPE);
 				if (attribute == null) {
-					throw new XWTException("The type attribute is missing in the element x:Array.");
+					throw new XWTException(
+							"The type attribute is missing in the element x:Array.");
 				}
 				String value = attribute.getContent();
-				IMetaclass metaclass = XWT.getMetaclass(value, attribute.getNamespace());
+				IMetaclass metaclass = XWT.getMetaclass(value,
+						attribute.getNamespace());
 				if (metaclass == null) {
-					throw new XWTException("The type \"" + value + "\" is not found.");					
+					throw new XWTException("The type \"" + value
+							+ "\" is not found.");
 				}
 				arrayType = metaclass.getType();
 			}
-		}
-		else {
+		} else {
 			if (!type.isArray()) {
 				throw new XWTException("Type mismatch: property " + attrName
 						+ " isn't an array.");
@@ -1710,7 +1766,7 @@ public class ResourceLoader implements IVisualElementLoader {
 									&& !(type == Table.class
 											&& "TableColumn".equals(child
 													.getName()) && Table.class
-											.isInstance(directTarget))) {
+												.isInstance(directTarget))) {
 								throw new XWTException(child.getName()
 										+ " cannot be a content of "
 										+ type.getName() + " "
@@ -1780,7 +1836,19 @@ public class ResourceLoader implements IVisualElementLoader {
 						dynamicValueBinding.setProperty(property);
 						dynamicValueBinding.setObject(target);
 					}
-					property.setValue(target, value);
+					// deal with validation staus
+					if ((value instanceof ValidationStatus)
+							&& (property.getName().equals("source"))
+							&& (target instanceof Binding)) {
+						ValidationStatus validationStatus = (ValidationStatus) value;
+						validationStatus.setParent(target);
+						if (status == null)
+							status = new ArrayList<>();
+						status.add(validationStatus);
+					} else {
+						property.setValue(target, value);
+
+					}
 				}
 			} else {
 				if (value == null) {

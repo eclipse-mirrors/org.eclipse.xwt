@@ -12,8 +12,12 @@ package org.eclipse.xwt.tests.databinding.validation;
 
 import java.net.URL;
 
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.xwt.IConstants;
 import org.eclipse.xwt.XWT;
+import org.eclipse.xwt.internal.core.Binding;
 
 public class Validation_ToolTip {
 	public static void main(String[] args) {
@@ -21,7 +25,11 @@ public class Validation_ToolTip {
 		URL url = Validation_ToolTip.class.getResource(Validation_ToolTip.class.getSimpleName()
 				+ IConstants.XWT_EXTENSION_SUFFIX);
 		try {
+			
+			final Display display = new Display();
+			
 			XWT.open(url);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

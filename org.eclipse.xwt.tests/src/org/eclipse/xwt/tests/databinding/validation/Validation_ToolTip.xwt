@@ -16,12 +16,12 @@
 				</Binding.validationRules>
 			</Binding>
 		</Text.text>
-		<Text.tooltip>
+		<Text.toolTipText>
 		    <Binding>
 		       <Binding.source>
 		           <ValidationStatus sourceName="MyBinding"/>
-		       </Binding.source> 
+		       </Binding.source>
 		    </Binding>
-		</Text.tooltip>
+		</Text.toolTipText>
 	</Text>
 </Shell>

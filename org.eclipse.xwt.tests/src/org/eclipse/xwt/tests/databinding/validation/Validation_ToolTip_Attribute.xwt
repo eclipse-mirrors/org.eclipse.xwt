@@ -7,7 +7,7 @@
 	</Shell.layout>
 
 	<Label text="Input a text in first Text > 8 characters " />
-	<Text x:name="text2" 
-	    text="{Binding elementName=text1,path=text,updateSourceTrigger=PropertyChanged,validationRule=y:SizeValidationRule}"
-		tooltip="{Binding source={ValidationStatus sourceName=MyBinding}}"/>
+	<Text x:name="text1" 
+	    text="{Binding name=MyBinding, elementName=text1,path=text,updateSourceTrigger=PropertyChanged,validationRule=y:SizeValidationRule}"
+		toolTipText="{Binding source={ValidationStatus sourceName=MyBinding}}"/>
 </Shell>

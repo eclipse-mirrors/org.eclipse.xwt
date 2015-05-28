@@ -86,4 +86,55 @@ public class ValidationsTests extends XWTTestCase {
 			}
 		});
 	}
+	
+	public void testValidationStatus() throws Exception{
+		URL url = Validation_ToolTip.class.getResource(Validation_ToolTip.class
+				.getSimpleName()
+				+ IConstants.XWT_EXTENSION_SUFFIX);
+		
+		runTest(url, new Runnable() {
+			public void run() {
+				Text text1 = (Text) XWT.findElementByName(root, "text1");
+				checkValidationStatus(text1);
+				checkValidationStatusOK(text1);
+			}
+			
+			private void checkValidationStatusOK(Text text1) {
+				text1.setText("lessthan8");
+				assertEquals(text1.getToolTipText(), "");
+			}
+
+			private void checkValidationStatus(Text text1){
+				text1.setText("more than 8 characters");
+				assertEquals(text1.getToolTipText(), "Value should be 8 - 16 chars long");
+			}
+		});
+	}
+	
+	public void testValidationStatus_Attribute() throws Exception{
+		URL url = Validation_ToolTip_Attribute.class.getResource(Validation_ToolTip_Attribute.class
+				.getSimpleName()
+				+ IConstants.XWT_EXTENSION_SUFFIX);
+		
+		runTest(url, new Runnable() {
+			public void run() {
+				Text text1 = (Text) XWT.findElementByName(root, "text1");
+				
+				checkValidationStatusOK(text1);
+				
+				checkValidationStatus(text1);
+				
+			}
+			
+			private void checkValidationStatusOK(Text text1) {
+				text1.setText("lessthan8");
+				assertEquals(text1.getToolTipText(), "");
+			}
+
+			private void checkValidationStatus(Text text1){
+				text1.setText("more than 16 characters");
+				assertEquals(text1.getToolTipText(), "Value should be 8 - 16 chars long");
+			}
+		});
+	}
 }

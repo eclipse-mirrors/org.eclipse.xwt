@@ -10,7 +10,7 @@
 	<Text x:Name="text1" />
 	<Text x:name="text2">
 		<Text.text>
-			<Binding elementName="text1" path="text" updateSourceTrigger="PropertyChanged" >
+			<Binding x:Name="bbb" elementName="text1" path="text" updateSourceTrigger="PropertyChanged" >
 				<Binding.validationRules>
 					<y:RequiredValidationRule/>
 					<y:SizeValidationRule/>
