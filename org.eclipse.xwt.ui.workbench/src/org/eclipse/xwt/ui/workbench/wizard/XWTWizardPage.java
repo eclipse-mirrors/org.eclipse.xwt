@@ -85,7 +85,14 @@ public abstract class XWTWizardPage extends WizardPage {
 		validationStatus.addChangeListener(new IChangeListener() {
 			public void handleChange(ChangeEvent event) {
 				IStatus status = (IStatus) validationStatus.getValue();
-				setMessage(status.getMessage(), status.getSeverity());
+				if (status.getSeverity() == IStatus.ERROR) {
+					setMessage(status.getMessage(),ERROR);
+					setPageComplete(false);
+				}
+		        else {
+    				setMessage(status.getMessage(),status.getSeverity());
+    				setPageComplete(true);
+		        }
 			}
 		});
 
@@ -155,7 +162,7 @@ public abstract class XWTWizardPage extends WizardPage {
 	}
 
 	protected ClassLoader getClassLoader() {
-		return this.getClassLoader();
+		return Thread.currentThread().getContextClassLoader();
 	}
 
 	public Object getDataContext() {
