@@ -84,7 +84,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 			throw new XWTException(propertyName + " feature is not found in "
 					+ EMFHelper.getQualifiedName(type));
 		}
-		return EMFObservables.observeValue(XWT.getRealm(), (EObject) bean,
+		return XWTEMFObservables.observeValue(XWT.getRealm(), (EObject) bean,
 				feature);
 	}
 

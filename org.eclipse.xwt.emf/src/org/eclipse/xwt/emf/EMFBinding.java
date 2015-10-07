@@ -13,9 +13,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.xwt.XWT;
 import org.eclipse.xwt.emf.converters.StringToURI;
-
+import org.eclipse.swt.widgets.Button;
 /**
  * @author jliu jin.liu@soyatec.com
  */
@@ -30,6 +32,7 @@ public class EMFBinding {
 		if (eObj == null) {
 			return null;
 		}
+		EditingDomain editingDomain = AdapterFactoryEditingDomain.getEditingDomainFor(eObj);
 		if (featureName != null) {
 			int index = featureName.indexOf(".");
 			while (eObj != null && index != -1) {
@@ -48,6 +51,7 @@ public class EMFBinding {
 						EObject newEObj = EcoreUtil.create(((EReference) sf)
 								.getEReferenceType());
 						eObj.eSet(sf, newEObj);
+						// use EditingDomain 
 						eObj = newEObj;
 					} else if (newValue instanceof EObject) {
 						eObj = (EObject) newValue;
