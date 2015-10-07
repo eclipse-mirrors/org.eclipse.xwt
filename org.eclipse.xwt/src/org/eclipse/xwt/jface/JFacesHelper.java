@@ -66,6 +66,7 @@ public class JFacesHelper {
 
 			JFACES_VIEWER = Class.forName("org.eclipse.jface.viewers.Viewer");
 			String[] jfaceClasses = new String[] {
+					"org.eclipse.xwt.jface.RadioGroupViewer",
 					"org.eclipse.jface.viewers.ComboViewer",
 					"org.eclipse.jface.viewers.ListViewer",
 					"org.eclipse.jface.viewers.TreeViewer",
