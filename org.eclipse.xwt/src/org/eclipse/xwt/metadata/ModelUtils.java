@@ -28,6 +28,11 @@ public class ModelUtils {
 		if (Character.isLowerCase(c)) {
 			return name;
 		}
+		if (name.length() > 1) {
+			if (Character.isUpperCase(name.charAt(1))) {
+				return name;
+			}
+		}
 		return Character.toLowerCase(name.charAt(0)) + name.substring(1);
 	}
 }

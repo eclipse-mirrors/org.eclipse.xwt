@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.eclipse.xwt.tests.databinding.pojo;
+package org.eclipse.xwt.tests.databinding.pojo.attribute;
 
 import java.net.URL;
 
@@ -17,9 +17,8 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.xwt.IConstants;
 import org.eclipse.xwt.XWT;
 import org.eclipse.xwt.tests.XWTTestCase;
-import org.eclipse.xwt.tests.databinding.pojo.attribute.PojoAttrDataBindingTests;
 
-public class PojoDataBindingTests extends XWTTestCase {
+public class PojoAttrDataBindingTests extends XWTTestCase {
 
 	public void testDataBinding() throws Exception {
 		URL url = PojoAttrDataBindingTests.class.getResource(DataBinding.class
@@ -44,35 +43,6 @@ public class PojoDataBindingTests extends XWTTestCase {
 				assertTrue(element instanceof Text);
 				Text text = (Text) element;
 				assertEquals(text.getText(), "Soyatec");
-			}
-		});
-	}
-
-	public void testDataBindingPath() throws Exception {
-		URL url = PojoDataBindingTests.class.getResource(DataBindingPath.class
-				.getSimpleName()
-				+ IConstants.XWT_EXTENSION_SUFFIX);
-		runTest(url, new Runnable() {
-			public void run() {
-				checkButton();
-			}
-
-			public void checkButton() {
-				Object element = XWT.findElementByName(root, "Button");
-				assertTrue(element instanceof Button);
-				Button button = (Button) element;
-				selectButton(button);
-			}
-		}, new Runnable() {
-			public void run() {
-				checkButton();
-			}
-
-			public void checkButton() {
-				Object element = XWT.findElementByName(root, "ManagerCity");
-				assertTrue(element instanceof Text);
-				Text text = (Text) element;
-				assertEquals(text.getText(), "ShenZhen");
 			}
 		});
 	}

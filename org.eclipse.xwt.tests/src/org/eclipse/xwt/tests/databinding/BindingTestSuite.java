@@ -16,6 +16,7 @@ import junit.framework.TestSuite;
 import org.eclipse.xwt.tests.databinding.bindcontrol.ControlBindingTests;
 import org.eclipse.xwt.tests.databinding.multibinding.MultiBindingTests;
 import org.eclipse.xwt.tests.databinding.pojo.PojoDataBindingTests;
+import org.eclipse.xwt.tests.databinding.pojo.attribute.PojoAttrDataBindingTests;
 import org.eclipse.xwt.tests.databinding.self.DataBindingSelfTests;
 import org.eclipse.xwt.tests.databinding.status.ValidationStatusTests;
 import org.eclipse.xwt.tests.databinding.validation.ValidationsTests;
@@ -28,6 +29,7 @@ public class BindingTestSuite extends TestSuite {
 	public BindingTestSuite() {
 		addTest(new TestSuite(DataBindingTests.class));
 		addTest(new TestSuite(PojoDataBindingTests.class));
+		addTest(new TestSuite(PojoAttrDataBindingTests.class));
 		addTest(new TestSuite(ControlBindingTests.class));
 		addTest(new TestSuite(MultiBindingTests.class));
 		addTest(new TestSuite(DataBindingSelfTests.class));

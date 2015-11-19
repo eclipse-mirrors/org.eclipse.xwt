@@ -1,0 +1,24 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.databinding.pojo.attribute"
+	x:Class="org.eclipse.xwt.tests.databinding.pojo.attribute.DataBinding"
+	Size="400, 300"
+	x:Name="Root"
+	DataContext="{StaticResource myData}">
+	<Shell.layout>
+		<GridLayout numColumns="3"/>
+	</Shell.layout>
+	
+	<Shell.Resources>
+		<y:Company x:Key="myData"/>
+	</Shell.Resources>
+	
+	<Label text="Name"/>
+	<Text Name="Name" x:style="BORDER" text="{Binding Path=NAME}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	<Button Name="Button" Text="Change" SelectionEvent="onNew"/>
+</Shell>
