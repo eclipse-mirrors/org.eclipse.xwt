@@ -22,6 +22,7 @@ import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.EObjectObservableValue;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -236,9 +237,9 @@ public class EMFDataProvider extends AbstractDataProvider {
 	}
 
 	public boolean isPropertyReadOnly(String path) {
-		EClass classifier = getCurrentType();
-		if (classifier != null && path != null) {
-			EStructuralFeature feature = classifier.getEStructuralFeature(path);
+		EClassifier classifier = getCurrentType();
+		if (classifier instanceof EClass && path != null) {
+			EStructuralFeature feature = ((EClass)classifier).getEStructuralFeature(path);
 			if (feature != null) {
 				return !feature.isChangeable();
 			}
@@ -246,18 +247,17 @@ public class EMFDataProvider extends AbstractDataProvider {
 		return true;
 	}
 
-	protected EClass getCurrentType() {
+	protected EClassifier getCurrentType() {
 		Object instance = getTarget();
-		EClass eObj = null;
+		EClassifier eObj = null;
 		if (instance instanceof EObjectObservableValue) {
 			EObjectObservableValue observableValue = (EObjectObservableValue) instance;
 			EStructuralFeature valueType = (EStructuralFeature) observableValue
 					.getValueType();
 			EClassifier classifier = valueType.getEType();
-			if (classifier instanceof EClass) {
-				eObj = (EClass) classifier;
-			} else {// EDataType, maybe we should change the return type to
-					// access EDataType.
+			if (classifier instanceof EClass || classifier instanceof EDataType) {
+				eObj = classifier;
+			} else {
 				return null;
 			}
 		} else if (instance instanceof EClass) {
@@ -289,14 +289,17 @@ public class EMFDataProvider extends AbstractDataProvider {
 	 * 
 	 * @see org.eclipse.xwt.IDataProvider#getDataType(java.lang.String)
 	 */
-	public EClassifier getDataType(String path) {
-		EClass classifier = getCurrentType();
+	public Object getDataType(String path) {
+		EClassifier classifier = getCurrentType();
 		if (path == null || path.trim().length() == 0 || path.equals(".")) {
+			if (classifier instanceof EDataType) {
+				return classifier.getInstanceClass();
+			}
 			return classifier;
 		}
-		if (classifier != null) {
+		if (classifier instanceof EClass) {
 			String featureName = path;
-			EStructuralFeature feature = classifier
+			EStructuralFeature feature = ((EClass)classifier)
 					.getEStructuralFeature(featureName);
 			if (feature != null) {
 				return feature.getEType();
