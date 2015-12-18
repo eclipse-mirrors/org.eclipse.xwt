@@ -288,7 +288,7 @@ public class Core {
 	public IConverter loadConvertor(Class<?> converter, String methodName,
 			boolean value) {
 		try {
-			Method method = converter.getDeclaredMethod(methodName);
+			Method method = converter.getDeclaredMethod(methodName, boolean.class);
 			Object object = method.invoke(null, value);
 			if (object instanceof IConverter) {
 				return (IConverter) object;

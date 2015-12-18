@@ -46,6 +46,12 @@ public class ObjectUtil {
 		if (type == boolean.class) {
 			return Boolean.class;
 		}
+		if (type == char.class) {
+			return Character.class;
+		}
+		if (type == byte.class) {
+			return Byte.class;
+		}
 		return type;
 	}
 

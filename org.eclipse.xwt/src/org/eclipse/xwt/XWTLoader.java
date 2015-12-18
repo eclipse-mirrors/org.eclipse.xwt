@@ -98,6 +98,7 @@ import org.eclipse.xwt.converters.ObjectToString;
 import org.eclipse.xwt.converters.SelectionToBoolean;
 import org.eclipse.xwt.converters.SetToIObservableCollection;
 import org.eclipse.xwt.converters.StringToBoolean;
+import org.eclipse.xwt.converters.StringToChar;
 import org.eclipse.xwt.converters.StringToColor;
 import org.eclipse.xwt.converters.StringToDoubleArray;
 import org.eclipse.xwt.converters.StringToDuration;
@@ -1446,8 +1447,11 @@ public class XWTLoader implements IXWTLoader {
 		registerConvertor(DateToString.instance);
 		registerConvertor(EnumToString.instance);
 		registerConvertor(StringToInteger.instance);
+		registerConvertor(StringToChar.instance);
+		
 		// It is not supported by eclipse 3.4.1
 		registerConvertor(StringToNumberConverter.class, "toBigDecimal");
+		registerConvertor(StringToNumberConverter.class, "toBigInteger");
 		registerConvertor(StringToNumberConverter.class, "toByte", false);
 
 		registerConvertor(StringToNumberConverter.toLong(false));
@@ -1462,6 +1466,7 @@ public class XWTLoader implements IXWTLoader {
 
 		// It is not supported by eclipse 3.4.1
 		registerConvertor(NumberToStringConverter.class, "fromBigDecimal");
+		registerConvertor(NumberToStringConverter.class, "fromBigInteger");
 		registerConvertor(NumberToStringConverter.class, "fromByte", false);
 
 		registerConvertor(NumberToStringConverter.fromLong(false));

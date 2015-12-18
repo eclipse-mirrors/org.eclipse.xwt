@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.xwt.metadata;
 
+import java.beans.Introspector;
+
 /**
  * 
  * @author yyang
@@ -24,15 +26,6 @@ public class ModelUtils {
 		if (name == null || name.length() == 0) {
 			return name;
 		}
-		char c = name.charAt(0);
-		if (Character.isLowerCase(c)) {
-			return name;
-		}
-		if (name.length() > 1) {
-			if (Character.isUpperCase(name.charAt(1))) {
-				return name;
-			}
-		}
-		return Character.toLowerCase(name.charAt(0)) + name.substring(1);
+		return Introspector.decapitalize(name);
 	}
 }
