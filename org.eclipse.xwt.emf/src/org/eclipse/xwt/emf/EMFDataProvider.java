@@ -68,7 +68,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 		if (type == null) {
 			type = (EClass) getModelService().toModelType(bean);
 		}
-		EStructuralFeature feature = type.getEStructuralFeature(propertyName);
+		EStructuralFeature feature = EMFHelper.findFeature(type, propertyName);
 		if (feature == null) {
 			throw new XWTException(propertyName + " feature is not found in "
 					+ EMFHelper.getQualifiedName(type));
@@ -80,7 +80,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 	@Override
 	protected IObservableValue observeValue(Object bean, String propertyName) {
 		EClass type = (EClass) getModelService().toModelType(bean);
-		EStructuralFeature feature = type.getEStructuralFeature(propertyName);
+		EStructuralFeature feature = EMFHelper.findFeature(type, propertyName);
 		if (feature == null) {
 			throw new XWTException(propertyName + " feature is not found in "
 					+ EMFHelper.getQualifiedName(type));
@@ -93,7 +93,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 	protected IObservableList observeDetailList(IObservableValue bean,
 			Object elementType, String propertyName, Object propertyType) {
 		EClass type = (EClass) elementType;
-		EStructuralFeature feature = type.getEStructuralFeature(propertyName);
+		EStructuralFeature feature = EMFHelper.findFeature(type, propertyName);
 		IObservableList observeDetailList = EMFObservables.observeDetailList(
 				XWT.getRealm(), bean, feature);
 		return observeDetailList;
@@ -110,8 +110,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 	protected IObservableList observeList(Object bean, String propertyName) {
 		if (bean instanceof EObject) {
 			EObject owner = (EObject) bean;
-			EStructuralFeature feature = owner.eClass().getEStructuralFeature(
-					propertyName);
+			EStructuralFeature feature = EMFHelper.findFeature(owner.eClass(), propertyName);
 			if (feature != null) {
 				return EMFObservables.observeList(XWT.getRealm(), owner,
 						feature);
@@ -137,7 +136,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 		} else {
 			throw new IllegalStateException();
 		}
-		EStructuralFeature feature = type.getEStructuralFeature(path);
+		EStructuralFeature feature = EMFHelper.findFeature(type, path);
 		if (feature == null) {
 			throw new XWTException(path + " feature is not found in "
 					+ EMFHelper.getQualifiedName(type));
@@ -227,8 +226,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 				eObj = (EObject) getData(eObj, parent);
 				featureName = path.substring(index + 1);
 			}
-			EStructuralFeature feature = eObj.eClass().getEStructuralFeature(
-					featureName);
+			EStructuralFeature feature = EMFHelper.findFeature(eObj.eClass(), featureName);
 			if (feature != null) {
 				return eObj.eGet(feature);
 			}
@@ -239,7 +237,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 	public boolean isPropertyReadOnly(String path) {
 		EClassifier classifier = getCurrentType();
 		if (classifier instanceof EClass && path != null) {
-			EStructuralFeature feature = ((EClass)classifier).getEStructuralFeature(path);
+			EStructuralFeature feature = EMFHelper.findFeature((EClass)classifier, path);
 			if (feature != null) {
 				return !feature.isChangeable();
 			}
@@ -299,8 +297,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 		}
 		if (classifier instanceof EClass) {
 			String featureName = path;
-			EStructuralFeature feature = ((EClass)classifier)
-					.getEStructuralFeature(featureName);
+			EStructuralFeature feature = EMFHelper.findFeature((EClass)classifier, featureName);
 			if (feature != null) {
 				return feature.getEType();
 			}
@@ -359,8 +356,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 				eObj = EMFBinding.getEObject(eObj, parent);
 				featureName = path.substring(index + 1);
 			}
-			EStructuralFeature feature = eObj.eClass().getEStructuralFeature(
-					featureName);
+			EStructuralFeature feature = EMFHelper.findFeature(eObj.eClass(), featureName);
 			if (feature != null) {
 				eObj.eSet(feature, value);
 			}
@@ -395,7 +391,7 @@ public class EMFDataProvider extends AbstractDataProvider {
 		if (eClass == null) {
 			return null;
 		}
-		EStructuralFeature feature = eClass.getEStructuralFeature(fullPath);
+		EStructuralFeature feature = EMFHelper.findFeature(eClass, fullPath);
 		if (feature != null) {
 			return EMFProperties.value(feature);
 		}

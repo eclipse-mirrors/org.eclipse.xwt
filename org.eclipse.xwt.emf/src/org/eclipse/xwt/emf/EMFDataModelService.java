@@ -104,8 +104,7 @@ public class EMFDataModelService implements DataModelService {
 			throw new XWTException(" Type for\"" + propertyName
 					+ "\" is not found ");
 		}
-		EStructuralFeature structuralFeature = type
-				.getEStructuralFeature(propertyName);
+		EStructuralFeature structuralFeature = EMFHelper.findFeature(type, propertyName);
 
 		if (structuralFeature == null) {
 			throw new XWTException(" Property \"" + propertyName

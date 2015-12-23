@@ -43,8 +43,7 @@ public class EMFBinding {
 			}
 			index = featureName.indexOf(".");
 			if (eObj != null && index == -1) {
-				EStructuralFeature sf = eObj.eClass().getEStructuralFeature(
-						featureName);
+				EStructuralFeature sf = EMFHelper.findFeature(eObj.eClass(), featureName);
 				if (sf != null) {
 					Object newValue = eObj.eGet(sf);
 					if (newValue == null && sf instanceof EReference) {

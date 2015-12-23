@@ -32,6 +32,22 @@ public class EMFHelper {
 		}
 		return namedElement.getName();
 	}
+	
+	public static EStructuralFeature findFeature(EClass type, String propertyName) {
+		EStructuralFeature structuralFeature = type
+				.getEStructuralFeature(propertyName);
+		if (structuralFeature == null) {
+			// to workaround a problem of case sensitive of property name comes from XML
+			// To fix this problem, the parser of XML should be rewritten. It is a heavy task.  
+			for (EStructuralFeature item : type.getEAllStructuralFeatures()) {
+				if (propertyName.equalsIgnoreCase(item.getName())) {
+					structuralFeature = item;
+					break;
+				}
+			}
+		}
+		return structuralFeature;
+	}
 
 	public static Object toType(Object data) {
 		if (data instanceof EClassifier) {
