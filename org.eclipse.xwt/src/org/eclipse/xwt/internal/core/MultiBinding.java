@@ -16,6 +16,7 @@ import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xwt.IDataBindingInfo;
@@ -143,6 +144,13 @@ public class MultiBinding extends DynamicBinding implements IDataBindingInfo {
 					if (isSourcePropertyReadOnly()) {
 						MenuItem menuItem = (MenuItem) target;
 						menuItem.setEnabled(false);
+					}
+				}
+				else if (target instanceof DateTime
+						&& getType().equalsIgnoreCase("selection")) {
+					if (isSourcePropertyReadOnly()) {
+						DateTime dateTime = (DateTime) target;
+						dateTime.setEnabled(false);
 					}
 				}
 			}

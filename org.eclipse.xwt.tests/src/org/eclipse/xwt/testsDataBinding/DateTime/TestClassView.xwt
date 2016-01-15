@@ -1,0 +1,79 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt" 
+	xmlns:y="clr-namespace:org.eclipse.xwt.testsDataBinding.DateTime" 
+	x:Class="org.eclipse.xwt.testsDataBinding.DateTime.TestClassView" 
+	x:name="TestClass"
+	size="400,300">
+	<Composite.layout>
+		<GridLayout numColumns="2" />
+	</Composite.layout>
+	<Label text="Name" x:name="name_label">
+		<Label.layoutData>
+			<GridData horizontalIndent="10" widthHint="100" />
+		</Label.layoutData>
+	</Label>
+	<Text x:style="BORDER" x:name="name">
+		<Text.text>
+			<Binding path="name"
+				updateSourceTrigger="PropertyChanged">
+			</Binding>
+		</Text.text>
+		<Text.layoutData>
+			<GridData grabExcessHorizontalSpace="true"
+				horizontalAlignment="GridData.FILL" />
+		</Text.layoutData>
+	</Text>
+	<Label text="Married" x:name="married_label">
+		<Label.layoutData>
+			<GridData horizontalIndent="10" widthHint="100" />
+		</Label.layoutData>
+	</Label>
+	<Button x:Style="CHECK" x:name="married">
+		<Button.selection>
+			<Binding path="married" updateSourceTrigger="PropertyChanged">
+			</Binding>
+		</Button.selection>
+		<Button.layoutData>
+			<GridData grabExcessHorizontalSpace="true"
+				horizontalAlignment="GridData.FILL" />
+		</Button.layoutData>
+	</Button>
+
+	<Label text="Birthday" x:name="birthday_label">
+		<Label.layoutData>
+			<GridData horizontalIndent="10" widthHint="100" />
+		</Label.layoutData>
+	</Label>
+	
+	<DateTime x:name="birthday" x:style="BORDER">
+<DateTime.selection>
+			<Binding path="birthday" updateSourceTrigger="PropertyChanged">
+			</Binding>
+</DateTime.selection>
+
+     <DateTime.layoutData>
+           <GridData horizontalAlignment="FILL" grabExcessHorizontalSpace="true" />
+     </DateTime.layoutData>
+
+</DateTime>
+
+	<Label text="Copy of Birthday DateTime " x:name="CopyDateTime_label">
+		<Label.layoutData>
+			<GridData horizontalIndent="10" widthHint="100" />
+		</Label.layoutData>
+	</Label>
+	
+	<DateTime x:name="CopyDateTime" x:style="BORDER">
+<DateTime.selection>
+			<Binding path="birthday" updateSourceTrigger="PropertyChanged">
+			</Binding>
+</DateTime.selection>
+
+     <DateTime.layoutData>
+           <GridData horizontalAlignment="FILL" grabExcessHorizontalSpace="true" />
+     </DateTime.layoutData>
+
+</DateTime>
+
+	
+</Composite>

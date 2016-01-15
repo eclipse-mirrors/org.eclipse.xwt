@@ -19,6 +19,7 @@ import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xwt.IDataProvider;
@@ -104,6 +105,12 @@ public class DataBinding extends AbstractDataBinding {
 				if (isSourcePropertyReadOnly()) {
 					MenuItem menuItem = (MenuItem) target;
 					menuItem.setEnabled(false);
+				}
+			} else if (target instanceof DateTime
+					&& getTargetProperty().equalsIgnoreCase("selection")) {
+				if (isSourcePropertyReadOnly()) {
+					DateTime dateTime = (DateTime) target;
+					dateTime.setEnabled(false);
 				}
 			}
 			bindingContext.bind(observableSource, observableWidget, this);

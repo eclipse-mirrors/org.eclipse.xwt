@@ -24,11 +24,13 @@ import org.eclipse.core.internal.databinding.property.value.SimplePropertyObserv
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.databinding.viewers.ViewerProperties;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
+import org.eclipse.jface.internal.databinding.swt.DateTimeSelectionProperty;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xwt.IDataProvider;
@@ -391,6 +393,13 @@ public class JFaceXWTDataBinding {
 			if (SWT.getVersion() == 3449 && control instanceof Button) {
 				return null;
 			}
+			if (control instanceof DateTime) {
+				IObservableValue observableValue = SWTObservables.observeSelection(control);
+				if (observableValue != null) {
+					return observableValue;
+				}
+			}
+			
 			try {
 				IObservableValue observableValue = SWTObservables
 						.observeText(control);

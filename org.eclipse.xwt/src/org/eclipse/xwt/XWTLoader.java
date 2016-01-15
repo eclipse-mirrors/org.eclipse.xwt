@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -35,6 +36,7 @@ import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.databinding.viewers.ObservableSetContentProvider;
+import org.eclipse.jface.internal.databinding.swt.DateTimeSelectionProperty;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ControlEditor;
 import org.eclipse.swt.custom.TableEditor;
@@ -1630,7 +1632,10 @@ public class XWTLoader implements IXWTLoader {
 		registerMetaclass(org.eclipse.swt.widgets.Composite.class);
 		registerMetaclass(org.eclipse.swt.widgets.CoolBar.class);
 		registerMetaclass(org.eclipse.swt.widgets.CoolItem.class);
-		registerMetaclass(org.eclipse.swt.widgets.DateTime.class);
+		
+		IMetaclass dateTimeMetaclass =  registerMetaclass(org.eclipse.swt.widgets.DateTime.class);
+	    dateTimeMetaclass.addProperty(new DataProperty("selection", "selection", Date.class));
+	    
 		registerMetaclass(org.eclipse.swt.widgets.Decorations.class);
 		registerMetaclass(org.eclipse.swt.widgets.ExpandBar.class);
 		IMetaclass expandItemMetaclass = registerMetaclass(ExpandItem.class);
