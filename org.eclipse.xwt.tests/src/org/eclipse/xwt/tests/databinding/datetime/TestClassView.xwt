@@ -1,7 +1,7 @@
 <Composite xmlns="http://www.eclipse.org/xwt/presentation"
 	xmlns:x="http://www.eclipse.org/xwt" 
-	xmlns:y="clr-namespace:org.eclipse.xwt.testsDataBinding.DateTime" 
-	x:Class="org.eclipse.xwt.testsDataBinding.DateTime.TestClassView" 
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.databinding.datetime" 
+	x:Class="org.eclipse.xwt.tests.databinding.datetime.TestClassView" 
 	x:name="TestClass"
 	size="400,300">
 	<Composite.layout>

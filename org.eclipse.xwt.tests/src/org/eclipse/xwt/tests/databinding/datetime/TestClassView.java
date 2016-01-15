@@ -9,7 +9,7 @@
  * Soyatec - initial API and implementation 
  *******************************************************************************/
 
-package org.eclipse.xwt.testsDataBinding.DateTime;
+package org.eclipse.xwt.tests.databinding.datetime;
 
 import java.net.URL;
 

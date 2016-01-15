@@ -1,4 +1,4 @@
-package org.eclipse.xwt.testsDataBinding.DateTime;
+package org.eclipse.xwt.tests.databinding.datetime;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
