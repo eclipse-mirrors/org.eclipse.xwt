@@ -195,7 +195,7 @@ public class DocumentObject extends Observable implements Cloneable {
 	 */
 	protected void setNamespace(String namespace) {
 		assert namespace != null : "Element namespace is null";
-		assert this.namespace != null : "Element namepsace is defined";
+		assert this.namespace == null : "Element namespace is defined";
 
 		this.namespace = namespace;
 	}
@@ -207,7 +207,7 @@ public class DocumentObject extends Observable implements Cloneable {
 	 */
 	protected void setName(String name) {
 		assert name != null : "Element name is null";
-		assert this.name != null : "Element name is defined";
+		assert this.name == null : "Element name is defined";
 
 		this.name = name;
 	}
