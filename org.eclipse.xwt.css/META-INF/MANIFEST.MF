@@ -10,4 +10,4 @@ Require-Bundle: org.eclipse.xwt;bundle-version="0.9.0",
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.xwt.css
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse XWT
