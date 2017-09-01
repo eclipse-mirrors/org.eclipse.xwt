@@ -521,7 +521,7 @@ public class ResourceLoader implements IVisualElementLoader {
 			// load the content in case of UserControl
 			//
 			Class<?> type = metaclass.getType();
-			URL file = type.getResource(type.getSimpleName()
+			URL file = getResource(metaclass, type.getSimpleName()
 					+ IConstants.XWT_EXTENSION_SUFFIX);
 			if (file != null && nameScoped != null) {
 				if (parent instanceof Composite) {
@@ -751,6 +751,48 @@ public class ResourceLoader implements IVisualElementLoader {
 					keys.remove(delayed);
 				}
 			}
+		}
+	}
+
+	private URL getResource(IMetaclass metaclass, String resourcePath) {
+		Object userControlsDisabled = this.options.get(IXWTLoader.DISABLE_USER_CONTROLS);
+		if (!Boolean.TRUE.equals(userControlsDisabled)) {
+			IResourceCache resourceCache = getResourceCache();
+			if (resourceCache == null) {
+				return doGetResource(metaclass, resourcePath);
+			} else {
+				if (resourceCache.hasCached(metaclass, resourcePath)) {
+					return resourceCache.getCachedResource(metaclass, resourcePath);
+				}
+
+				URL url = doGetResource(metaclass, resourcePath);
+				resourceCache.cacheResource(metaclass, resourcePath, url);
+				return url;
+			} 
+		}
+		return null;
+	}
+
+	private URL doGetResource(IMetaclass type, String resourcePath) {
+		return type.getType().getResource(resourcePath);
+	}
+
+	private IResourceCache getResourceCache() {
+		Object object = options.get(IXWTLoader.USER_CONTROL_CACHE_PROPERTY);
+		if (object == null) {
+			//By default, use the singleton cache
+			return ResourceCache.getInstance();
+		} else if (object instanceof IResourceCache) {
+			//A cache has been specified explicitly: use it
+			return (IResourceCache) object;
+		} else if (Boolean.TRUE.equals(object)) { 
+			//Store a new cache instance in the options
+			IResourceCache resourceCache = new ResourceCache();
+			options.put(IXWTLoader.USER_CONTROL_CACHE_PROPERTY, resourceCache);
+			return resourceCache;
+		} else { 
+			//Boolean.FALSE or invalid value: no cache
+			return null;
 		}
 	}
 

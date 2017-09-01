@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 Soyatec (http://www.soyatec.com), CEA, and others.
+ * Copyright (c) 2006, 2017 Soyatec (http://www.soyatec.com), CEA, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *     Soyatec - initial API and implementation
  *     Christian W. Damus (CEA) - bug 435432
+ *     EclipseSource - bug 521931
  *     
  *******************************************************************************/
 package org.eclipse.xwt;
@@ -135,7 +136,7 @@ public interface IXWTLoader {
 	 *   // other fields ...
 	 *   
 	 *   void whatever() {
-	 *       Map<String, Object> options = new HashMap&lt;String, Object&gt;();
+	 *       Map&lt;String, Object&gt; options = new HashMap&lt;String, Object&gt;();
 	 *       options.put(IXWTLoader.XML_CACHE_PROPERTY, (xmlCache != null) ? xmlCache : Boolean.TRUE);
 	 *       // ... set other options as needed ...
 	 *   
@@ -151,6 +152,49 @@ public interface IXWTLoader {
 	 * </pre>
 	 */
 	String XML_CACHE_PROPERTY = IElementCache.class.getName();
+	
+	/**
+	 * Option to cache access to 'User control' resources
+	 * Possible values:
+	 * <ul>
+	 * 	<li>Unspecified (Default): Use a default, static (singleton) cache</li>
+	 * 	<li>{@link Boolean#TRUE}: Create a new cache instance for this session</li>
+	 * 	<li>{@link Boolean#FALSE}: Do not use a cache</li>
+	 * 	<li>An {@link IResourceCache}: Use the specified cache instance</li>
+	 * 	<li>All other values will be treated like {@link Boolean#FALSE Boolean.FALSE}, i.e. no cache will be used</li>
+	 * </ul>
+	 * When specifying {@link Boolean#TRUE Boolean.TRUE}, the map entry will be replaced
+	 * by a new cache instance, so you can retrieve (and reuse) that cache later. For example:
+	 * <pre>
+	 *   private Object resourceCache; // the Resource cache
+	 *   
+	 *   // other fields ...
+	 *   
+	 *   void whatever() {
+	 *       Map&lt;String, Object&gt; options = new HashMap&lt;String, Object&gt;();
+	 *       options.put(IXWTLoader.USER_CONTROL_CACHE_PROPERTY, (resourceCache != null) ? resourceCache : Boolean.TRUE);
+	 *       // ... set other options as needed ...
+	 *   
+	 *       URL url = getResourceURL(); // however this is obtained
+	 *       
+	 *       Object ui = XWT.loadWithOptions(url, options);
+	 *       
+	 *       // Get the cache to reuse next time
+	 *       resourceCache = options.get(IXWTLoader.USER_CONTROL_CACHE_PROPERTY);
+	 *       
+	 *       doSomethingWithTheUI(ui);
+	 *   }
+	 * </pre>
+	 * Note: the default/shared cache will never be returned in the options. If the 
+	 * {@link #USER_CONTROL_CACHE_PROPERTY} option is initially unspecified, it will 
+	 * not be replaced when the XWT resource is loaded.
+	 */
+	String USER_CONTROL_CACHE_PROPERTY = "UserControlCache";
+	
+	/**
+	 * Boolean option to enable or disable the user controls. By default, they are enabled
+	 */
+	String DISABLE_USER_CONTROLS = "XWT.DISABLE_USER_CONTROLS";
 
 	String[] ALL_PROPERTIES = { URL_PROPERTY, 
 			CONTAINER_PROPERTY,
@@ -164,7 +208,9 @@ public interface IXWTLoader {
 			CREATED_CALLBACK,
 			BEFORE_PARSING_CALLBACK,
 			DESIGN_MODE_PROPERTY,
-			XML_CACHE_PROPERTY};
+			XML_CACHE_PROPERTY,
+			USER_CONTROL_CACHE_PROPERTY,
+			DISABLE_USER_CONTROLS};
 	
 	/**
 	 * Register an Observable IChangeListener for a given UI element. The second
