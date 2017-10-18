@@ -63,7 +63,7 @@ public class ResourceCache implements IResourceCache {
 	private Map<String, URL> getTypeCache(IMetaclass metaclass) {
 		Class<?> type = metaclass.getType();
 		if (!resourceCache.containsKey(type)) {
-			resourceCache.put(type, new HashMap<>());
+			resourceCache.put(type, new HashMap<String, URL>());
 		}
 		return resourceCache.get(type);
 	}
