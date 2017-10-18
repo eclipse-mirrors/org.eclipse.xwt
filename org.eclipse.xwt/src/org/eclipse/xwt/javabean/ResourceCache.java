@@ -70,6 +70,6 @@ public class ResourceCache implements IResourceCache {
 
 	private static IResourceCache instance = new ResourceCache();
 
-	private Map<Class<?>, Map<String, URL>> resourceCache = new HashMap<>();
+	private Map<Class<?>, Map<String, URL>> resourceCache = new HashMap<Class<?>, Map<String, URL>>();
 
 }
