@@ -22,7 +22,6 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.custom.ControlEditor;
-import org.eclipse.swt.custom.TableTreeItem;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Caret;
@@ -387,9 +386,6 @@ public class UserData {
 			return item.getParent();
 		} else if (widget instanceof TableItem) {
 			TableItem item = (TableItem) widget;
-			return item.getParent();
-		} else if (widget instanceof TableTreeItem) {
-			TableTreeItem item = (TableTreeItem) widget;
 			return item.getParent();
 		} else if (widget instanceof ToolItem) {
 			ToolItem item = (ToolItem) widget;
