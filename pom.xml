@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.eclipse.xwt</groupId>
+	<artifactId>org.eclipse.xwt-root</artifactId>
+	<version>1.3.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<!-- https://repo.maven.apache.org/maven2/ -->
+		<tycho-version>1.3.0</tycho-version>
+		<tychoExtrasVersion>1.3.0</tychoExtrasVersion>
+		<xtext.version>2.16.0</xtext.version>
+		<maven.resources.version>3.1.0</maven.resources.version>
+		<maven.clean.version>3.1.0</maven.clean.version>
+		<mojo.execmaven.version>1.6.0</mojo.execmaven.version>
+		<findbugs.version>3.0.5</findbugs.version>
+		<maven.compiler.version>3.8.0</maven.compiler.version>
+
+		<!-- https://repo.eclipse.org/content/repositories/cbi-releases/ -->
+		<jarSignerVersion>1.1.5</jarSignerVersion>
+
+		<!-- https://repository.jboss.org/ -->
+		<jboss.utils.version>1.3.0</jboss.utils.version>
+
+		<java.source.version>1.8</java.source.version>
+		<java.target.version>1.8</java.target.version>
+
+		<!-- https://repo.maven.apache.org/maven2/ -->
+		<mojo.buildhelper.version>3.0.0</mojo.buildhelper.version>
+		<mylyn.wikitext.version>3.0.29</mylyn.wikitext.version>
+
+		<!-- SourceReferences -->
+		<tycho.scmUrl>scm:git:git://git.eclipse.org/gitroot/papyrus/org.eclipse.xwt.git</tycho.scmUrl>
+	</properties>
+
+	<modules>
+		<module>org.eclipse.xwt.releng</module>
+		<module>org.eclipse.xwt</module>
+		<module>org.eclipse.xwt.css</module>
+		<module>org.eclipse.xwt.css.tests</module>
+		<!-- <module>org.eclipse.xwt.doc</module> -->
+		<!-- <module>org.eclipse.xwt.doc.user</module> -->
+		<module>org.eclipse.xwt.e4</module>
+		<module>org.eclipse.xwt.emf</module>
+		<module>org.eclipse.xwt.emf.test</module>
+		<module>org.eclipse.xwt.feature</module>
+		<module>org.eclipse.xwt.forms</module>
+		<module>org.eclipse.xwt.pde</module>
+		<module>org.eclipse.xwt.snippets</module>
+		<module>org.eclipse.xwt.snippets.tests</module>
+		<module>org.eclipse.xwt.tests</module>
+		<module>org.eclipse.xwt.tests.feature</module>
+		<module>org.eclipse.xwt.tools.categorynode</module>
+		<module>org.eclipse.xwt.tools.categorynode.edit</module>
+		<module>org.eclipse.xwt.tools.feature</module>
+		<module>org.eclipse.xwt.tools.ui</module>
+		<module>org.eclipse.xwt.tools.ui.designer</module>
+		<module>org.eclipse.xwt.tools.ui.designer.core</module>
+		<module>org.eclipse.xwt.tools.ui.editor</module>
+		<module>org.eclipse.xwt.tools.ui.imagecapture</module>
+		<module>org.eclipse.xwt.tools.ui.palette</module>
+		<module>org.eclipse.xwt.tools.ui.vex</module>
+		<module>org.eclipse.xwt.tools.ui.workbench</module>
+		<module>org.eclipse.xwt.tools.ui.xaml</module>
+		<module>org.eclipse.xwt.ui.workbench</module>
+		<module>org.eclipse.xwt.workbench.feature</module>
+		<module>org.eclipse.xwt.xml</module>
+	</modules>
+
+	<pluginRepositories>
+		<!-- https://repo.maven.apache.org/maven2/ is being fetched by default -->
+		<!-- pluginRepository> <id>central</id> <name>Central Repository</name> 
+			<url>https://repo.maven.apache.org/maven2</url> <releases> <enabled>true</enabled> 
+			</releases> <snapshots> <enabled>false</enabled> </snapshots> </pluginRepository -->
+		<pluginRepository>
+			<id>tycho-snapshots</id>
+			<url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>org.eclipse.cbi.maven.plugins</id>
+			<name>Eclipse CBI</name>
+			<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>eclipse.org-mylyn</id>
+			<url>https://repo.eclipse.org/content/repositories/mylyn/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<repositories>
+		<repository>
+			<id>license-feature</id>
+			<url>http://download.eclipse.org/cbi/updates/license/</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
+
+	<build>
+		<outputDirectory>bin</outputDirectory>
+		<pluginManagement>
+			<!-- redistributed plugin configurations -->
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${mojo.buildhelper.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.mylyn.docs</groupId>
+					<artifactId>org.eclipse.mylyn.wikitext.maven</artifactId>
+					<version>${mylyn.wikitext.version}</version>
+				</plugin>
+
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.eclipse.mylyn.docs
+										</groupId>
+										<artifactId>
+											org.eclipse.mylyn.wikitext.maven
+										</artifactId>
+										<versionRange>
+											[2.4.0-SNAPSHOT,)
+										</versionRange>
+										<goals>
+											<goal>eclipse-help</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compiler.version}</version>
+					<configuration>
+						<source>${java.source.version}</source>
+						<target>${java.target.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven.resources.version}</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${maven.clean.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>${mojo.execmaven.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>${xtext.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-maven-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<extensions>true</extensions>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-p2-repository-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<source>${java.source.version}</source>
+						<target>${java.target.version}</target>
+						<optimize>true</optimize>
+						<showWarnings>true</showWarnings>
+						<!-- Tycho build using the project's JDT settings. -->
+						<useProjectSettings>true</useProjectSettings>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>target-platform-configuration</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<environments>
+							<environment>
+								<os>linux</os>
+								<ws>gtk</ws>
+								<arch>x86_64</arch>
+							</environment>
+							<environment>
+								<os>linux</os>
+								<ws>gtk</ws>
+								<arch>x86</arch>
+							</environment>
+							<environment>
+								<os>win32</os>
+								<ws>win32</ws>
+								<arch>x86_64</arch>
+							</environment>
+							<environment>
+								<os>macosx</os>
+								<ws>cocoa</ws>
+								<arch>x86_64</arch>
+							</environment>
+						</environments>
+						<target>
+							<artifact>
+								<groupId>org.eclipse.xwt</groupId>
+								<artifactId>org.eclipse.xwt.target</artifactId>
+								<version>1.3.1-SNAPSHOT</version>
+							</artifact>
+						</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+
+		<plugins>
+			<!-- local plugins -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-repository-plugin</artifactId>
+			</plugin>
+
+			<!-- Sources -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-source-feature-plugin</artifactId>
+				<version>${tychoExtrasVersion}</version>
+				<executions>
+					<execution>
+						<id>source-feature</id>
+						<phase>package</phase>
+						<goals>
+							<goal>source-feature</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<sourceReferences>
+						<generate>true</generate>
+					</sourceReferences>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-sourceref-jgit</artifactId>
+						<version>${tychoExtrasVersion}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>defaultProfile</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-p2-plugin</artifactId>
+						<version>${tycho-version}</version>
+						<executions>
+							<execution>
+								<id>attach-p2-metadata</id>
+								<phase>package</phase>
+								<goals>
+									<goal>p2-metadata</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>packAndSign</id>
+			<activation>
+				<property>
+					<name>SIGN</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<!-- Pack200 -->
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-pack200a-plugin</artifactId>
+						<version>${tychoExtrasVersion}</version>
+						<executions>
+							<execution>
+								<id>pack200-normalize</id>
+								<goals>
+									<goal>normalize</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.cbi.maven.plugins</groupId>
+						<artifactId>eclipse-jarsigner-plugin</artifactId>
+						<version>${jarSignerVersion}</version>
+						<executions>
+							<execution>
+								<id>sign</id>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-pack200b-plugin</artifactId>
+						<version>${tychoExtrasVersion}</version>
+						<executions>
+							<execution>
+								<id>pack200-pack</id>
+								<goals>
+									<goal>pack</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-p2-plugin</artifactId>
+						<version>${tycho-version}</version>
+						<executions>
+							<execution>
+								<id>attach-p2-metadata</id>
+								<phase>package</phase>
+								<goals>
+									<goal>p2-metadata</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<defaultP2Metadata>false</defaultP2Metadata>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

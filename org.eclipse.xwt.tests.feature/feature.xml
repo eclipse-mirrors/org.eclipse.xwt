@@ -22,9 +22,8 @@
    </url>
 
    <requires>
-      <import feature="org.eclipse.xwt.feature" version="0.9.0" match="compatible"/>
-      <import feature="org.eclipse.xwt.css.feature" version="0.9.0" match="compatible"/>
-      <import plugin="org.eclipse.xwt.emf" version="0.9.0" match="compatible"/>
+      <import feature="org.eclipse.xwt.feature" version="0.9.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xwt.emf" version="0.9.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -35,6 +34,18 @@
 
    <plugin
          id="org.eclipse.xwt.emf.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.xwt.css.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.xwt.snippets.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"/>

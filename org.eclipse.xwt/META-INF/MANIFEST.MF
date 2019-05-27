@@ -12,7 +12,9 @@ Require-Bundle:
  org.eclipse.jface;bundle-version="3.4.0",
  org.eclipse.core.databinding.property;bundle-version="1.1.0",
  org.pushingpixels.trident;bundle-version="1.2.0";resolution:=optional,
- org.eclipse.equinox.common;bundle-version="3.4.0"
+ org.eclipse.equinox.common;bundle-version="3.4.0",
+ org.eclipse.core.databinding.source;bundle-version="1.7.300",
+ com.ibm.icu;bundle-version="63.1.0"
 Export-Package: org.eclipse.xwt,
  org.eclipse.xwt.animation,
  org.eclipse.xwt.annotation,

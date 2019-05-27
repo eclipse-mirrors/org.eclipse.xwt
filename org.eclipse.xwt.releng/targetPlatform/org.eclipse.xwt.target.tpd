@@ -1,0 +1,37 @@
+target "Papyrus Main" with requirements source
+// I-build should be referenced lazily due to their volatility, unless a specific version is needed
+
+/*** Manual referencing ***/
+
+location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20190226160451/repository" {
+	org.pushingpixels.trident
+	org.pushingpixels.trident.source
+}
+
+/*** Update from simrel ***/
+
+//updateFrom("Eclipse",0)
+location platform "http://download.eclipse.org/eclipse/updates/4.12-I-builds/I20190501-1800/" {
+	org.eclipse.sdk.feature.group
+}
+
+//updateFrom("EMF (Core)",0)
+location emf_core "http://download.eclipse.org/modeling/emf/emf/builds/milestone/S201904250840" {
+	org.eclipse.emf.sdk.feature.group
+	org.eclipse.xsd.sdk.feature.group
+}
+
+// updateFrom("SWTBot",0)
+location swtbot "http://download.eclipse.org/technology/swtbot/milestones/2019-06-m2" {
+	org.eclipse.swtbot.junit4_x
+}
+
+//updateFrom("Web Tools 3.14",0)
+location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.14.0/S-3.14.0.M2-20190507042910/repository" {
+	org.eclipse.wst.xml_ui.feature.feature.group
+}
+
+//updateFrom("GEF",0)
+location gef "http://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952" {
+	org.eclipse.gef.sdk.feature.group
+}
