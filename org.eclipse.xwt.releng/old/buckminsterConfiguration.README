@@ -1,0 +1,48 @@
+This build had a buckminster configuration with the following parameters:
+MILESTONE:
+I
+S
+M1-
+M2-
+M3-
+M4-
+M5-
+M6-
+RC1-
+RC2-
+RC3-
+RC4-
+v
+
+A first shell script:
+buckminsterSCript1.sh
+
+A second one:
+buckminsterSCript2.sh
+
+The buckminster configuration:
+Buckminster 4.2, no target platform, Default log level
+and the following commands:
+clean
+import org.eclipse.xwt.releng/build.mspec
+build
+perform org.eclipse.xwt.releng#site.p2
+
+the JVM arguments:
+-Dtarget.os=*
+-Dtarget.ws=*
+-Dtarget.arch=*
+-Dqualifier.replacement.*=generator:buildTimestamp
+-Dgenerator.buildTimestamp.format='${MILESTONE}'yyyyMMdd'-'HHmm
+-Dpde.match.rule.default=compatible
+-Dpde.match.rule.retain.lower=false
+-Dsite.signing=true
+-Dsigning.type=eclipse.local
+-Declipse.staging.area=/home/data/httpd/download-staging.priv/technology/xwt
+
+A third script:
+buckminsterScript2.sh
+
+Then archiving the produced p2 site:
+site.p2.zip
+
