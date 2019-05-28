@@ -236,7 +236,7 @@ public class ASTHelper {
 				createImports(imports, operation.getCreatedImports());
 			}
 			if (doConstructors) {
-				AddUnimplementedConstructorsOperation operation = new AddUnimplementedConstructorsOperation(unit, binding, null, -1, false, true, false);
+				AddUnimplementedConstructorsOperation operation = new AddUnimplementedConstructorsOperation(unit, binding, null, -1, false, true, false, null);
 				operation.setOmitSuper(true);
 				operation.setCreateComments(false);
 				operation.run(null);
