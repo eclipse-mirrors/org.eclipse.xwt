@@ -46,5 +46,3 @@ Export-Package: org.eclipse.xwt.ui.workbench,
    org.eclipse.jface.resource,
    org.eclipse.xwt.databinding,
    org.eclipse.swt.widgets"
-Import-Package: javax.annotation;version="1.0.0",
- javax.inject;version="1.0.0"

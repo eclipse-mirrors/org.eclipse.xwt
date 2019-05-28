@@ -1,4 +1,4 @@
-target "Papyrus Main" with requirements source
+target "XWT Main" with requirements source
 // I-build should be referenced lazily due to their volatility, unless a specific version is needed
 
 /*** Manual referencing ***/
@@ -11,7 +11,7 @@ location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R201902
 /*** Update from simrel ***/
 
 //updateFrom("Eclipse",0)
-location platform "http://download.eclipse.org/eclipse/updates/4.12-I-builds/I20190501-1800/" {
+location platform "http://download.eclipse.org/eclipse/updates/4.12milestones/S-4.12M3-201905221800" {
 	org.eclipse.sdk.feature.group
 }
 
@@ -27,7 +27,7 @@ location swtbot "http://download.eclipse.org/technology/swtbot/milestones/2019-0
 }
 
 //updateFrom("Web Tools 3.14",0)
-location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.14.0/S-3.14.0.M2-20190507042910/repository" {
+location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.14.0/S-3.14.0.M3-20190528041652/repository" {
 	org.eclipse.wst.xml_ui.feature.feature.group
 }
 

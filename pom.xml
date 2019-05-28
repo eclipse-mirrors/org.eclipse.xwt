@@ -34,7 +34,7 @@
 		<mylyn.wikitext.version>3.0.29</mylyn.wikitext.version>
 
 		<!-- SourceReferences -->
-		<tycho.scmUrl>scm:git:git://git.eclipse.org/gitroot/papyrus/org.eclipse.xwt.git</tycho.scmUrl>
+		<tycho.scmUrl>scm:git:git://git.eclipse.org/gitroot/xwt/org.eclipse.xwt.git</tycho.scmUrl>
 	</properties>
 
 	<modules>
