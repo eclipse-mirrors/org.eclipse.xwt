@@ -3,8 +3,14 @@
    <feature url="org.eclipse.xwt.feature_1.4.0.qualifier.jar" id="org.eclipse.xwt.feature" version="1.4.0.qualifier">
       <category name="org.eclipse.xwt.core.category"/>
    </feature>
+   <feature url="org.eclipse.xwt.feature.source_1.4.0.qualifier.jar" id="org.eclipse.xwt.feature.source" version="1.4.0.qualifier">
+      <category name="org.eclipse.xwt.core.category"/>
+   </feature>
      
    <feature url="org.eclipse.xwt.workbench.feature_1.4.0.qualifier.jar" id="org.eclipse.xwt.workbench.feature" version="1.4.0.qualifier">
+      <category name="org.eclipse.xwt.core.category"/>
+   </feature>
+   <feature url="org.eclipse.xwt.workbench.feature.source_1.4.0.qualifier.jar" id="org.eclipse.xwt.workbench.feature.source" version="1.4.0.qualifier">
       <category name="org.eclipse.xwt.core.category"/>
    </feature>
 
