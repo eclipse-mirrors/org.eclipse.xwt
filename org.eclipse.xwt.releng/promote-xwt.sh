@@ -3,11 +3,21 @@
 #You will need to have the 'ssh agent' plugin installed on your instance and configure the credentials for ssh access
 #You can find the needed informations here: https://wiki.eclipse.org/Jenkins#How_do_I_deploy_artifacts_to_download.eclipse.org.3F
 ####################################
-sshGenie="genie.shared"
+sshGenie="genie.xwt"
 sshRemote="projects-storage.eclipse.org"
+alias ll="ls -la"
 
 
 ########### Parameters Initialization ###########
+if ! $PUBLISH ; then
+  exit 0 # nothing to do here
+fi 
+
+if ! $SIGN ; then
+  echo "The sources may not have been signed. Please verify the build and artifacts parameters and try again."
+  exit 1
+fi
+
 #The specific localization
 remoteRoot="/home/data/httpd/download.eclipse.org"
 xwtRoot="xwt"
@@ -21,23 +31,21 @@ else
 fi
 echo $destinationUpdateSite
 
-jobArtifacts=$HOME/.jenkins/jobs/$PROMOTED_JOB_NAME/builds/$PROMOTED_NUMBER/archive
-echo $jobArtifacts
-ls $jobArtifacts
-
-if $SIGN ; then
-  :
-else
-  echo "The sources may not have been signed. Please verify the build and artifacts parameters and try again."
-  exit 
+#jobArtifacts=$HOME/.jenkins/jobs/$PROMOTED_JOB_NAME/builds/$PROMOTED_NUMBER/archive
+jobArtifacts=$HOME/workspace/$JOB_NAME/
+if [ ! -d $jobArtifacts ] ; then
+  echo "No artifact folder was found under the specified $jobArtifacts path"
+  exit 1
 fi
 
-if [ -d $destination ] ; then
-  if [ -d $destinationUpdateSite ] ; then
+echo "$jobArtifacts contains the following :"
+ls $jobArtifacts
+
+if ssh $sshGenie@$sshRemote [ -d $destination ] ; then
+  if ssh $sshGenie@$sshRemote [ -d $destinationUpdateSite ] ; then
     if $OVERRIDE ; then
       echo "Removing previous artifacts"
-      exit 1 #remove this when authorizing overrides
-#      ssh $sshGenie@$sshRemote rm -rf $destinationUpdateSite
+      ssh $sshGenie@$sshRemote rm -rf $destinationUpdateSite
     else
       echo "The milestone already exists. You might want to change the suffix or delete the previous one."
       exit 1
@@ -49,13 +57,37 @@ fi
 ########### Publish Artifacts ###########
 #Go to the artifact directory
 cd $jobArtifacts
+
+# Check the availability of the artifacts to promote before creating anything
+if [ ! -f xwt-archived-p2-site.zip ] ; then
+  echo "There is no xwt-archived-p2-site.zip here."
+  pwd
+  ls
+  exit 1
+fi
+if [ ! -d repository ] ; then
+  echo "There is no repository directory here."
+  pwd
+  ls
+  exit 1
+fi
+
 echo "Promoting the Job to $destinationUpdateSite"
 
 #No error if exists, makes parent directories as needed
+echo "creating $destinationUpdateSite"
 ssh $sshGenie@$sshRemote mkdir -p $destinationUpdateSite
 
+if ssh $sshGenie@$sshRemote [ ! -d $destinationUpdateSite ] ; then
+  echo "The destination folder could not be created. Please look why in the logs."
+  exit 1
+fi
+
 #Copy the contents onto the server folder
-scp *.zip $sshGenie@$sshRemote:$destinationUpdateSite
+echo "copying the zip into $destinationUpdateSite"
+scp xwt-archived-p2-site.zip $sshGenie@$sshRemote:$destinationUpdateSite
+
+echo "copying the p2 repository folder into $destinationUpdateSite"
 scp -r repository/* $sshGenie@$sshRemote:$destinationUpdateSite
 
 
@@ -89,7 +121,7 @@ href="http://wiki.eclipse.org/XWT">wiki</a>.
 ' | ssh $sshGenie@$sshRemote -T "cat > $1/index.html"
 }
 echo "Create index.html file for the new repository"
-cerateIndexFile $destinationUpdateSite
+createIndexFile $destinationUpdateSite
 
 
 ########### Set Access Rights ###########
@@ -103,5 +135,4 @@ setAccessRights $destinationUpdateSite
 
 
 echo "publishing done."
-
 
