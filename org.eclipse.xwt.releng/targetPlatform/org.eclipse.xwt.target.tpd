@@ -3,7 +3,7 @@ target "XWT Main" with requirements source
 
 /*** Manual referencing ***/
 
-location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20190226160451/repository" {
+location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20190602212107/repository/" {
 	org.pushingpixels.trident
 	org.pushingpixels.trident.source
 }
@@ -11,23 +11,23 @@ location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R201902
 /*** Update from simrel ***/
 
 //updateFrom("Eclipse",0)
-location platform "http://download.eclipse.org/eclipse/updates/4.12milestones/S-4.12M3-201905221800" {
+location platform "https://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/" {
 	org.eclipse.sdk.feature.group
 }
 
 //updateFrom("EMF (Core)",0)
-location emf_core "http://download.eclipse.org/modeling/emf/emf/builds/milestone/S201904250840" {
+location emf_core "http://download.eclipse.org/modeling/emf/emf/builds/release/2.18" {
 	org.eclipse.emf.sdk.feature.group
 	org.eclipse.xsd.sdk.feature.group
 }
 
 // updateFrom("SWTBot",0)
-location swtbot "http://download.eclipse.org/technology/swtbot/milestones/2019-06-m2" {
+location swtbot "http://download.eclipse.org/technology/swtbot/releases/2.8.0" {
 	org.eclipse.swtbot.junit4_x
 }
 
 //updateFrom("Web Tools 3.14",0)
-location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.14.0/S-3.14.0.M3-20190528041652/repository" {
+location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.14.0/R-3.14.0-20190612230649//repository" {
 	org.eclipse.wst.xml_ui.feature.feature.group
 }
 
