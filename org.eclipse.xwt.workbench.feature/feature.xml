@@ -15,7 +15,7 @@
       version="1.4.0.qualifier"
       provider-name="%providerName"
       license-feature="org.eclipse.license"
-      license-feature-version="0.0.0">
+      license-feature-version="2.0.2">
 
    <description>
       %description

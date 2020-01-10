@@ -3,35 +3,35 @@ target "XWT Main" with requirements source
 
 /*** Manual referencing ***/
 
-location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20190602212107/repository/" {
-	org.pushingpixels.trident
-	org.pushingpixels.trident.source
+location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20191126223242/repository" {
+	org.pushingpixels.trident lazy
+	org.pushingpixels.trident.source lazy
 }
 
 /*** Update from simrel ***/
 
 //updateFrom("Eclipse",0)
-location platform "https://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/" {
-	org.eclipse.sdk.feature.group
+location platform "https://download.eclipse.org/eclipse/updates/4.14/R-4.14-201912100610/" {
+	org.eclipse.sdk.feature.group lazy
 }
 
 //updateFrom("EMF (Core)",0)
-location emf_core "http://download.eclipse.org/modeling/emf/emf/builds/release/2.18" {
-	org.eclipse.emf.sdk.feature.group
-	org.eclipse.xsd.sdk.feature.group
+location emf_core "http://download.eclipse.org/modeling/emf/emf/builds/milestone/S202001070458" {
+	org.eclipse.emf.sdk.feature.group lazy
+	org.eclipse.xsd.sdk.feature.group lazy
 }
 
 // updateFrom("SWTBot",0)
-location swtbot "http://download.eclipse.org/technology/swtbot/releases/2.8.0" {
-	org.eclipse.swtbot.junit4_x
+location swtbot "https://download.eclipse.org/technology/swtbot/releases/2.8.0/" {
+	org.eclipse.swtbot.junit4_x lazy
 }
 
-//updateFrom("Web Tools 3.14",0)
-location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.14.0/R-3.14.0-20190612230649//repository" {
-	org.eclipse.wst.xml_ui.feature.feature.group
+//updateFrom("Web Tools Platform 3.16 for Simrel 2019-12",0)
+location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.16.0/S-3.16.0.RC2-20191210070716/repository/" {
+	org.eclipse.wst.xml_ui.feature.feature.group lazy
 }
 
 //updateFrom("GEF",0)
-location gef "http://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952" {
-	org.eclipse.gef.sdk.feature.group
+location gef "https://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952" {
+	org.eclipse.gef.sdk.feature.group lazy
 }
