@@ -1,6 +1,0 @@
-<Composite xmlns="http://www.eclipse.org/xwt/presentation">
-	<Composite.layout>
-		<GridLayout numColumns="2" />
-	</Composite.layout>
-	<Text background="SWT.COLOR_BLUE" />
-</Composite>

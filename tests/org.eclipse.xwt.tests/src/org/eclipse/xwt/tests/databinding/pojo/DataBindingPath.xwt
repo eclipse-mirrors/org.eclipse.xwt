@@ -1,0 +1,48 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.databinding.pojo"
+	x:Class="org.eclipse.xwt.tests.databinding.pojo.DataBindingPath"
+	Size="400, 300"
+	x:Name="Root"
+	DataContext="{StaticResource myData}">
+	<Shell.layout>
+		<GridLayout numColumns="3"/>
+	</Shell.layout>
+	
+	<Shell.Resources>
+		<y:Company x:Key="myData"/>
+	</Shell.Resources>
+	
+	<Label text="Name"/>
+	<Text Name="ManagerCity" x:style="BORDER" text="{Binding Path=manager.address.city}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	<Label text="{Binding Path=manager.name}">
+		<Label.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Label.layoutData>
+	</Label>
+	<Text x:style="BORDER" text="{Binding Path=manager.age}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	<Button x:style="CHECK" selection="{Binding Path=manager.maried}" text="Maried">
+		<Button.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Button.layoutData>
+	</Button>
+	<Combo text="{Binding Path=manager.nationality}">
+		<Combo.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Combo.layoutData>
+	</Combo>
+	<Button Name="Button" Text="New Manager" SelectionEvent="onNew"/>
+</Shell>

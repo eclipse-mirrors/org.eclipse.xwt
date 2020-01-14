@@ -1,0 +1,9 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    xmlns:j="clr-namespace:org.eclipse.xwt.tests.resourcesdictionary"
+    x:Class="j:Name">	
+	<Composite.Resources>
+		<j:MyData x:Key="myDBC1"/>
+		<j:MyData x:Key="myDBC2"/>
+	</Composite.Resources>
+</Composite>

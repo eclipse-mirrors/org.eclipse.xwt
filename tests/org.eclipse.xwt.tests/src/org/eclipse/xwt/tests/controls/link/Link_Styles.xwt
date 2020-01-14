@@ -1,0 +1,11 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt" xmlns:java="clr-namespace:org.eclipse.xwt.tests.controls.link">
+	<Composite.layout>
+		<GridLayout />
+	</Composite.layout>
+	<Link text="{x:Static java:Messages.LinkText}"></Link>
+
+	<!--  <A HREF="http://www.soyatec.com"> Soyatec Web Site. </A>	-->
+	<Link 
+		text="Visit &lt;A HREF=&quot;http://www.soyatec.com&quot;&gt; Soyatec Web Site. &lt;/A&gt;"></Link>
+</Composite>

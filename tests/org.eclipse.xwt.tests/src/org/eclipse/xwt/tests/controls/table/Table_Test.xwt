@@ -1,0 +1,29 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    xmlns:j="clr-namespace:java.lang"
+    text="Table Test">
+	<Shell.layout>
+		<GridLayout numColumns="1"/>
+	</Shell.layout>
+	<Table x:style="BORDER|SINGLE|FULL_SELECTION" HeaderVisible="true" LinesVisible="true">
+		<TableColumn width="150" text="Name"/>
+		<TableColumn width="150" text="Age"/>
+
+		<TableItem>
+			<!--Use Array Element-->
+			<TableItem.texts>
+				<x:Array Type="j:String">
+					<j:String>Line-Name1</j:String>
+					<j:String>Line-Age1</j:String>
+				</x:Array>
+			</TableItem.texts>	
+		</TableItem>
+		<TableItem>
+			<!--Use texts Lists directly-->
+			<TableItem.texts>
+				<j:String>Line-Name2</j:String>
+				<j:String>Line-Age2</j:String>
+			</TableItem.texts>	
+		</TableItem>
+	</Table>
+</Shell>

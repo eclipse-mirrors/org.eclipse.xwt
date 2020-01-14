@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<link href="../../book.css" rel="stylesheet" type="text/css" />
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Style</title>
+</head>
+
+<body>
+<h1>Style</h1>
+
+<p>All the controls in XWT are support the feature "Style". By using
+styles, user can define a common appearance such as fonts, colors and
+images to a control.</p>
+
+<!--  
+<p>Style define the pieces that mark up a control respectively. All
+the control in XWT are support this feature. By using styles, you can
+modify the default values of properties that are set on the control to
+which the style is applied. For example, you can select a style object
+where you can define a common appearance such as fonts, colors and
+images.</p>
+-->
+
+<!-- 
+<p>These style properties can be overridden by the values that are
+set on the control itself. For example, if you set the background color
+to red in the style of a Label, the Label will appear red when it is
+drawn on the live display area.</p>
+
+<p><img src="images/mac-feature_11.png" /></p>
+ -->
+
+<p>The controls in XWT have a default style, users can change it by
+setting Style property. For example, we can set a Control's background
+red with the following code.</p>
+
+<!-- 
+<pre>
+<span class="XMLElementTag">&lt;Composite</span> <span
+	class="XMLAttrTag">xmlns</span>=<span class="XMLAttrValue">"http://www.eclipse.org/xwt/presentation"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">xmlns:x</span>=<span
+	class="XMLAttrValue">"http://www.eclipse.org/xwt"</span><span
+	class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Composite.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;GridLayout</span> <span class="XMLAttrTag">numColumns</span>=<span
+	class="XMLAttrValue">"2"</span><span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Composite.layout&gt;</span>	
+	
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Composite.Resources&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Style</span> <span class="XMLAttrTag">x:Key</span>=<span
+	class="XMLAttrValue">"myStyle"</span><span class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Setter</span> <span class="XMLAttrTag">Property</span>=<span
+	class="XMLAttrValue">"Background"</span> <span class="XMLAttrTag">Value</span>=<span
+	class="XMLAttrValue">"Red"</span><span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;/Style&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Composite.Resources&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Label</span> <span
+	class="XMLAttrTag">Style</span>=<span class="XMLAttrValue">"{StaticResource myStyle}"</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"Hello"</span><span
+	class="XMLElementTag">/&gt;</span>
+<span class="XMLElementTag">&lt;/Composite&gt;</span>
+</pre>
+ -->
+<pre>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Composite.Resources&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Style</span> <span class="XMLAttrTag">x:Key</span>=<span
+	class="XMLAttrValue">"myStyle"</span><span class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Setter</span> <span class="XMLAttrTag">Property</span>=<span
+	class="XMLAttrValue">"Background"</span> <span class="XMLAttrTag">Value</span>=<span
+	class="XMLAttrValue">"Red"</span><span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;/Style&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Composite.Resources&gt;</span>
+</pre>
+
+<p>The above code is only the defined resource, can do nothing
+without controls. <tt>x:Key="myStyle"</tt> is used to define the
+Resourcekey for this requested resource. User can specifying the value
+of the ResourceKey property by using StaticeResource. There list a Label
+for example.</p>
+
+<pre>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Label</span> <span
+	class="XMLAttrTag">Style</span>=<span class="XMLAttrValue">"{StaticResource myStyle}"</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"Hello"</span><span
+	class="XMLElementTag">/&gt;</span>
+</pre>
+***************photos******************
+<p><img src="images/" /></p>
+
+<p>The Style feature also can be applied for the integrated
+applications. There is a little different from the above sample. In the
+above sample, Style resource is defined stand along with a key. Any
+controls can use it with the key. But here, the resource is bind to
+define the integrated applications.</p>
+
+<pre>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Composite.Resources&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Style</span> <span class="XMLAttrTag">TargetType</span>=<span class="XMLAttrValue">"{x:Type j:MyUserControl}"</span><span class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Setter</span> <span class="XMLAttrTag">Property</span>=<span class="XMLAttrValue">"Background"</span> <span class="XMLAttrTag">Value</span>=<span class="XMLAttrValue">"Red"</span><span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Style&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Composite.Resources&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;j:MyUserControl/&gt;</span>
+</pre>
+
+
+
+<p><img src="images/" /></p>
+<!-- 
+<p>Otherwise, it is possible to define a style for a specific type.
+It is applied to all UI elements of this type under the UI tree
+structure. For example, MyUserControl component is a Label with text
+"Hello, world". We can embed it into MyUserControl_default_x_Customized
+component with a style.</p>
+
+<p><img src="images/mac-feature_13.png" /></p>
+ -->
+</body>
+<p><img src="../../cpy.png" /></p>
+</html>

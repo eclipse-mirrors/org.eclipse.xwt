@@ -1,0 +1,26 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.databinding.dataprovider.custom"
+	Size="400, 300">
+	<Shell.layout>
+		<GridLayout numColumns="3"/>
+	</Shell.layout>
+	
+	<Shell.Resources>
+		<y:CustomDataProvider x:Key="myBook" ObjectInstance="{Binding}"/>
+	</Shell.Resources>
+	
+	<Label text="Title: "/>
+	<Text x:style="BORDER" text="{Binding Source={StaticResource myBook}, Path=title}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	<Label text="{Binding Source={StaticResource myBook}, Path=title}">
+		<Label.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Label.layoutData>
+	</Label>
+</Shell>

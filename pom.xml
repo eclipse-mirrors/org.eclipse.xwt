@@ -38,37 +38,10 @@
 	</properties>
 
 	<modules>
-		<module>org.eclipse.xwt.releng</module>
-		<module>org.eclipse.xwt</module>
-		<module>org.eclipse.xwt.css</module>
-		<module>org.eclipse.xwt.css.tests</module>
-		<!-- <module>org.eclipse.xwt.doc</module> -->
-		<!-- <module>org.eclipse.xwt.doc.user</module> -->
-		<module>org.eclipse.xwt.e4</module>
-		<module>org.eclipse.xwt.emf</module>
-		<module>org.eclipse.xwt.emf.test</module>
-		<module>org.eclipse.xwt.feature</module>
-		<module>org.eclipse.xwt.forms</module>
-		<module>org.eclipse.xwt.pde</module>
-		<module>org.eclipse.xwt.snippets</module>
-		<module>org.eclipse.xwt.snippets.tests</module>
-		<module>org.eclipse.xwt.tests</module>
-		<module>org.eclipse.xwt.tests.feature</module>
-		<module>org.eclipse.xwt.tools.categorynode</module>
-		<module>org.eclipse.xwt.tools.categorynode.edit</module>
-		<module>org.eclipse.xwt.tools.feature</module>
-		<module>org.eclipse.xwt.tools.ui</module>
-		<module>org.eclipse.xwt.tools.ui.designer</module>
-		<module>org.eclipse.xwt.tools.ui.designer.core</module>
-		<module>org.eclipse.xwt.tools.ui.editor</module>
-		<module>org.eclipse.xwt.tools.ui.imagecapture</module>
-		<module>org.eclipse.xwt.tools.ui.palette</module>
-		<module>org.eclipse.xwt.tools.ui.vex</module>
-		<module>org.eclipse.xwt.tools.ui.workbench</module>
-		<module>org.eclipse.xwt.tools.ui.xaml</module>
-		<module>org.eclipse.xwt.ui.workbench</module>
-		<module>org.eclipse.xwt.workbench.feature</module>
-		<module>org.eclipse.xwt.xml</module>
+		<module>features</module>
+		<module>plugins</module>
+		<module>tests</module>
+		<module>releng</module>
 	</modules>
 
 	<pluginRepositories>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<link href="../../book.css" rel="stylesheet" type="text/css" />
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Internationalization</title>
+</head>
+
+<body>
+<h1>Internationalization</h1>
+<p>Internationalization is the process of making software that
+accommodates differences in language, culture and hardware.
+Internationalization presents users with a consistent look, feel and
+functionality across different language editions of a product.</p>
+
+<p>The XWT is internationalization support, in this section, we will
+move with an example to understand internationalization.</p>
+
+<p>First thing we will require for internationalization is a set of
+properties files. Each file contains a key/value pair for each message
+that you expect your application to present. The naming format for these
+files are <b>*.properties</b>.</p>
+<p><image src="images/i18n_05.png" /></p>
+
+<p>Besides, There need to a special java file for bind. The <b>BUNDLE_NAME</b>
+is a String type which specifies the path of the message.properties
+file. And also the key "title" in <b>*.Properties</b> file should be
+declaration here as String.</p>
+<p><image src="images/i18n_06.png" /></p>
+
+<p>The text of the button is specified as "x:Static
+java:Message.title". It bind to the value of title which defined in
+message.properties file.</p>
+<p><image src="images/i18n_04.png" /></p>
+
+</body>
+<p><img src="../../cpy.png" /></p>
+</html>

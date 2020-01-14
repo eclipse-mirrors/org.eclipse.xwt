@@ -1,9 +1,0 @@
-<TableViewer xmlns="http://www.eclipse.org/xwt/presentation"
-    xmlns:x="http://www.eclipse.org/xwt"
-    xmlns:j="clr-namespace:java.lang"
-    Name="TableViewer">
-	<TableViewer.columns>
-		<TableViewerColumn width="80" text="column0"/>
-		<TableViewerColumn width="80" text="column1"/>
-	</TableViewer.columns>
-</TableViewer>

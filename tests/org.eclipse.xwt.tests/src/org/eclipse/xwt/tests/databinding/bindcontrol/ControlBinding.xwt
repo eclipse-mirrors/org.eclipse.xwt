@@ -1,0 +1,30 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt">
+	<Shell.layout>
+		<FormLayout />
+	</Shell.layout>
+	<Button x:Name="Button1" text="button1">
+		<Button.layoutData>
+			<FormData>
+				<FormData.top>
+					<FormAttachment numerator="20" offset="0" />
+				</FormData.top>
+				<FormData.left>
+					<FormAttachment numerator="10" offset="0" />
+				</FormData.left>
+			</FormData>
+		</Button.layoutData>
+	</Button>
+	<Button text="button2">
+		<Button.layoutData>
+			<FormData>
+				<FormData.top>
+					<FormAttachment control="{Binding ElementName=Button1}"
+						offset="0" />
+				</FormData.top>
+				<FormData.left>
+					<FormAttachment numerator="50" offset="0" />
+				</FormData.left>
+			</FormData>
+		</Button.layoutData>
+	</Button>
+</Shell>

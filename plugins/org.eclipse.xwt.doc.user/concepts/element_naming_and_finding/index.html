@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<link href="../../book.css" rel="stylesheet" type="text/css" />
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Element naming and finding</title>
+</head>
+
+<body>
+<h1>Naming and Element finding</h1>
+<p>Naming a UI component is used to find an element by a unique name
+in UI structure tree. This concept is used both in Java class by
+programming and in XML via Control Binding concept.</p>
+<p>The name must be in unique in a scope, named as &quot;Named
+scope&quot;. The named scope corresponds with an XWT resource file.</p>
+<h2>Finding in Java</h2>
+<p>XWT uses x:Name property or Name property to name a component.
+This section will show how to name an element and how to find an element
+by its name in Java class.</p>
+
+<p>In the example below, we will create a Label named Message and a
+Button.</p>
+<p>XAML:</p>
+
+<pre>
+<span class="XMLElementTag">&lt;Shell</span> <span class="XMLAttrTag">xmlns</span>=<span
+	class="XMLAttrValue">"http://www.eclipse.org/xwt/presentation"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">xmlns:x</span>=<span
+	class="XMLAttrValue">"http://www.eclipse.org/xwt"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">x:Class</span>=<span
+	class="XMLAttrValue">"org.eclipse.xwt.tests.name.Name_x"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">text</span>=<span
+	class="XMLAttrValue">"NameT test"</span><span class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Shell.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;GridLayout</span> <span class="XMLAttrTag">numColumns</span>=<span
+	class="XMLAttrValue">"2"</span> <span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Shell.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Label</span> <span
+	class="XMLAttrTag">Name</span>=<span class="XMLAttrValue">"Message"</span> <span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Button</span> <span
+	class="XMLAttrTag">SelectionEvent</span>=<span class="XMLAttrValue">"handleButton"</span> <span
+	class="XMLAttrTag">Text</span>=<span class="XMLAttrValue">"Click Here"</span> <span
+	class="XMLElementTag">/&gt;</span>
+<span class="XMLElementTag">&lt;/Shell&gt;</span>
+</pre>
+
+<p>Consider the example above, the Label gets a name "Message", and
+set the contents of the button with string "Click Here". Then we add an
+event handling here by SelectionEvent property and named the event
+"handleButton". In the rendered window, when we click the button, the
+handleButton tries to find the Label. If it works, dialog "Name works"
+will pop-up. Otherwise, an error dialog "Label message is not found"
+will open instead. Please see the Java code below.</p>
+
+<p>Java:</p>
+<pre>
+<span class="JavaKeyword">protected void</span> handleButton(Event event) {
+&nbsp;&nbsp;&nbsp;&nbsp;Label message = (Label) XWT.findElementByName(event.widget, "Message");
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="JavaKeyword">if</span> (message == null) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MessageDialog.openError(XWT.findShell(event.<span
+	class="JavaMember">widget</span>), <span class="JavaString">"Test Name"</span>, <span
+	class="JavaString">"Label message is not found"</span>);
+&nbsp;&nbsp;&nbsp;&nbsp;} <span class="JavaKeyword">else</span> {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MessageDialog.openInformation(XWT.findShell(event.<span
+	class="JavaMember">widget</span>), <span class="JavaString">"Test Name"</span>, <span
+	class="JavaString">"Name works."</span>);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+</pre>
+
+<p>The first argument of findElementByName() indicates the start
+point of search. Precisely, the search starts with its NamedScope. If
+the name is not find in the current NamedScope, the search will proceed
+in its parent NamedScope. The &quot;null&quot; will be returned if the
+name is not found in the entire tree structure.<br>
+</p>
+<h2>Element Finding</h2>
+<p>In XWT XML, an element also can be found by its name. It mostly
+used in control binding. Control binding is used to establish a
+connection among two or more UI elements.</p>
+
+<pre>
+<span class="XMLElementTag">&lt;Shell</span> <span class="XMLAttrTag">xmlns</span>=<span
+	class="XMLAttrValue">"http://www.eclipse.org/xwt/presentation"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">xmlns:x</span>=<span
+	class="XMLAttrValue">"http://www.eclipse.org/xwt"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">x:Class</span>=<span
+	class="XMLAttrValue">"org.eclipse.xwt.tests.layout.FormLayout_Test"</span><span
+	class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Shell.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;FormLayout /&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Shell.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Group</span> <span
+	class="XMLAttrTag">text</span>=<span class="XMLAttrValue">"layout"</span><span
+	class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Group.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;FormLayout /&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;/Group.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Group.layoutData&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;GridData</span> <span class="XMLAttrTag">horizontalAlignment</span>=<span
+	class="XMLAttrValue">"FILL"</span> <span class="XMLAttrTag">verticalAlignment</span>=<span
+	class="XMLAttrValue">"FILL"</span><span class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;/GridData&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;/Group.layoutData&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Button</span> <span class="XMLAttrTag">x:Name</span>=<span
+	class="XMLAttrValue">"Button1"</span> <span class="XMLAttrTag">text</span>=<span
+	class="XMLAttrValue">"button1"</span><span class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Button.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;FormData</span> <span class="XMLAttrTag">top</span>=<span
+	class="XMLAttrValue">"10, 10"</span> <span class="XMLAttrTag">left</span>=<span
+	class="XMLAttrValue">"0, 10"</span> <span class="XMLAttrTag">bottom</span>=<span
+	class="XMLAttrValue">"30, 0"</span> <span class="XMLAttrTag">right</span>=<span
+	class="XMLAttrValue">"40, 0"</span> <span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;/Button.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;/Button&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Button</span> <span class="XMLAttrTag">text</span>=<span
+	class="XMLAttrValue">"button2"</span><span class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Button.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;FormData</span> <span class="XMLAttrTag">top</span>=<span
+	class="XMLAttrValue">"{Binding ElementName=Button1}, 10"</span> <span
+	class="XMLAttrTag">left</span>=<span class="XMLAttrValue">"0, 0"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLAttrTag">bottom</span>=<span class="XMLAttrValue">"40, 0"</span> <span
+	class="XMLAttrTag">right</span>=<span class="XMLAttrValue">"40, 0"</span> <span
+	class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;/Button.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;/Button&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Group&gt;</span>
+<span class="XMLElementTag">&lt;/Shell&gt;</span>
+</pre>
+
+<p>Consider the above example, it start to search from <tt>top="{Binding
+ElementName=Button1}</tt>, it try to find the element named <tt>Button1</tt>
+in the current NamedScope, if not found, the search will proceed in its
+parent NamedScope. If the element is exist in the tree structure and it
+has the correct settings. the <tt>top</tt> property of the second button
+synchronized with <tt>Button1</tt>, Or the code will show error.</p>
+
+
+</body>
+<p><img src="../../cpy.png" /></p>
+</html>

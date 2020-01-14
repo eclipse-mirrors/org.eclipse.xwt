@@ -1,0 +1,81 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    x:Class="org.eclipse.xwt.tests.controls.toolbar.ToolBar_Styles"
+    xmlns:j="clr-namespace:java.lang"
+    text="ToolBar Styles Test">
+	<Shell.layout>
+		<GridLayout numColumns="1"/>
+	</Shell.layout>
+	<Group text="Image ToolBar">
+		<Group.layoutData>
+			<GridData horizontalAlignment="FILL" verticalAlignment="FILL"/>
+		</Group.layoutData>
+		<Group.layout>
+			<GridLayout/>
+		</Group.layout>
+		<ToolBar x:style="HORIZONTAL |SHADOW_OUT">
+			<ToolItem x:style="PUSH" Image="openFolder.gif" tooltipText="SWT.PUSH"/>
+			<ToolItem x:style="PUSH" Image="openFolder.gif" tooltipText="SWT.PUSH"/>
+			<ToolItem x:style="RADIO" selection="true" Image="closedFolder.gif" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="RADIO" Image="closedFolder.gif" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="CHECK" selection="true"  Image="target.gif" tooltipText="SWT.CHECK"/>
+			<ToolItem x:style="RADIO" Image="closedFolder.gif" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="RADIO" selection="true" Image="closedFolder.gif" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="SEPARATOR" tooltipText="SWT.SEPARATOR"/>
+			<ToolItem x:Name="imageItem" x:style="DROP_DOWN" Image="target.gif" tooltipText="SWT.DROP_DOWN" SelectionEvent="handleDropDown"/>
+		</ToolBar>
+	</Group>
+	<Group text="Text ToolBar">
+		<Group.layoutData>
+			<GridData horizontalAlignment="FILL" verticalAlignment="FILL"/>
+		</Group.layoutData>
+		<Group.layout>
+			<GridLayout/>
+		</Group.layout>
+		<ToolBar x:style="HORIZONTAL | FLAT">
+			<ToolItem x:style="PUSH" text="Push" tooltipText="SWT.PUSH"/>
+			<ToolItem x:style="PUSH" text="Push" tooltipText="SWT.PUSH"/>
+			<ToolItem x:style="RADIO" selection="true" text="Radio" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="RADIO" text="Radio" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="CHECK" selection="true" text="Check" tooltipText="SWT.CHECK"/>
+			<ToolItem x:style="RADIO" text="Radio" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="RADIO" selection="true" text="Radio" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="SEPARATOR" tooltipText="SWT.SEPARATOR"/>
+			<ToolItem x:Name="textItem" x:style="DROP_DOWN" text="Drop Down" tooltipText="SWT.DROP_DOWN" SelectionEvent="handleDropDown"/>
+		</ToolBar>
+	</Group>
+	<Group text="Image and Text ToolBar">
+		<Group.layoutData>
+			<GridData horizontalAlignment="FILL" verticalAlignment="FILL"/>
+		</Group.layoutData>
+		<Group.layout>
+			<GridLayout/>
+		</Group.layout>
+		<ToolBar x:style="VERTICAL | RIGHT | FLAT">
+			<ToolItem x:style="PUSH" text="Push" Image="openFolder.gif" tooltipText="SWT.PUSH"/>
+			<ToolItem x:style="PUSH" text="Push" Image="openFolder.gif" tooltipText="SWT.PUSH"/>
+			<ToolItem x:style="RADIO" text="Radio" Image="closedFolder.gif" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="RADIO" text="Radio" Image="closedFolder.gif" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="CHECK" text="Check" Image="target.gif" tooltipText="SWT.CHECK"/>
+			<ToolItem x:style="RADIO" text="Radio" Image="closedFolder.gif" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="RADIO" text="Radio" Image="closedFolder.gif" tooltipText="SWT.RADIO"/>
+			<ToolItem x:style="SEPARATOR" tooltipText="SWT.SEPARATOR"/>
+			<ToolItem x:Name="imageTextItem" x:style="DROP_DOWN" text="Drop Down" Image="target.gif" tooltipText="SWT.DROP_DOWN" SelectionEvent="handleDropDown"/>
+			<ToolItem x:style="SEPARATOR" tooltipText="With a Combo">
+				<ToolItem.control>
+					<Combo>
+						<Combo.items>
+							<x:Array Type="j:String">
+								<j:String>0</j:String>
+								<j:String>1</j:String>
+								<j:String>2</j:String>
+								<j:String>3</j:String>
+							</x:Array>
+						</Combo.items>
+					</Combo>
+				</ToolItem.control>
+			</ToolItem>
+		</ToolBar>
+	</Group>
+</Shell>
+

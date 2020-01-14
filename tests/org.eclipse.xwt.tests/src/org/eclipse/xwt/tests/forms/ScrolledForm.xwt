@@ -1,0 +1,38 @@
+<ScrolledForm text="Form title"
+    xmlns="http://www.eclipse.org/xwt/presentation"
+xmlns:x="http://www.eclipse.org/xwt"
+	name="ScrolledForm" >
+    <ScrolledForm.body>
+        <ScrolledForm.body.layout>
+            <GridLayout numColumns="1" />
+        </ScrolledForm.body.layout>
+        <SashForm name="ScrolledForm.SashForm">
+            <Section name="ScrolledForm.SashForm.Section1"
+x:style="Section.TITLE_BAR|Section.TWISTIE|Section.EXPANDED"
+                text="Section One">
+                <Section.client>
+                    <Composite name="ScrolledForm.SashForm.Section1.Composite">
+                        <Composite.layout>
+                            <GridLayout numColumns="2" />
+                        </Composite.layout>
+                        <Label name="ScrolledForm.SashForm.Section1.Composite.Label" text="Your Name" />
+                        <Text name="ScrolledForm.SashForm.Section1.Composite.Text" x:style="BORDER" text="my name">
+                            <Text.layoutData>
+                                <GridData horizontalAlignment="FILL"
+                                    grabExcessHorizontalSpace="true" />
+                            </Text.layoutData>
+                        </Text>
+                    </Composite>
+                </Section.client>
+            </Section>
+            <Section name="ScrolledForm.SashForm.Section2"
+x:style="Section.TITLE_BAR|Section.TWISTIE|Section.EXPANDED"
+                text="Section Two">
+                <Section.client>
+                    <Label name="ScrolledForm.SashForm.Section2.Label" text="test" />
+                </Section.client>
+            </Section>
+        </SashForm>
+        <Label name="ScrolledForm.Label" text="DUMMY" />
+    </ScrolledForm.body>
+</ScrolledForm>

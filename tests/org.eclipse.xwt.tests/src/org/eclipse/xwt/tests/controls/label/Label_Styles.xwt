@@ -1,0 +1,9 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    text="Label Styles Test">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	<Label text="Separator(Horizontal): "/><Label x:style="SEPARATOR | HORIZONTAL"/>
+	<Label text="Separator(Vertical): "/><Label x:style="SEPARATOR | VERTICAL"/>
+</Shell>

@@ -1,9 +1,0 @@
-<Composite xmlns="http://www.eclipse.org/xwt/presentation"
-    xmlns:x="http://www.eclipse.org/xwt"
-    xmlns:c="clr-namespace:org.eclipse.xwt.tests.clrfactory"
-    x:ClassFactory="c:CLRFactory">
-	<Composite.layout>
-		<GridLayout numColumns="2"/>
-	</Composite.layout>
-	<Button name="button" text="XWT CLRFactory" selectionEvent="select"/>
-</Composite>

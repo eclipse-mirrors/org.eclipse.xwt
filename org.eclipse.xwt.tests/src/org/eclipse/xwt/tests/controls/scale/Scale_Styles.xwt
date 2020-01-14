@@ -1,8 +1,0 @@
-<Composite xmlns="http://www.eclipse.org/xwt/presentation"
-    xmlns:x="http://www.eclipse.org/xwt">
-	<Composite.layout>
-		<GridLayout numColumns="2"/>
-	</Composite.layout>
-	<Label text="Scale(Horizontal): "/><Scale x:style="HORIZONTAL"/>
-	<Label text="Scale(Vertical): "/><Scale x:style="VERTICAL"/>
-</Composite>

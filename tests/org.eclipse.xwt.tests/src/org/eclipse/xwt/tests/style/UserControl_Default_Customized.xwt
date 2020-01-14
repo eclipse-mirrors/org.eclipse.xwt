@@ -1,0 +1,14 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:j="clr-namespace:org.eclipse.xwt.tests.style">
+	<Composite.layout>
+		<GridLayout numColumns="2"/>
+	</Composite.layout>	
+	
+	<Composite.Resources>
+		<Style x:Key="any" TargetType="j:MyUserControl">
+			<Setter Property="Background" Value="Red"/>
+		</Style>
+	</Composite.Resources>
+	<j:MyUserControl Text="Hello"/>
+</Composite>

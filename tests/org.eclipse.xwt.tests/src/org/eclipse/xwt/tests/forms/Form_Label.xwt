@@ -1,0 +1,14 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt">
+    <Composite.layout>
+        <GridLayout numColumns="1" />
+    </Composite.layout>
+    <Form name="Form" text="Form Header Title">
+        <Form.body.layout>
+            <GridLayout numColumns="1" />
+        </Form.body.layout>
+        <Form.body>
+	        <Label name="Form.Label" text="form label" />
+        </Form.body>
+    </Form>
+</Composite>

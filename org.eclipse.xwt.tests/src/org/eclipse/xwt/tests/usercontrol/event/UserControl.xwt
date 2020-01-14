@@ -1,8 +1,0 @@
-<j:UserControl xmlns="http://www.eclipse.org/xwt/presentation"
-	xmlns:x="http://www.eclipse.org/xwt"
-	xmlns:j="clr-namespace:org.eclipse.xwt.tests.usercontrol">
-	<j:UserControl.layout>
-		<GridLayout numColumns="2"/>
-	</j:UserControl.layout>	
-	<Button text="Hello, world" SelectionEvent="selection"/>
-</j:UserControl>

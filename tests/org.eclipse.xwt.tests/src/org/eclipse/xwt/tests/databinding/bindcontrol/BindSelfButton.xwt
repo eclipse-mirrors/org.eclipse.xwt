@@ -1,0 +1,12 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.databinding" Size="400, 300">
+	<Shell.layout>
+		<GridLayout numColumns="1" />
+	</Shell.layout>
+	<Button x:Style="CHECK" x:Name="theTextBox" text="{Binding ElementName=theTextBox, Path=selection}">
+		<Button.layoutData>
+			<GridData horizontalAlignment="FILL"
+				grabExcessHorizontalSpace="true" />
+		</Button.layoutData>
+	</Button>
+</Shell>

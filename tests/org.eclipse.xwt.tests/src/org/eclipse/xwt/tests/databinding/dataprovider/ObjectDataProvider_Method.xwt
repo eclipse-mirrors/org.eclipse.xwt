@@ -1,0 +1,64 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.databinding.dataprovider"
+	xmlns:j="clr-namespace:java.lang"
+	Size="400, 300">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	
+	<Shell.Resources>
+		<ObjectDataProvider x:Key="myBook" ObjectType="{x:Type y:Bookstore}" MethodName="getBook">
+			<ObjectDataProvider.MethodParameters>
+				<j:String>Harry Potter</j:String>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+	</Shell.Resources>
+
+	<Group text="Title" dataContext="{Binding Source={StaticResource myBook}, path=title}" >	
+		<Group.layout>
+			<GridLayout numColumns="2"/>
+		</Group.layout>
+		<Label text="Language"/>
+		<Text x:style="BORDER" text="{Binding path=lang}">
+			<Text.layoutData>
+				<GridData horizontalAlignment="FILL"
+	         		grabExcessHorizontalSpace="true"/>
+			</Text.layoutData>
+		</Text>
+		<Label text="Text"/>
+		<Text x:style="BORDER" text="{Binding path=text}">
+			<Text.layoutData>
+				<GridData horizontalAlignment="FILL"
+	         		grabExcessHorizontalSpace="true"/>
+			</Text.layoutData>
+		</Text>
+		<Group.layoutData>
+			<GridData horizontalAlignment="FILL"
+				horizontalSpan="2"
+         		grabExcessHorizontalSpace="true"/>
+		</Group.layoutData>
+	</Group>
+	<Label text="Price"/>
+	<Text x:style="BORDER" text="{Binding Source={StaticResource myBook}, Path=price}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	<Label text="{Binding Source={StaticResource myBook},path=title.lang}">
+		<Label.layoutData>
+			<GridData widthHint="100"/>
+		</Label.layoutData>
+	</Label>
+	<Label text="{Binding Source={StaticResource myBook},path=title.text}">
+		<Label.layoutData>
+			<GridData widthHint="100"/>
+		</Label.layoutData>
+	</Label>
+	<Label text="{Binding Source={StaticResource myBook}, Path=price}">
+		<Label.layoutData>
+			<GridData widthHint="100"/>
+		</Label.layoutData>
+	</Label>
+</Shell>

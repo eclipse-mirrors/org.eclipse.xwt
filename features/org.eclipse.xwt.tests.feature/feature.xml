@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.xwt.tests.feature"
+      label="%featureName"
+      version="0.10.100.qualifier"
+      provider-name="%providerName"
+      license-feature="org.eclipse.license"
+      license-feature-version="2.0.2">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="XWT Tests Update Site" url="http://www.eclipse.org/downloads/download.php?format=xml&amp;file=/xwt/updates"/>
+   </url>
+
+   <requires>
+      <import feature="org.eclipse.xwt.feature" version="0.9.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xwt.emf" version="0.9.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.xwt.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.xwt.emf.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.xwt.css.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.xwt.snippets.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<link href="../../book.css" rel="stylesheet" type="text/css" />
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>converters</title>
+<style type="text/css">@import url("file:/D:/Develop/Java/Eclipse/340/plugins/org.eclipse.sdk_3.4.0.v200806172000/book.css");</style>
+<style type="text/css">@import url("file:/D:/Develop/Java/Eclipse/340/configuration/org.eclipse.osgi/bundles/203/1/.cp/schema.css");</style>
+</HEAD>
+<BODY>
+<H1>Converters</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.xwt.pde.converters<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>[Enter the first release in which this extension point appears.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>This extension point is used to declare a new data converter<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.converter">converter</a>*)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED<p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED<p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.converter">converter</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST converter</p>
+<p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #REQUIRED<p class="code SchemaDtdAttlist">class&nbsp;CDATA #REQUIRED&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+Data converter element</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>name</b> - the name</li>
+<li><b>class</b> - The class of converter must implement the interface  org.eclipse.core.databinding.conversion.IConverter</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6>Here is an example to define the converter from String to URL: 
+<pre class="Example"><span class="code SchemaTag">
+   &lt;extension
+         point=</span><span class="code SchemaCstring">&quot;org.eclipse.xwt.pde.converters&quot;</span><span class="code SchemaTag">&gt;
+      &lt;converter
+            class=</span><span class="code SchemaCstring">&quot;org.eclipse.xwt.demo.URLConverter&quot;</span><span class="code SchemaTag">
+            name=</span><span class="code SchemaCstring">&quot;URLConverter&quot;</span><span class="code SchemaTag">&gt;
+      &lt;/converter&gt;
+   &lt;/extension&gt;
+</span></pre>
+
+<p>The class implementation should be: </p>
+<pre class="Example"><span class="code SchemaTag">
+package org.eclipse.xwt.demo;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.eclipse.core.databinding.conversion.IConverter;
+
+public class URLConverter implements IConverter {
+  public Object convert(Object fromObject) {
+    try {
+      return new URL((String) fromObject);
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public Object getFromType() {
+    return String.class;
+  }
+
+  public Object getToType() {
+    return URL.class;
+  }
+}
+</span></pre>
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">API Information: </h6>[Enter API information here.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Supplied Implementation: </h6>[Enter information about supplied implementation of this extension point.]
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+</p>
+</BODY>
+<p><img src="../../cpy.png" /></p>
+</HTML>

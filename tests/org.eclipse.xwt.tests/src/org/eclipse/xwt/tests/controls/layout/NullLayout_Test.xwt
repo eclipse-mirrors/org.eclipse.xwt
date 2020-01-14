@@ -1,0 +1,7 @@
+<y:FillComposite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.controls.layout"	
+	text="RowLayout - Test"
+	layout="{x:Null}">
+	<Button name="button" bounds="10, 10, 200, 50" text="Message"/>
+</y:FillComposite>

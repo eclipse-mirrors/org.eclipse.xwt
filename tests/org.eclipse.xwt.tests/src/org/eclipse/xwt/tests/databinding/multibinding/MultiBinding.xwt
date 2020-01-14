@@ -1,0 +1,39 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.databinding.multibinding"
+	Size="400, 300"
+	DataContext="{StaticResource myData}">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	
+	<Shell.Resources>
+		<y:Person x:Key="myData" firstName="Luc" lastName="DUMAS"/>
+	</Shell.Resources>
+	
+	<Label text="Name"/>
+	<Text name="multiValueText" x:style="BORDER">
+	    <Text.text>
+	        <MultiBinding updateSourceTrigger="PropertyChanged">
+	            <Binding path="firstName"/>
+	            <Binding path="lastName"/>
+	        </MultiBinding>
+	    </Text.text>
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	<Text name="firstNameText" text="{Binding Path=firstName,updateSourceTrigger=PropertyChanged}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	<Text name="lastNameText" text="{Binding Path=lastName,updateSourceTrigger=PropertyChanged}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+</Shell>

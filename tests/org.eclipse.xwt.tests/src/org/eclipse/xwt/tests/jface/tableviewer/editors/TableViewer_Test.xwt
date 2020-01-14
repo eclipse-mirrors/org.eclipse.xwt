@@ -1,0 +1,56 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    xmlns:j="clr-namespace:org.eclipse.xwt.tests.jface.tableviewer.editors"
+    xmlns:k="clr-namespace:java.lang"
+    x:Class="org.eclipse.xwt.tests.jface.tableviewer.editors.TextHandler"
+    DataContext="{StaticResource myCompany}">
+	<Composite.layout>
+		<GridLayout numColumns="2"/>
+	</Composite.layout>
+	<Composite.Resources>
+		<j:Company x:Key="myCompany">
+			<j:Company.employees>
+				<x:Array Type="j:Employee">
+					<j:Employee Name="Thomas" Age="32" Sex="Female"/>
+					<j:Employee Name="Jin" Age="27" Sex="Male"/>
+				</x:Array>
+			</j:Company.employees>
+		</j:Company>
+	</Composite.Resources>
+	<TableViewer x:style="BORDER|SINGLE|FULL_SELECTION" input="{Binding Path=employees}">
+		<TableViewer.contentProvider>
+			<j:ContentProvider/>
+		</TableViewer.contentProvider>
+		<TableViewer.table HeaderVisible="true" LinesVisible="true">
+			<TableColumn width="150" text="Name"/>
+			<TableColumn width="150" text="Age"/>
+			<TableColumn width="150" text="Sex"/>
+		</TableViewer.table>
+		<TableViewer.control.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</TableViewer.control.layoutData>
+
+		<TableViewer.columnProperties>
+			<k:String>Name</k:String>
+			<k:String>Age</k:String>
+			<k:String>Sex</k:String>
+		</TableViewer.columnProperties>
+		
+		<TableViewer.cellEditors>
+		    <TextCellEditor/>
+		    <TextCellEditor>
+		    	<TextCellEditor.control VerifyEvent="verifyText"/>
+		    </TextCellEditor>
+		    <ComboBoxCellEditor>
+		    	<ComboBoxCellEditor.items>
+		    		<k:String>Male</k:String>
+		    		<k:String>Female</k:String>
+		    	</ComboBoxCellEditor.items>
+		    </ComboBoxCellEditor>
+		</TableViewer.cellEditors>
+		<TableViewer.cellModifier>
+			<DefaultCellModifier/>
+		</TableViewer.cellModifier>
+	</TableViewer>
+</Composite>

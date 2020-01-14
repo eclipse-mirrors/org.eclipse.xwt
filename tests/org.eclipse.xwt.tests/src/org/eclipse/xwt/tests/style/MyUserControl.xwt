@@ -1,0 +1,9 @@
+<j:MyUserControl xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:j="clr-namespace:org.eclipse.xwt.tests.style"
+	x:Class="org.eclipse.xwt.tests.style.MyUserControl">
+	<j:MyUserControl.layout>
+		<GridLayout numColumns="2"/>
+	</j:MyUserControl.layout>	
+	<Label text="Hello, world"/>
+</j:MyUserControl>

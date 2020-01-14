@@ -1,8 +1,0 @@
-<Composite xmlns="http://www.eclipse.org/xwt/presentation"
-	xmlns:x="http://www.eclipse.org/xwt"
-	xmlns:y="clr-namespace:org.eclipse.xwt.tests.usercontrol">
-	<Composite.layout>
-		<GridLayout numColumns="2"/>
-	</Composite.layout>	
-	<y:UserControl Name="childControl"/>
-</Composite>

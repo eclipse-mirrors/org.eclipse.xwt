@@ -1,0 +1,8 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	text="Button Visible Test">
+	<Composite.layout>
+		<GridLayout numColumns="1"/>
+	</Composite.layout>
+	<Button Composite.visible="true" name="button" text="Has attached Property" />
+</Composite>

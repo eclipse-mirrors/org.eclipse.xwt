@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<link href="../../book.css" rel="stylesheet" type="text/css" />
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>logger</title>
+<style type="text/css">@import url("file:/D:/Develop/Java/Eclipse/340/plugins/org.eclipse.sdk_3.4.0.v200806172000/book.css");</style>
+<style type="text/css">@import url("file:/D:/Develop/Java/Eclipse/340/configuration/org.eclipse.osgi/bundles/203/1/.cp/schema.css");</style>
+</HEAD>
+<BODY>
+<H1>Logger</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.eclipse.xwt.pde.logger<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>[Enter the first release in which this extension point appears.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>The logger class will be used by XWT framework.<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.logger">logger</a>)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED<p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED<p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.logger">logger</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST logger</p>
+<p class="code SchemaDtdAttlist">class&nbsp;CDATA #REQUIRED&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+Tracker logger will be set in XWT class and will be used by XWT Framework</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>class</b> - The logger class must implements the interface org.eclipse.xwt.ILogger</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6>Here is an example to declare the logger: 
+<pre class="Example"><span class="code SchemaTag">
+   &lt;extension
+         point=</span><span class="code SchemaCstring">&quot;org.eclipse.xwt.pde.logger&quot;</span><span class="code SchemaTag">&gt;
+      &lt;logger
+            class=</span><span class="code SchemaCstring">&quot;org.eclipse.xwt.demo.Logger&quot;</span><span class="code SchemaTag">&gt;
+      &lt;/logger&gt;
+   &lt;/extension&gt;
+</span></pre>
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">API Information: </h6>[Enter API information here.]
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Supplied Implementation: </h6>[Enter information about supplied implementation of this extension point.]
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+</p>
+</BODY>
+</HTML>

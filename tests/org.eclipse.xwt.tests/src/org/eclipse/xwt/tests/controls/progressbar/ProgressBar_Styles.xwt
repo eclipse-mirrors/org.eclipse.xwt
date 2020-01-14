@@ -1,0 +1,11 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    text="ProgressBar Styles Test">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	<Label text="ProgressBar(Horizontal): "/><ProgressBar x:style="HORIZONTAL"/>
+	<Label text="ProgressBar(Vertical): "/><ProgressBar x:style="VERTICAL"/>
+	<Label text="ProgressBar(LEFT_TO_RIGHT): "/><ProgressBar x:style="HORIZONTAL | INDETERMINATE |LEFT_TO_RIGHT"/>
+	<Label text="ProgressBar(RIGHT_TO_LEFT): "/><ProgressBar x:style="HORIZONTAL | INDETERMINATE |RIGHT_TO_LEFT"/>
+</Shell>

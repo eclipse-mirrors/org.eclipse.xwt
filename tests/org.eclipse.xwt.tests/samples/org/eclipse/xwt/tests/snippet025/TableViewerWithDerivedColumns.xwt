@@ -1,0 +1,77 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    xmlns:j="clr-namespace:org.eclipse.xwt.tests.snippet025"
+    size="500, 300">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	<TableViewer name="TableViewer" x:Style="FULL_SELECTION" input="{Binding Path=people}">
+		<TableViewer.columns headerVisible="true">
+			<TableViewerColumn width="100" text="Name" bindingPath="name"/>
+			<TableViewerColumn width="100" text="Mother" bindingPath="mother.name"/>
+			<TableViewerColumn width="100" text="Father" bindingPath="father.name"/>
+			<TableViewerColumn width="100" text="Maternal Grandmother" bindingPath="mother.mother.name"/>
+			<TableViewerColumn width="100" text="Maternal Grandfather" bindingPath="mother.father.name"/>
+			<TableViewerColumn width="100" text="Paternal Grandmother" bindingPath="father.mother.name"/>
+			<TableViewerColumn width="100" text="Paternal Grandfather" bindingPath="father.father.name"/>
+		</TableViewer.columns>
+		<TableViewer.table headerVisible="true"/>
+	    <TableViewer.filters>
+			<ViewerFilter>
+				<ViewerFilter.conditions>
+					<Condition property="name" value="unknown" operator="NE"/>
+				</ViewerFilter.conditions>
+			</ViewerFilter>
+		</TableViewer.filters>		
+		<TableViewer.control.layoutData>
+			<GridData horizontalAlignment="FILL" horizontalSpan="2"
+         		grabExcessHorizontalSpace="true"/>
+		</TableViewer.control.layoutData>
+	</TableViewer>
+
+	<Label text="Name:">
+	</Label>
+	<Text x:Style="BORDER"
+		text="{Binding ElementName=TableViewer,path=singleSelection.(j:TableViewerWithDerivedColumns$Person.name)}" >
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+
+	<Label text="Name:">
+	</Label>
+	<Text x:Style="BORDER"
+		text="{Binding ElementName=TableViewer,path=singleSelection.(j:TableViewerWithDerivedColumns.Person.name)}" >
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+
+	<Label text="Name:">
+	</Label>
+	<Text x:Style="BORDER" dataContext="{Binding ElementName=TableViewer,path=singleSelection}"
+		text="{Binding path=(j:TableViewerWithDerivedColumns.Person.name),UpdateSourceTrigger=PropertyChanged}" >
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+
+	<Label text="Mother:">
+	</Label>
+	<ComboViewer x:Style="READ_ONLY"
+		input="{Binding path=people}"
+		singleSelection="{Binding ElementName=TableViewer,path=singleSelection.(j:TableViewerWithDerivedColumns.Person.mother)}" 
+		bindingPath="name">
+	</ComboViewer>
+
+	<Label text="Father:">
+	</Label>
+	<ComboViewer x:Style="READ_ONLY"
+		input="{Binding path=people}"
+		singleSelection="{Binding ElementName=TableViewer,path=singleSelection.(j:TableViewerWithDerivedColumns.Person.father)}" 
+		bindingPath="name">
+	</ComboViewer>
+</Shell>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<link href="../../book.css" rel="stylesheet" type="text/css" />
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Event Handling</title>
+</head>
+
+<body>
+<h1>Event Handling</h1>
+<p>This example illustrates the key concept of XWT as markup declarative UI about the separation between UI appearance
+and event handling.</p>
+<p>Create an XWT project first (for more information, please see <a
+	href="..//hello_world/index.html">HelloWorld</a>), then new a button
+with text 'Click Me!'. The appearance is defined in XWT like below.</p>
+<pre class="code">
+<span class="XMLElementTag">&lt;Shell</span> <span class="XMLAttrTag">xmlns</span>=<span
+	class="XMLAttrValue">"http://www.eclipse.org/xwt/presentation"</span>
+    <span class="XMLAttrTag">xmlns:x</span>=<span class="XMLAttrValue">"http://www.eclipse.org/xwt"</span>
+    <span class="XMLAttrTag">x:Class</span>=<span class="XMLAttrValue">"ui.EventHandler"</span><span
+	class="XMLElementTag">&gt;</span>
+    <span class="XMLElementTag">&lt;Shell.layout&gt;</span>
+       <span class="XMLElementTag">&lt;GridLayout/&gt;</span>
+    <span class="XMLElementTag">&lt;/Shell.layout&gt;</span>
+    <span class="XMLElementTag">&lt;Button</span> <span
+	class="XMLAttrTag">text</span>=<span class="XMLAttrValue">"Click Me!"</span><span
+	class="XMLElementTag">&gt;</span>
+    <span class="XMLElementTag">&lt;/Button&gt;</span>
+<span class="XMLElementTag">&lt;/Shell&gt;</span>
+</pre>
+
+<p>Save the file, and click <image src="images/hello_08.png" /> to
+view it. It running as below.</p>
+<image src="images/event_01.png" />
+
+<p>Next, we add an event handler to the button.</p>
+<pre>
+<span class="XMLElementTag">&lt;Button</span> <span class="XMLAttrTag">text</span>=<span
+	class="XMLAttrValue">"Hello, World!"</span> <span class="XMLAttrTag">SelectionEvent</span>=<span
+	class="XMLAttrValue">"clickButton"</span><span class="XMLElementTag">&gt;</span>
+</pre>
+<p>Focus on the event handler code and click <image
+	src="images/event_03.png" />, the corresponding java method will
+generate automatically. We can add event in the method directly.</p>
+
+<pre>
+<span class="JavaKeyWord">import</span> org.eclipse.swt.Event;
+<span class="JavaKeyWord">import</span> org.eclipse.swt.Button;
+
+<span class="JavaKeyWord">public class</span> EventHandler {
+	<span class="JavaKeyWord">public void</span> clickButton(Event event) {
+		Button button = (Button)event.<span class="JavaMember">widget</span>;
+		button.setText(<span class="JavaString">"Hello World!"</span>);
+	}
+}
+</pre>
+
+<p>Save the file and click <image src="images/hello_08.png" />. The
+view is rendered as following.</p>
+<image src="images/event_01.png" />
+<p>Click the button to invoke the method clickButton, the content of
+the button changes to 'Hello, World!'.</p>
+<image src="images/event_02.png" />
+
+
+</body>
+<p><img src="../../cpy.png" /></p>
+</html>

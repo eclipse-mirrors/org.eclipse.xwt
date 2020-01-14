@@ -1,0 +1,32 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    text="Tree Test">
+	<Shell.layout>
+		<GridLayout/>
+	</Shell.layout>
+	<Tree x:style="BORDER | SINGLE | FULL_SELECTION | CHECK">
+		<Tree.layoutData>
+			<GridData horizontalAlignment="FILL" verticalAlignment="FILL" 
+			          grabExcessHorizontalSpace="true" grabExcessVerticalSpace="true"/>
+		</Tree.layoutData>
+		<TreeItem name="TreeItem" text="Node1" expanded="true"
+			image="closedFolder.gif">
+			<TreeItem text="Node11">
+				<TreeItem text="Node111"/>
+			</TreeItem >
+			<TreeItem text="Node12">
+				<TreeItem text="Node121"/>
+				<TreeItem text="Node122"/>  
+			</TreeItem >
+		</TreeItem>
+		<TreeItem text="Node2" image="openFolder.gif">
+			<TreeItem text="Node21">
+				<TreeItem text="Node211"/> 
+			</TreeItem >
+			<TreeItem text="Node22">
+				<TreeItem text="Node221"/>
+				<TreeItem text="Node222"/>  
+			</TreeItem >
+		</TreeItem>
+	</Tree>
+</Shell>

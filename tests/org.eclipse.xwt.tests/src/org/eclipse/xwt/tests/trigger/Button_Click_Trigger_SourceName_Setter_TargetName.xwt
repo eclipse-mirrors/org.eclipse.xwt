@@ -1,0 +1,17 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt">
+	<Composite.layout>
+		<GridLayout numColumns="1"/>
+	</Composite.layout>	
+	
+  <!-- The width of this button is animated. -->
+  <Button name="target" Text="Target">
+  </Button>
+  <Button x:Style="SWT.CHECK" name="source" Text="Target">
+  </Button>
+  <Composite.Triggers>
+     <Trigger Property="Selection" Value="True" sourceName="source">
+	    <Setter Property="Visible" Value="False" targetName = "target"/>
+     </Trigger>
+  </Composite.Triggers>
+</Composite>

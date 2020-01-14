@@ -1,0 +1,14 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    text="DateTime Styles Test">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	<Label text="Date(SHORT): "/><DateTime x:style="DATE | BORDER | SHORT"/>
+	<Label text="Date(MEDIUM): "/><DateTime x:style="DATE | BORDER | MEDIUM"/>
+	<Label text="Date(LONG): "/><DateTime x:style="DATE | BORDER | LONG"/>
+	<Label text="Time(SHORT): "/><DateTime x:style="TIME | BORDER | SHORT"/>
+	<Label text="Time(MEDIUM): "/><DateTime x:style="TIME | BORDER | MEDIUM"/>
+	<Label text="Time(LONG): "/><DateTime x:style="TIME | BORDER | LONG"/>
+	<Label text="Calendar: "/><DateTime x:style="CALENDAR"/>
+</Shell>

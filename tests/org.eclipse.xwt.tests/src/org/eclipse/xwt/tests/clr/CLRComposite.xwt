@@ -1,0 +1,8 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    x:Class="org.eclipse.xwt.tests.clr.CLRComposite">
+	<Composite.layout>
+		<GridLayout numColumns="2"/>
+	</Composite.layout>
+	<Button text="XWT getCLR()"/>
+</Composite>

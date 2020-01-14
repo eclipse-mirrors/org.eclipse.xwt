@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.eclipse.xwt</groupId>
+		<artifactId>org.eclipse.xwt-root</artifactId>
+		<version>1.4.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>org.eclipse.xwt-plugins</artifactId>
+	<packaging>pom</packaging>
+	
+	<modules>
+		<module>org.eclipse.xwt</module>
+		<module>org.eclipse.xwt.css</module>
+		<!-- <module>org.eclipse.xwt.doc</module> -->
+		<!-- <module>org.eclipse.xwt.doc.user</module> -->
+		<module>org.eclipse.xwt.e4</module>
+		<module>org.eclipse.xwt.emf</module>
+		<module>org.eclipse.xwt.forms</module>
+		<module>org.eclipse.xwt.pde</module>
+		<module>org.eclipse.xwt.snippets</module>
+		<module>org.eclipse.xwt.tools.categorynode</module>
+		<module>org.eclipse.xwt.tools.categorynode.edit</module>
+		<module>org.eclipse.xwt.tools.ui</module>
+		<module>org.eclipse.xwt.tools.ui.designer</module>
+		<module>org.eclipse.xwt.tools.ui.designer.core</module>
+		<module>org.eclipse.xwt.tools.ui.editor</module>
+		<module>org.eclipse.xwt.tools.ui.imagecapture</module>
+		<module>org.eclipse.xwt.tools.ui.palette</module>
+		<module>org.eclipse.xwt.tools.ui.vex</module>
+		<module>org.eclipse.xwt.tools.ui.workbench</module>
+		<module>org.eclipse.xwt.tools.ui.xaml</module>
+		<module>org.eclipse.xwt.ui.workbench</module>
+		<module>org.eclipse.xwt.xml</module>
+	</modules>
+	
+</project>

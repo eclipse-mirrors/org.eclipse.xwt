@@ -1,9 +1,0 @@
-<Composite xmlns="http://www.eclipse.org/xwt/presentation"
-    xmlns:x="http://www.eclipse.org/xwt"
-    x:Class="org.eclipse.xwt.tests.xaml.Name">
-	<Composite.layout>
-		<GridLayout numColumns="2"/>
-	</Composite.layout>
-	<Label x:Name="target" text="Target Button"/>
-	<Button text="Find Element" SelectionEvent="findElement"/>
-</Composite>

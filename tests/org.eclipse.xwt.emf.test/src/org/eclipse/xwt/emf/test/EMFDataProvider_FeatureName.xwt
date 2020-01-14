@@ -1,0 +1,40 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.emf.test.books"
+	Size="400, 300">
+	<Shell.layout>
+		<GridLayout numColumns="3"/>
+	</Shell.layout>
+	
+	<Shell.Resources>
+		<EMFDataProvider x:Key="myBooks" typeURI="TODO" featureName="title">
+		</EMFDataProvider>
+	</Shell.Resources>
+	
+	<Label text="Name:"/>
+	<Text x:style="BORDER" text="{Binding Source={StaticResource myBooks}, Path=text}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	<Text x:style="BORDER" text="{Binding Source={StaticResource myBooks}, Path=lan}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	<Label text="Copy:"/>
+	<Text x:style="BORDER"  text="{Binding Source={StaticResource myBooks}, Path=text}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	<Text x:style="BORDER" text="{Binding Source={StaticResource myBooks}, Path=lan}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+</Shell>

@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<link href="../../book.css" rel="stylesheet" type="text/css" />
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Markup-language</title>
+</head>
+
+<body>
+<h1>Markup language</h1>
+<p>Markup languages are designed for the processing, definition and
+presentation of text. XWT provides an Extensible UI Markup Language for
+declarative Eclipse application programming.</p>
+
+<ul>
+	<li><a href="#language_01">A Declarative language with Flow
+	Control Support</a></li>
+	<li><a href="#language_02">XWT Object Elements</a></li>
+	<li><a href="#language_03">Setting Properties</a></li>
+	<li><a href="#language_06">Reference Values and Markup
+	Extensions</li>
+	<li><a href="#language_07">Case and Whitespace</a></li>
+
+	<li><a href="#language_04">XWT Root Elements and XML
+	Namespaces</a></li>
+	<li><a href="#language_05">Events and XWT Code-behind</a></li>
+</ul>
+
+
+<h3><a name="language_01"></a>A Declarative language with Flow
+Control Support</h3>
+<p>XWT simplifies creating a UI for Java programming. You can create
+visible UI elements in the XWT declarative markup, and then separate the
+UI definition from the run-time logic by using code-behind files. The
+ability to mix code with markup in XWT is important because XML by
+itself is declarative, and does not really suggest a model for flow
+control.</p>
+
+<p>The following XWT example shows how markup is necessary to create
+a button as part of a UI.</p>
+
+<pre>
+<span class="XMLElementTag">&lt;Shell.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;GridLayout</span> <span
+	class="XMLAttrTag">numColumns</span>=<span class="XMLAttrValue">"1"</span> <span
+	class="XMLElementTag">/&gt;</span>
+<span class="XMLElementTag">&lt;/Shell.layout&gt;</span>
+<span class="XMLElementTag">&lt;Button</span> <span class="XMLAttrTag">text</span>=<span
+	class="XMLAttrValue">"Hello"</span> <span class="XMLElementTag">/&gt;</span>
+</pre>
+
+<h3><a name="language_02"></a> XWT Object Elements</h3>
+<p>XWT has a set of rules that map object elements into classes or
+structures, attributes into properties or events, and XML namespaces to
+Java packages.</p>
+
+<p>The preceding example specified two object elements: <span
+	class="XMLElementTag">&lt;GridLayout /&gt;</span> and <span
+	class="XMLElementTag">&lt;Button /&gt;</span>. The string <span
+	class="XMLElementTag">GridLayout</span> and <span class="XMLElementTag">Button</span>
+each map to the name of a class that is defined by XWT and is part of
+the XWT assemblies. When you specify an object element tag, you create
+an instruction for XWT processing to create a new instance of the named
+class when your XWT page is loaded. Each instance is created by calling
+the default constructor of the underlying class or structure and storing
+the result. To be usable as an object element in XWT, the class or
+structure must expose a public default (parameterless) constructor.</p>
+
+<h3><a name="language_03"></a>Setting Properties</h3>
+<p>Properties in XWT are set by setting properties on an object
+element, using a variety of possible syntaxes. Which syntaxes can be
+used for a given property will vary, based on the characteristics of the
+property that you are setting.</p>
+
+<p>By setting values of properties, you add features or
+characteristics to object element. The initial state of the underlying
+object instance for an object element is based on the default
+constructor behavior. Typically, your application will use something
+other than a completely default instance of any given object.</p>
+
+<p><b>Attribute Syntax</b></p>
+
+<p>In XWT, properties can often be expressed as attributes.
+Attribute syntax is the most streamlined property setting syntax and
+will be the most intuitive syntax to use for developers that have used
+markup languages in the past. For example, the following markup creates
+a button that with push style, as well as display text specified as <span
+	class="XMLAttrTag">test</span>.</p>
+
+<pre>
+<span class="XMLElementTag">&lt;Button</span> <span class="XMLAttrTag">x:style</span>=<span
+	class="XMLAttrValue">"PUSH"</span> <span class="XMLAttrTag">text</span>=<span
+	class="XMLAttrValue">"Hello, world!"</span> <span class="XMLElementTag">/&gt;</span>
+</pre>
+
+
+<p><b>Property Element Syntax</b></p>
+<p>For some properties of an object element, attribute syntax is not
+possible, because the object or information necessary to provide the
+property value cannot be adequately expressed as a simple string. For
+these cases, a different syntax known as property element syntax can be
+used. Property element syntax sets the referenced property of the
+containing element with the content of the tag. Generally, the content
+is an object of the type that the property takes as its value. The
+syntax for property element itself is &lt;TypeName.Property&gt;. After
+specifying content, you must close the property element with a closing
+tag just like any other element (with syntax
+&lt;/TypeName.Property&gt;). For properties where both attribute and
+property element syntax are supported, the two syntaxes generally have
+the same result, although subtleties such as whitespace handling can
+vary slightly between syntaxes. The following example is using property
+element syntax for <span class="XMLAttrTag">text</span> properties of
+the Button.</p>
+
+
+<pre>
+<span class="XMLElementTag">&lt;Button&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Button.text&gt;</span> 
+&nbsp;&nbsp;&nbsp;&nbsp;This is a Button
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Button.text&gt;</span>
+<span class="XMLElementTag">&lt;/Button&gt;</span>
+</pre>
+
+<h3><a name="language_06"></a>Reference Values and Markup
+Extensions</h3>
+<p>Markup extensions are an XWT concept. In attribute syntax, curly
+braces ({ and }) indicate a markup extension usage. This usage directs
+the XWT processing to escape from the general treatment of attribute
+values are either a literal string or directly string-convertible value.</p>
+
+<p>When properties take a reference type value, these properties
+will often require either property element syntax (which always creates
+a new instance) or an object reference through a markup extension. A
+markup extension usage can potentially return an existing instance, and
+thus can be more versatile or might incur less object overhead.</p>
+
+<p>When a markup extension is used to provide an attribute value,
+the attribute value should instead be provided by the logic within the
+backing class for the relevant markup extension. The most common markup
+extensions used in XWT application programming are <b>Binding</b>, used
+for data binding expressions and the resource reference <b>StaticResource</b>
+and <b>DynamicResource</b>. By using markup extension, you can use
+attribute syntax to provide reference values for properties even if that
+the property does not support an attribute syntax for direct object
+instantiation, or enable specific behavior that defers the general
+behavior of the requirement that XAML properties must be filled by
+values of the property's type.</p>
+
+<p>For instance, the following example sets the value of text
+property using attribute syntax. The text binds a Person class.</p>
+
+
+<pre>
+<span class="XMLElementTag">&lt;Shell</span> 
+&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">DataContext</span>=<span
+	class="XMLAttrValue">"{StaticResource myData}"</span><span
+	class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;x:Shell.Resources&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;y:Person</span> <span class="XMLAttrTag">x:Key</span>=<span
+	class="XMLAttrValue">"myData"</span><span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/x:Shell.Resources&gt;</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Text</span> <span
+	class="XMLAttrTag">x:style</span>=<span class="XMLAttrValue">"BORDER"</span> <span
+	class="XMLAttrTag">text</span>=<span class="XMLAttrValue">"{Binding Path=name}"</span><span
+	class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;Text.layoutData&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;GridData</span> <span class="XMLAttrTag">horizontalAlignment</span>=<span
+	class="XMLAttrValue">"FILL"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLAttrTag">grabExcessHorizontalSpace</span>=<span
+	class="XMLAttrValue">"true"</span><span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;/Text.layoutData&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Text&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;...
+<span class="XMLElementTag">&lt;/Shell&gt;</span>
+</pre>
+
+<h3><a name="language_07"></a>Case and Whitespace</h3>
+<p>XWT is in general case sensitive. Object elements and property elements must all be specified by using the proper case when
+compared by name to the underlying type in programming language, or to a member
+of a type. There is one exception for attribute name. The first letter and only the first letter of attribute name is not case-sensitive.</p>
+
+<p>The values for attributes are not always case sensitive. Case
+sensitivity for values will depend on the type converter behavior
+associated with the property that takes the value, or the property value
+type. For instance, properties that take Boolean type can take
+either true or True as equivalent values, but only because the default
+string type conversion for Boolean already permits these as equivalents.
+</p>
+
+<p>XWT processors and serializers will ignore or drop all
+non-significant whitespace, and will normalize any significant
+whitespace. This behavior is generally only of consequence when you
+specify strings within XWT content properties. In simplest terms, XWT
+converts space, line feed and tab characters into spaces and then
+preserves one space if found at either end of a contiguous string.</p>
+
+<h3><a name="language_04"></a>XWT Root Elements and XML Namespaces</h3>
+<p>An XWT file must have only one root element, in order to be both a
+well-formed XML file and a valid XWT file. Typically you should choose
+an element that is part of the application model. The following example
+shows the root element of a typical XWT file with the root element
+Composite.</p>
+
+
+<pre>
+<span class="XMLElementTag">&lt;Composite</span> <span
+	class="XMLAttrTag">xmlns</span>=<span class="XMLAttrValue">"http://www.eclipse.org/xwt/presentation"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">xmlns:x</span>=<span
+	class="XMLAttrValue">"http://www.eclipse.org/xwt"</span><span
+	class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;...
+<span class="XMLElementTag">&lt;/Composite&gt;</span>
+</pre>
+
+<p>The root element also contains the attributes <b>xmlns</b> and <b>xmlns:x</b>.
+These attributes indicate to an XWT processor which XML namespaces
+contain the element definitions for elements that the markup will
+reference. The <b>xmlns</b> attribute specifically indicates the default
+XML namespace. Within the default XML namespace, object elements in the
+markup can be specified without a prefix. The default XML namespace is
+mapped to the namespace
+&quot;http://www.eclipse.org/xwt/presentation&quot;. The <b>xmlns:x</b>
+attribute indicates an additional XML namespace, which maps the XWT
+language namespace &quot;http://www.eclipse.org/xwt&quot;. Required
+language components defined by the XWT specification are prefixed by <b>x:</b>
+when referenced in the markup of a file with this mapping.</p>
+
+
+<p><b>The x:Prefix</b></p>
+<p>In the previous root element example, the prefix <b>x:</b> was
+used to map the XWT XML namespace
+&quot;http://www.eclipse.org/xwt&quot;. This <b>x:</b> prefix will be
+used to map the XWT XML namespace in the templates for projects. The <b>x:</b>prefix
+XML namespace contain several programming constructs that you will use
+quite frequently in your XWT. The following is a listing of the most
+common x:prefix namespace programming constructs you will use:</p>
+
+<ul>
+	<li>x:Key: Sets a unique key for each resource in a DataContext.</li>
+	<li>x:Class: Specifies the CLR namespace and class name for the
+	class that provides code-behind for an XWT page. You must have such a
+	class to support code-behind, and it is for this reason that you almost
+	always see x: mapped, even if there are no resources.</li>
+	<li>x:Name: Specifies a object name for the instance.</li>
+	<li>x:Null: <strong>null</strong> in Java.</li>
+	<li>x:Static: Enables a value reference that gets a static value
+	that is not otherwise an XWT-compatible property.</li>
+	<li>x:Type: Constructs a Type reference based on a type name.</li>
+	<li>x:Array: Provides general support for arrays of objects in
+	XWT.</li>
+	<li>x:Style: Specifies the type of a instance.</li>
+</ul>
+
+<h3><a name="language_05"></a>Events and XWT Code-behind</h3>
+<p>Most XWT applications consist of both markup and code-behind.
+Within a project, the XWT is written as .xwt file and a synchronized
+java class is used to write a code-behind file. When an XWT file is
+loaded, the location of the XWT code-behind file for each XWT page is
+identified by specifying a namespace and class as the x:Class attribute
+of the root element of the XWT page.</p>
+
+<p>In the examples so far, you have seen several buttons, but none
+of these buttons had any logical behavior associated with them yet. The
+primary application-level mechanism for adding a behavior for an object
+element is to use an existing event of the element class, and to write a
+specific handler for that event that is invoked when that event is
+raised at run time. The event name and the name of the handler to use
+are specified in the markup, whereas the code that implements your
+handler is defined in the code-behind.</p>
+
+<p>XWT:</p>
+<pre>
+<span class="XMLElementTag">&lt;Shell</span> <span class="XMLAttrTag">xmlns</span>=<span
+	class="XMLAttrValue">"http://www.eclipse.org/xwt/presentation"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">xmlns:x</span>=<span
+	class="XMLAttrValue">"http://www.eclipse.org/xwt"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLAttrTag">x:Class</span>=<span
+	class="XMLAttrValue">"org.eclipse.xwt.tests.events.ButtonHandler"</span><span
+	class="XMLElementTag">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Shell.layout&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	class="XMLElementTag">&lt;GridLayout</span> <span class="XMLAttrTag">numColumns</span>=<span
+	class="XMLAttrValue">"2"</span><span class="XMLElementTag">/&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;/Shell.layout&gt;</span>	
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="XMLElementTag">&lt;Button</span> <span
+	class="XMLAttrTag">text</span>=<span class="XMLAttrValue">"Hello, world"</span> <span
+	class="XMLAttrTag">SelectionEvent</span>=<span class="XMLAttrValue">"selection"</span><span
+	class="XMLElementTag">/&gt;</span>
+<span class="XMLElementTag">&lt;/Shell&gt;</span>
+</pre>
+
+<p>Java:</p>
+<pre>
+<span class="JavaKeyword">protected void</span> selection(Event event) {
+&nbsp;&nbsp;&nbsp;&nbsp;Button button = (Button) event.<span
+	class="JavaMember">widget</span>;
+&nbsp;&nbsp;&nbsp;&nbsp;button.setText(<span class="JavaString">"OK"</span>);
+}
+</pre>
+
+<p><b>Event Attribute Syntax</b></p>
+
+<p>When you specify behavior through events in markup, you typically
+use attribute syntax to attach handlers. The object element where the
+event attribute is specified becomes the instance that listens for the
+event and calls the handler. The name of the specific event you want to
+handle is the attribute name. The attribute value is the method name of
+the handler you will define. You must then provide the handler
+implementation in code-behind, with the handler being based on the
+delegate for that event.</p>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<p><img src="../../cpy.png" /></p>
+</html>

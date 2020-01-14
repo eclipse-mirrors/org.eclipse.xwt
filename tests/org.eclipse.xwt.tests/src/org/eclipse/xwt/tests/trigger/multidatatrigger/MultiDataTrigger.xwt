@@ -1,0 +1,42 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.tests.trigger.datatrigger"
+	DataContext="{StaticResource myData}">
+	<Composite.layout>
+		<GridLayout numColumns="2"/>
+	</Composite.layout>
+	
+	<Composite.Resources>
+		<y:Person x:Key="myData"/>
+	</Composite.Resources>
+
+	<Label text="Set ago = 15 and maried = true">
+		<Label.layoutData>
+			<GridData horizontalAlignment="FILL" horizontalSpan="2"
+         		grabExcessHorizontalSpace="true"/>
+		</Label.layoutData>
+	</Label>
+	<Label text="Name"/>
+	<Text name="Text" x:style="BORDER" text="{Binding Path=age,UpdateSourceTrigger=PropertyChanged}">
+		<Text.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Text.layoutData>
+	</Text>
+	
+	<Button name="Button" x:style="SWT.CHECK" selection="{Binding Path=maried}">
+		<Button.layoutData>
+			<GridData horizontalAlignment="FILL"
+         		grabExcessHorizontalSpace="true"/>
+		</Button.layoutData>
+	</Button>
+	<Composite.Triggers>
+      <MultiDataTrigger>
+        <MultiDataTrigger.Conditions>
+          <Condition Binding="{Binding Path=maried}" Value="true"/>
+          <Condition Binding="{Binding Path=age}" Value="15" />
+        </MultiDataTrigger.Conditions>
+        <Setter Property="Visible" Value="false" />
+      </MultiDataTrigger>
+	</Composite.Triggers>
+</Composite>

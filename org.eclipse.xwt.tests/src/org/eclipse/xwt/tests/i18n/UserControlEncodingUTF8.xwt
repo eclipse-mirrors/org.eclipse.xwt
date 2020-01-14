@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Composite xmlns="http://www.eclipse.org/xwt/presentation"
-	xmlns:x="http://www.eclipse.org/xwt">
-	<Composite.layout>
-		<GridLayout numColumns="2"/>
-	</Composite.layout>	
-	<Button Text="中文" />
-</Composite>

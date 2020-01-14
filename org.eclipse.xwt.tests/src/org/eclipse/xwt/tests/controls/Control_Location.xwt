@@ -1,8 +1,0 @@
-<Shell xmlns="http://www.eclipse.org/xwt/presentation"
-	xmlns:x="http://www.eclipse.org/xwt"
-	text="Control Size Test">
-	<Label x:style="BORDER" text="Label(10, 10, 150, 100)" Location="10, 10" Size="150, 100">
-	</Label>
-	<Button text="Button (200, 120, 200, 200)" Location="200, 120" Size="200, 200">
-	</Button>
-</Shell>

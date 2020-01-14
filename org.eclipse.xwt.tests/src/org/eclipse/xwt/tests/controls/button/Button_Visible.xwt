@@ -1,9 +1,0 @@
-<Shell xmlns="http://www.eclipse.org/xwt/presentation"
-	xmlns:x="http://www.eclipse.org/xwt"
-	text="Button Visible Test">
-	<Shell.layout>
-		<GridLayout numColumns="1"/>
-	</Shell.layout>
-	<Button name="buttonVisible" text="Visible(true)" visible="true"/>
-	<Button name="buttonNonVisible" text="Visible(false)" visible="false"/>
-</Shell>

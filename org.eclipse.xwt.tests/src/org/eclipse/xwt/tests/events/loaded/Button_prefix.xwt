@@ -1,9 +1,0 @@
-<Shell xmlns="http://www.eclipse.org/xwt/presentation"
-	xmlns:x="http://www.eclipse.org/xwt"
-	xmlns:c="clr-namespace:org.eclipse.xwt.tests.events.loaded"
-	x:Class="c:ButtonHandler">
-	<Shell.layout>
-		<GridLayout numColumns="2"/>
-	</Shell.layout>	
-	<Button name="Button" text="Wrong result" loadedEvent="onLoaded"/>
-</Shell>

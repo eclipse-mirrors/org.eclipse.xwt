@@ -1,9 +1,0 @@
-<Shell xmlns="http://www.eclipse.org/xwt/presentation"
-	xmlns:x="http://www.eclipse.org/xwt"
-	text="Button Enabled Test">
-	<Shell.layout>
-		<GridLayout numColumns="1"/>
-	</Shell.layout>
-	<Button name="EnabledButton" text="Enabled(true)" enabled="true"/>
-	<Button name="NotEnabledButton" text="Enabled(false)" enabled="false"/>
-</Shell>

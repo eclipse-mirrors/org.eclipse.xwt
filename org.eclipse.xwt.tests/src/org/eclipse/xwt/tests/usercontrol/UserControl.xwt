@@ -1,9 +1,0 @@
-<Composite xmlns="http://www.eclipse.org/xwt/presentation"
-	xmlns:x="http://www.eclipse.org/xwt"
-	xmlns:j="clr-namespace:org.eclipse.xwt.tests.usercontrol"
-	x:Class="org.eclipse.xwt.tests.usercontrol.UserControl">
-	<Composite.layout>
-		<GridLayout numColumns="2"/>
-	</Composite.layout>	
-	<Button Name="targetButton" text="Hello, world" SelectionEvent="selection"/>
-</Composite>

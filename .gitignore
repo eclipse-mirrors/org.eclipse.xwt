@@ -13,4 +13,5 @@ sonarlint/
 # All .project that are not in an xwt plugin
 .project
 !**/org.eclipse.xwt.*/.project
+!**/org.eclipse.xwt/.project
 

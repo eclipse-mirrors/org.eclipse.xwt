@@ -1,0 +1,40 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:y="clr-namespace:org.eclipse.xwt.emf.test.books"
+	Size="400, 300">
+	<Composite.layout>
+		<FillLayout/>
+	</Composite.layout>
+    <Composite>
+		<Composite.layout>
+			<GridLayout numColumns="3"/>
+		</Composite.layout>
+		
+		<Label text="Name:"/>
+		<Text name="titleText" x:style="BORDER" text="{Binding Path=content.(Book.title).text}">
+			<Text.layoutData>
+				<GridData horizontalAlignment="FILL"
+	         		grabExcessHorizontalSpace="true"/>
+			</Text.layoutData>
+		</Text>
+		<Text name="authorText" x:style="BORDER" text="{Binding Path=content.(Book.author)}">
+			<Text.layoutData>
+				<GridData horizontalAlignment="FILL"
+	         		grabExcessHorizontalSpace="true"/>
+			</Text.layoutData>
+		</Text>
+		<Label text="Copy:"/>
+		<Text x:style="BORDER"  text="{Binding Path=content.(Book.title).text}">
+			<Text.layoutData>
+				<GridData horizontalAlignment="FILL"
+	         		grabExcessHorizontalSpace="true"/>
+			</Text.layoutData>
+		</Text>
+		<Text x:style="BORDER" text="{Binding Path=content.(Book.author)}">
+			<Text.layoutData>
+				<GridData horizontalAlignment="FILL"
+	         		grabExcessHorizontalSpace="true"/>
+			</Text.layoutData>
+		</Text>
+   </Composite>
+</Composite>

@@ -1,0 +1,38 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    x:Class="org.eclipse.xwt.tests.controls.tooltip.ToolTip_Styles">
+	<Composite.layout>
+		<GridLayout numColumns="2"/>
+	</Composite.layout>
+	<Group x:Name="groupStyles" text="Styles">
+	    <Group.layout>
+			<GridLayout numColumns="1"/>
+	    </Group.layout>
+		<Button x:style="CHECK" text="SWT.BALLOON"/>
+		<Button x:style="RADIO" text="SWT.ICON_ERROR"/>
+        <Button x:style="RADIO" text="SWT.ICON_INFORMATION"/>
+        <Button x:style="RADIO" text="SWT.ICON_WARNING"/>
+        <Button x:style="RADIO" text="No Icon"/>
+	</Group>
+	<Group x:Name="displayMode" text="Display Mode">
+	    <Group.layout>
+			<GridLayout numColumns="1"/>
+	    </Group.layout>
+		<Button x:style="CHECK" text="AutoHide"/>
+		<Button x:style="CHECK" text="Show In Tray"/>
+	</Group>
+	<Group x:Name="groupText" text="Text">
+	    <Group.layout>
+			<GridLayout numColumns="2"/>
+	    </Group.layout>
+		<Label text="text: "/><Text x:style="BORDER" text="Default text of tooltip."/>
+	</Group>
+	<Group x:Name="groupMessage" text="Message">
+	    <Group.layout>
+			<GridLayout numColumns="2"/>
+	    </Group.layout>
+		<Label text="message: "/><Text x:style="BORDER" text="Default message of tooltip."/>
+	</Group>
+	<Button text="Show Tooltip" SelectionEvent="showTooltip"/>
+	<Button text="Clear" SelectionEvent="clear"/>
+</Composite>

@@ -1,0 +1,8 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:java="clr-namespace:org.eclipse.xwt.tests.i18n">
+	<Composite.layout>
+		<GridLayout numColumns="2"/>
+	</Composite.layout>	
+	<Button Text="{x:Static java:Messages.title}" />
+</Composite>

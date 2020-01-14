@@ -1,0 +1,9 @@
+<j:UserControl xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:j="clr-namespace:org.eclipse.xwt.tests.events.initialize"
+	x:Class="org.eclipse.xwt.tests.events.initialize.UserControl">
+	<j:UserControl.layout>
+		<GridLayout numColumns="2"/>
+	</j:UserControl.layout>	
+	<Button x:Name="button" text="Wrong result"/>
+</j:UserControl>

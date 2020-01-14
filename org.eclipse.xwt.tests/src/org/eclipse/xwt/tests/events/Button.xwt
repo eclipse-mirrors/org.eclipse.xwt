@@ -1,8 +1,0 @@
-<Shell xmlns="http://www.eclipse.org/xwt/presentation"
-	xmlns:x="http://www.eclipse.org/xwt"
-	x:Class="org.eclipse.xwt.tests.events.ButtonHandler">
-	<Shell.layout>
-		<GridLayout numColumns="2"/>
-	</Shell.layout>	
-	<Button name="ButtonEvent" text="Hello, world" SelectionEvent="selection"/>
-</Shell>

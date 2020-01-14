@@ -1,0 +1,39 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	x:Class="org.eclipse.xwt.tests.controls.layout.FormLayout_Test"
+	text="FormLayout - Test">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	<Group text="layout">
+		<Group.layout>
+		    <FormLayout/>
+		</Group.layout>
+		<Group.layoutData>
+			<GridData horizontalAlignment="FILL" verticalAlignment="FILL">
+			</GridData>
+		</Group.layoutData>
+		<Button text="button1"/>
+		<Button text="button2"/>
+		<Button text="button3"/>
+		<Button text="LongTextButton1"/>
+		<Button text="LongTextButton2"/>
+	</Group>
+	<Group text ="Parameters">
+		<Group.layout>
+		    <GridLayout numColumns="1"/>
+		</Group.layout>
+		<Group text ="Margins and Spacings">
+			<Group.layout>
+		    	<GridLayout numColumns="2"/>
+			</Group.layout>
+			<Label text="marginWidth"/><Spinner x:Name="marginWidth" x:style="BORDER" selection="0" SelectionEvent="updateMarginWidth"/>
+			<Label text="marginHeight"/><Spinner x:style="BORDER" selection="0" SelectionEvent="updateMarginHeight"/>
+			<Label text="marginLeft"/><Spinner x:style="BORDER" selection="0" SelectionEvent="updateMarginLeft"/>
+			<Label text="marginRight"/><Spinner x:style="BORDER" selection="0" SelectionEvent="updateMarginRight"/>
+			<Label text="marginTop"/><Spinner x:style="BORDER" selection="0" SelectionEvent="updateMarginTop"/>
+			<Label text="marginBottom"/><Spinner x:style="BORDER" selection="0" SelectionEvent="updateMarginBottom"/>
+			<Label text="spacing"/><Spinner x:style="BORDER" selection="0" SelectionEvent="updateSpacing"/>
+		</Group>
+	</Group>
+</Shell>

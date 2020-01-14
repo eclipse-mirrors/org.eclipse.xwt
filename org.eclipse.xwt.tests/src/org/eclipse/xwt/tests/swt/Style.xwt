@@ -1,9 +1,0 @@
-<Shell xmlns="http://www.eclipse.org/xwt/presentation"
-    xmlns:x="http://www.eclipse.org/xwt"
-    x:Class="org.eclipse.xwt.tests.name.Name"
-    text="NameT test">
-    <Shell.layout>
-		<GridLayout numColumns="2"/>
-    </Shell.layout>
-    <MyElement Name="MyElement" x:Style="MyElement.MY_STYLE"/>
-</Shell>

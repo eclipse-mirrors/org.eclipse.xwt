@@ -1,0 +1,18 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt"
+	text="Browser Text">
+	<Shell.layout>
+		<FillLayout/>
+	</Shell.layout>
+	<Group text="browser">
+		<Group.layout>
+			<GridLayout/>
+		</Group.layout>
+		<Browser x:style="BORDER" text="&lt;html&gt;&lt;body&gt;test&lt;/body&gt;&lt;/html&gt;">
+			<Browser.layoutData>
+				<GridData horizontalAlignment="FILL" verticalAlignment="FILL" 
+			          grabExcessHorizontalSpace="true" grabExcessVerticalSpace="true"/>
+			</Browser.layoutData>
+		</Browser>
+	</Group>
+</Shell>

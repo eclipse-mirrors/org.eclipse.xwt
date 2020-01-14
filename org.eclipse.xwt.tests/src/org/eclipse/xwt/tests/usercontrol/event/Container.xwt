@@ -1,9 +1,0 @@
-<Composite xmlns="http://www.eclipse.org/xwt/presentation"
-	xmlns:x="http://www.eclipse.org/xwt"
-	xmlns:y="clr-namespace:org.eclipse.xwt.tests.usercontrol.event"
-	x:Class="org.eclipse.xwt.tests.usercontrol.event.Container">
-	<Composite.layout>
-		<GridLayout numColumns="2"/>
-	</Composite.layout>
-	<y:UserControl/>
-</Composite>

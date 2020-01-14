@@ -1,0 +1,8 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    xmlns:ext="http://www.eclipse.org/ext">
+	<Shell.layout>
+		<GridLayout numColumns="2"/>
+	</Shell.layout>
+	<Label name="targetLabel" text="Target Label" ext:id="Ext-Id" />
+</Shell>

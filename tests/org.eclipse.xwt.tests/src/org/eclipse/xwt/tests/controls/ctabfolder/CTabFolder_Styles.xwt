@@ -1,0 +1,51 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation"
+    xmlns:x="http://www.eclipse.org/xwt"
+    text="TabFolder Styles Test">
+	<Shell.layout>
+		<GridLayout numColumns="1"/>
+	</Shell.layout>
+	<CTabFolder>
+		<CTabItem text="item1">
+			<CTabItem.control>
+				<Label text="TabItem 1"/>
+			</CTabItem.control>
+		</CTabItem>
+		<CTabItem text="item2">
+			<CTabItem.control>
+				<Label text="TabItem 2"/>
+			</CTabItem.control>
+		</CTabItem>
+		<CTabItem text="item3">
+			<CTabItem.control>
+				<Label text="TabItem 3"/>
+			</CTabItem.control>
+		</CTabItem>
+		<CTabFolder.layoutData>
+			<GridData horizontalAlignment="FILL" verticalAlignment="FILL" 
+				grabExcessVerticalSpace="true"
+				grabExcessHorizontalSpace="true"/>
+		</CTabFolder.layoutData>		
+	</CTabFolder>
+	<CTabFolder x:style="BOTTOM">
+		<CTabItem text="item1">
+			<CTabItem.control>
+				<Label text="TabItem 1"/>
+			</CTabItem.control>
+		</CTabItem>
+		<CTabItem text="item2">
+			<CTabItem.control>
+				<Label text="TabItem 2"/>
+			</CTabItem.control>
+		</CTabItem>
+		<CTabItem text="item3">
+			<CTabItem.control>
+				<Label text="TabItem 3"/>
+			</CTabItem.control>
+		</CTabItem>
+		<CTabFolder.layoutData>
+			<GridData horizontalAlignment="FILL" verticalAlignment="FILL" 
+				grabExcessVerticalSpace="true"
+				grabExcessHorizontalSpace="true"/>
+		</CTabFolder.layoutData>		
+	</CTabFolder>
+</Shell>

@@ -1,0 +1,10 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+ 		   xmlns:x="http://www.eclipse.org/xwt"
+ 		   x:Class="org.eclipse.xwt.tests.style.css.MainEventHandler" >
+	<Composite.layout>
+		<GridLayout numColumns="2" />
+	</Composite.layout>
+	<Text background="COLOR_BLUE" />
+	<Text x:style="MULTI"
+		  text="Text{color:blue;background-color:red;}" ModifyEvent="updateCSSEngine" />
+</Composite>

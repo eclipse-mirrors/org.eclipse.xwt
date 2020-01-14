@@ -1,5 +1,0 @@
-<Label xmlns="http://www.eclipse.org/xwt/presentation"
-    xmlns:x="http://www.eclipse.org/xwt"
-    xmlns:y="clr-namespace:gui"
-    text="{Binding path=employees.name}">
-</Label>

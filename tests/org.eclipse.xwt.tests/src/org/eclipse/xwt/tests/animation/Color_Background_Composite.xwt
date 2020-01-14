@@ -1,0 +1,33 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:x="http://www.eclipse.org/xwt">
+	<Composite.layout>
+		<GridLayout numColumns="1"/>
+	</Composite.layout>	
+	<Label name="labelTarget" text="Move mouse in button to see the animation"/>
+	<Button name="startButton" text="Start"/>
+	<Button name="stopButton" text="Stop"/>
+	<Button name="pauseButton" text="Pause"/>
+	<Button name="resumeButton" text="Resume"/>
+	<Composite.triggers>
+	    <!-- Begin the Storyboard -->
+	    <EventTrigger routedEvent="SelectionEvent" sourceName="startButton">
+	      <BeginStoryboard name="MyBeginStoryboard">
+	        <Storyboard>
+	          <ColorAnimation 
+	             targetName="labelTarget" 
+	             targetProperty="background" 
+	               duration="0:0:8" from="red" to="blue" />
+	        </Storyboard>
+	      </BeginStoryboard>
+	    </EventTrigger>
+	    <EventTrigger routedEvent="SelectionEvent" sourceName="stopButton">
+		    <StopStoryboard BeginStoryboardName="MyBeginStoryboard" />  
+	    </EventTrigger>
+	    <EventTrigger routedEvent="SelectionEvent" sourceName="pauseButton">
+		    <PauseStoryboard BeginStoryboardName="MyBeginStoryboard" />  
+	    </EventTrigger>
+	    <EventTrigger routedEvent="SelectionEvent" sourceName="resumeButton">
+		    <ResumeStoryboard BeginStoryboardName="MyBeginStoryboard" />  
+	    </EventTrigger>
+	</Composite.triggers>
+</Composite>
