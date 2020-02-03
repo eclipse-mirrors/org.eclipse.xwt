@@ -14,6 +14,10 @@
    <copyright>
       %copyright
    </copyright>
+   
+   <license url="%licenseURL">
+      %license
+   </license>
 
    <url>
       <update label="XWT Update Site" url="http://www.eclipse.org/downloads/download.php?format=xml&amp;file=/xwt/updates"/>
