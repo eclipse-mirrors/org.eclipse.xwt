@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="XWT Main" sequenceNumber="1578652968">
+<target name="XWT Main" sequenceNumber="1583143106">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.pushingpixels.trident" version="0.0.0"/>
       <unit id="org.pushingpixels.trident.source" version="0.0.0"/>
-      <repository id="orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20191126223242/repository"/>
+      <repository id="orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/S20200224183213/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
-      <repository id="platform" location="https://download.eclipse.org/eclipse/updates/4.14/R-4.14-201912100610/"/>
+      <repository id="platform" location="https://download.eclipse.org/eclipse/updates/4.15milestones/S-4.15RC1-202002261800/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xsd.sdk.feature.group" version="0.0.0"/>
-      <repository id="emf_core" location="http://download.eclipse.org/modeling/emf/emf/builds/milestone/S202001070458"/>
+      <repository id="emf_core" location="http://download.eclipse.org/modeling/emf/emf/builds/milestone/S202002180048"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.swtbot.junit4_x" version="0.0.0"/>
@@ -23,7 +23,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.wst.xml_ui.feature.feature.group" version="0.0.0"/>
-      <repository id="webtools" location="https://download.eclipse.org/webtools/downloads/drops/R3.16.0/S-3.16.0.RC2-20191210070716/repository/"/>
+      <repository id="webtools" location="https://download.eclipse.org/webtools/downloads/drops/R3.17.0/S-3.17.0.M3-20200221035047/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gef.sdk.feature.group" version="0.0.0"/>
