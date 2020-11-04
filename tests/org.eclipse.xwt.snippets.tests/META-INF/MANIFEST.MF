@@ -2,15 +2,15 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: XWT Snippets Based Tests
 Bundle-SymbolicName: org.eclipse.xwt.snippets.tests
-Bundle-Version: 0.10.0.qualifier
+Bundle-Version: 0.11.0.qualifier
 Bundle-Vendor: Eclipse XWT
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: org.eclipse.xwt;bundle-version="0.10.0",
- org.eclipse.xwt.snippets;bundle-version="0.10.0",
- org.eclipse.swtbot.junit4_x;bundle-version="2.0.5",
- org.eclipse.swtbot.swt.finder;bundle-version="2.0.5",
- org.eclipse.swt;bundle-version="3.100.1",
- org.junit;bundle-version="4.10.0",
- org.eclipse.xwt.tests;bundle-version="0.9.1"
+Require-Bundle: org.eclipse.xwt;bundle-version="[1.4.0,2.0.0)",
+ org.eclipse.xwt.snippets;bundle-version="[0.10.0,1.0.0)",
+ org.eclipse.swtbot.junit4_x;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.swtbot.swt.finder;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.swt;bundle-version="[3.115.100,4.0.0)",
+ org.junit;bundle-version="[4.13.0,5.0.0)",
+ org.eclipse.xwt.tests;bundle-version="[0.10.0,1.0.0)"
 Export-Package: org.eclipse.xwt.tests,
  org.eclipse.xwt.tests.base

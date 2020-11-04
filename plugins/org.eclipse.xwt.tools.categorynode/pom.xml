@@ -7,10 +7,10 @@
 	<parent>
 		<groupId>org.eclipse.xwt</groupId>
 		<artifactId>org.eclipse.xwt-plugins</artifactId>
-		<version>1.4.0-SNAPSHOT</version>
+		<version>1.6.0-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>org.eclipse.xwt.tools.categorynode</artifactId>
-	<version>0.10.0-SNAPSHOT</version>
+	<version>0.11.0-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
 </project>

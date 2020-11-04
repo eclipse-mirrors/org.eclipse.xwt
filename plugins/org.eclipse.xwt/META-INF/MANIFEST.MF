@@ -2,19 +2,19 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name.0
 Bundle-SymbolicName: org.eclipse.xwt;singleton:=true
-Bundle-Version: 1.4.0.qualifier
+Bundle-Version: 1.6.0.qualifier
 DynamicImport-Package: *
 Require-Bundle: 
- org.eclipse.jface.databinding;bundle-version="1.2.0",
- org.eclipse.core.databinding.beans;bundle-version="1.1.0",
- org.eclipse.swt;bundle-version="3.4.0",
- org.eclipse.core.databinding;bundle-version="1.1.0",
- org.eclipse.jface;bundle-version="3.4.0",
- org.eclipse.core.databinding.property;bundle-version="1.1.0",
- org.pushingpixels.trident;bundle-version="1.2.0";resolution:=optional,
- org.eclipse.equinox.common;bundle-version="3.4.0",
- com.ibm.icu;bundle-version="63.1.0",
- org.eclipse.osgi
+ org.eclipse.jface.databinding;bundle-version="[1.12.0,2.0.0)",
+ org.eclipse.core.databinding.beans;bundle-version="[1.7.0,2.0.0)",
+ org.eclipse.swt;bundle-version="3.115.100",
+ org.eclipse.core.databinding;bundle-version="[1.10.100,2.0.0)",
+ org.eclipse.jface;bundle-version="[3.22.0,4.0.0)",
+ org.eclipse.core.databinding.property;bundle-version="[1.8.100,2.0.0)",
+ org.pushingpixels.trident;bundle-version="[1.2.0,2.0.0)";resolution:=optional,
+ org.eclipse.equinox.common;bundle-version="[3.14.0,4.0.0)",
+ org.eclipse.osgi;bundle-version="[3.16.100,4.0.0)",
+ com.ibm.icu
 Export-Package: org.eclipse.xwt,
  org.eclipse.xwt.animation,
  org.eclipse.xwt.annotation,

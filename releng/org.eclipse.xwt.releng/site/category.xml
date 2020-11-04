@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="org.eclipse.xwt.feature_1.4.100.qualifier.jar" id="org.eclipse.xwt.feature" version="1.4.100.qualifier">
+   <feature url="org.eclipse.xwt.feature_1.6.0.qualifier.jar" id="org.eclipse.xwt.feature" version="1.6.0.qualifier">
       <category name="org.eclipse.xwt.core.category"/>
    </feature>
-   <feature url="org.eclipse.xwt.feature.source_1.4.100.qualifier.jar" id="org.eclipse.xwt.feature.source" version="1.4.100.qualifier">
+   <feature url="org.eclipse.xwt.feature.source_1.6.0.qualifier.jar" id="org.eclipse.xwt.feature.source" version="1.6.0.qualifier">
       <category name="org.eclipse.xwt.core.category"/>
    </feature>
      
-   <feature url="org.eclipse.xwt.workbench.feature_1.5.0.qualifier.jar" id="org.eclipse.xwt.workbench.feature" version="1.5.0.qualifier">
+   <feature url="org.eclipse.xwt.workbench.feature_1.6.0.qualifier.jar" id="org.eclipse.xwt.workbench.feature" version="1.6.0.qualifier">
       <category name="org.eclipse.xwt.core.category"/>
    </feature>
-   <feature url="org.eclipse.xwt.workbench.feature.source_1.5.0.qualifier.jar" id="org.eclipse.xwt.workbench.feature.source" version="1.5.0.qualifier">
+   <feature url="org.eclipse.xwt.workbench.feature.source_1.6.0.qualifier.jar" id="org.eclipse.xwt.workbench.feature.source" version="1.6.0.qualifier">
       <category name="org.eclipse.xwt.core.category"/>
    </feature>
 
-   <feature url="org.eclipse.xwt.tools.feature_0.10.100.qualifier.jar" id="org.eclipse.xwt.tools.feature" version="0.10.100.qualifier">
+   <feature url="org.eclipse.xwt.tools.feature_0.11.0.qualifier.jar" id="org.eclipse.xwt.tools.feature" version="0.11.0.qualifier">
       <category name="org.eclipse.xwt.tools.category"/>
    </feature>
   
-   <feature url="org.eclipse.xwt.tests.feature_0.10.100.qualifier.jar" id="org.eclipse.xwt.tests.feature" version="0.10.100.qualifier">
+   <feature url="org.eclipse.xwt.tests.feature_0.11.0.qualifier.jar" id="org.eclipse.xwt.tests.feature" version="0.11.0.qualifier">
       <category name="org.eclipse.xwt.tests.category"/>
    </feature>
    

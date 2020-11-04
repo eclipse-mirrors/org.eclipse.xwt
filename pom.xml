@@ -6,32 +6,33 @@
 
 	<groupId>org.eclipse.xwt</groupId>
 	<artifactId>org.eclipse.xwt-root</artifactId>
-	<version>1.4.0-SNAPSHOT</version>
+	<version>1.6.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
 		<!-- https://repo.maven.apache.org/maven2/ -->
-		<tycho-version>1.3.0</tycho-version>
-		<tychoExtrasVersion>1.3.0</tychoExtrasVersion>
-		<xtext.version>2.16.0</xtext.version>
-		<maven.resources.version>3.1.0</maven.resources.version>
+		<tycho-version>2.0.0</tycho-version>
+		<tychoExtrasVersion>2.0.0</tychoExtrasVersion>
+		<xtext.version>2.23.0</xtext.version>
+		<maven.resources.version>3.2.0</maven.resources.version>
 		<maven.clean.version>3.1.0</maven.clean.version>
-		<mojo.execmaven.version>1.6.0</mojo.execmaven.version>
+		<mojo.execmaven.version>3.0.0</mojo.execmaven.version>
 		<findbugs.version>3.0.5</findbugs.version>
-		<maven.compiler.version>3.8.0</maven.compiler.version>
+		<maven.compiler.version>3.8.1</maven.compiler.version>
+		<m2eversion>1.0.0</m2eversion>
 
 		<!-- https://repo.eclipse.org/content/repositories/cbi-releases/ -->
-		<jarSignerVersion>1.1.5</jarSignerVersion>
+		<jarSignerVersion>1.1.7</jarSignerVersion>
 
 		<!-- https://repository.jboss.org/ -->
-		<jboss.utils.version>1.3.0</jboss.utils.version>
+		<jboss.utils.version>1.7.0</jboss.utils.version>
 
 		<java.source.version>1.8</java.source.version>
 		<java.target.version>1.8</java.target.version>
 
 		<!-- https://repo.maven.apache.org/maven2/ -->
-		<mojo.buildhelper.version>3.0.0</mojo.buildhelper.version>
-		<mylyn.wikitext.version>3.0.29</mylyn.wikitext.version>
+		<mojo.buildhelper.version>3.2.0</mojo.buildhelper.version>
+		<mylyn.wikitext.version>3.0.38</mylyn.wikitext.version>
 
 		<!-- SourceReferences -->
 		<tycho.scmUrl>scm:git:git://git.eclipse.org/gitroot/xwt/org.eclipse.xwt.git</tycho.scmUrl>
@@ -99,7 +100,7 @@
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
+					<version>${m2eversion}</version>
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
@@ -215,7 +216,7 @@
 							<artifact>
 								<groupId>org.eclipse.xwt</groupId>
 								<artifactId>org.eclipse.xwt.target</artifactId>
-								<version>1.4.0-SNAPSHOT</version>
+								<version>1.6.0-SNAPSHOT</version>
 							</artifact>
 						</target>
 					</configuration>
