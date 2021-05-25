@@ -7,10 +7,10 @@
       <category name="org.eclipse.xwt.core.category"/>
    </feature>
      
-   <feature url="org.eclipse.xwt.workbench.feature_1.6.0.qualifier.jar" id="org.eclipse.xwt.workbench.feature" version="1.6.0.qualifier">
+   <feature url="org.eclipse.xwt.workbench.feature_1.7.0.qualifier.jar" id="org.eclipse.xwt.workbench.feature" version="1.7.0.qualifier">
       <category name="org.eclipse.xwt.core.category"/>
    </feature>
-   <feature url="org.eclipse.xwt.workbench.feature.source_1.6.0.qualifier.jar" id="org.eclipse.xwt.workbench.feature.source" version="1.6.0.qualifier">
+   <feature url="org.eclipse.xwt.workbench.feature.source_1.7.0.qualifier.jar" id="org.eclipse.xwt.workbench.feature.source" version="1.7.0.qualifier">
       <category name="org.eclipse.xwt.core.category"/>
    </feature>
 

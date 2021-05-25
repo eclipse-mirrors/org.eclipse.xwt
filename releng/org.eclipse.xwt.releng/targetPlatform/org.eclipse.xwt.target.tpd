@@ -3,7 +3,7 @@ target "XWT Main" with requirements source
 
 /*** Manual referencing ***/
 
-location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20201130205003/repository/" {
+location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/S20210518003616/repository/" {
 	org.pushingpixels.trident lazy
 	org.pushingpixels.trident.source lazy
 }
@@ -11,13 +11,13 @@ location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R202011
 /*** Update from simrel ***/
 
 //updateFrom("Eclipse",0)
-location platform "https://download.eclipse.org/eclipse/updates/4.18/R-4.18-202012021800/" {
+location platform "https://download.eclipse.org/eclipse/updates/4.20-I-builds/I20210519-1800" {
 	org.eclipse.sdk.feature.group lazy
 	org.eclipse.swt lazy
 }
 
 //updateFrom("EMF (Core)",0)
-location emf "https://download.eclipse.org/modeling/emf/emf/builds/release/2.24" {
+location emf "https://download.eclipse.org/modeling/emf/emf/builds/milestone/S202105150126" {
 	org.eclipse.emf.sdk.feature.group lazy
 	org.eclipse.xsd.sdk.feature.group lazy
 }
@@ -28,7 +28,7 @@ location swtbot "https://download.eclipse.org/technology/swtbot/releases/3.0.0/"
 }
 
 //updateFrom("Web Tools Platform 3.20 for Simrel 2020-12",0)
-location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.20.0/R-3.20.0-20201201143606/repository/" {
+location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.22.0/S-3.22.0.M3-20210520103215/repository" {
 	org.eclipse.wst.xml_ui.feature.feature.group lazy
 }
 

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name.0
 Bundle-SymbolicName: org.eclipse.xwt.ui.workbench
-Bundle-Version: 1.6.0.qualifier
+Bundle-Version: 1.7.0.qualifier
 Bundle-Vendor: %Bundle-Vendor.0
 Require-Bundle: 
  org.eclipse.xwt;bundle-version="[1.4.0,2.0.0)",
@@ -12,7 +12,7 @@ Require-Bundle:
  org.eclipse.e4.core.di;bundle-version="[1.7.600,2.0.0)",
  org.eclipse.swt;bundle-version="[3.115.100,4.0.0)",
  org.eclipse.jface;bundle-version="[3.22.0,4.0.0)",
- org.eclipse.e4.core.commands;bundle-version="[0.12.900,1.0.0)",
+ org.eclipse.e4.core.commands;bundle-version="[0.12.900,2.0.0)",
  org.eclipse.core.runtime;bundle-version="[3.19.0,4.0.0)",
  org.eclipse.core.databinding;bundle-version="[1.10.100,2.0.0)",
  org.eclipse.jface.databinding;bundle-version="[1.12.0,2.0.0)",
