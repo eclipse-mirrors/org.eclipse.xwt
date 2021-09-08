@@ -11,24 +11,24 @@ location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/S202105
 /*** Update from simrel ***/
 
 //updateFrom("Eclipse",0)
-location platform "https://download.eclipse.org/eclipse/updates/4.20-I-builds/I20210519-1800" {
+location platform "https://download.eclipse.org/eclipse/updates/4.21-I-builds/I20210906-0500/" {
 	org.eclipse.sdk.feature.group lazy
 	org.eclipse.swt lazy
 }
 
 //updateFrom("EMF (Core)",0)
-location emf "https://download.eclipse.org/modeling/emf/emf/builds/milestone/S202105150126" {
+location emf "https://download.eclipse.org/modeling/emf/emf/builds/release/2.27" {
 	org.eclipse.emf.sdk.feature.group lazy
 	org.eclipse.xsd.sdk.feature.group lazy
 }
 
 // updateFrom("SWTBot",0)
-location swtbot "https://download.eclipse.org/technology/swtbot/releases/3.0.0/" {
+location swtbot "https://download.eclipse.org/technology/swtbot/releases/3.1.0/" {
 	org.eclipse.swtbot.feature.group lazy
 }
 
-//updateFrom("Web Tools Platform 3.20 for Simrel 2020-12",0)
-location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.22.0/S-3.22.0.M3-20210520103215/repository" {
+//updateFrom("Web Tools Platform 3.23 for SimRel 2021-09",0)
+location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.23.0/S-3.23.0.M3-20210822084517/repository/" {
 	org.eclipse.wst.xml_ui.feature.feature.group lazy
 }
 
