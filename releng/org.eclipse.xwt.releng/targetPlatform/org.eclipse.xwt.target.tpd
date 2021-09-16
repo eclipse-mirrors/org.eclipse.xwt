@@ -3,7 +3,7 @@ target "XWT Main" with requirements source
 
 /*** Manual referencing ***/
 
-location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/S20210518003616/repository/" {
+location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20210825222808/repository/" {
 	org.pushingpixels.trident lazy
 	org.pushingpixels.trident.source lazy
 }
@@ -11,7 +11,7 @@ location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/S202105
 /*** Update from simrel ***/
 
 //updateFrom("Eclipse",0)
-location platform "https://download.eclipse.org/eclipse/updates/4.21-I-builds/I20210906-0500/" {
+location platform "https://download.eclipse.org/eclipse/updates/4.21/R-4.21-202109060500/" {
 	org.eclipse.sdk.feature.group lazy
 	org.eclipse.swt lazy
 }

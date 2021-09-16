@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="XWT Main" sequenceNumber="1631091924">
+<target name="XWT Main" sequenceNumber="1631793862">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.pushingpixels.trident" version="0.0.0"/>
       <unit id="org.pushingpixels.trident.source" version="0.0.0"/>
-      <repository id="orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/S20210518003616/repository/"/>
+      <repository id="orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20210825222808/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.swt" version="0.0.0"/>
-      <repository id="platform" location="https://download.eclipse.org/eclipse/updates/4.21-I-builds/I20210906-0500/"/>
+      <repository id="platform" location="https://download.eclipse.org/eclipse/updates/4.21/R-4.21-202109060500/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
