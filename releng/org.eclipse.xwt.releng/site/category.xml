@@ -37,5 +37,6 @@
          XWT Tests Features
       </description>
    </category-def>
+   <repository-reference location="https://download.eclipse.org/tools/orbit/downloads/drops/R20190531194818/repository" enabled="true" />
 </site>
 

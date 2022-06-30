@@ -32,30 +32,6 @@
 					<includePackedArtifacts>true</includePackedArtifacts>
 				</configuration>
 			</plugin>
-
-			<!-- workaround https://bugs.eclipse.org/bugs/show_bug.cgi?id=453708 -->
-			<plugin>
-				<groupId>org.jboss.tools.tycho-plugins</groupId>
-				<artifactId>repository-utils</artifactId>
-				<version>${jboss.utils.version}</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>generate-repository-facade</goal>
-						</goals>
-						<configuration>
-							<!-- do not generate the pesky web folder and index.html -->
-							<skipWebContentGeneration>true</skipWebContentGeneration>
-							<!-- p2 update site transitive dependencies repositories -->
-							<associateSites>
-                                                                <!-- dependency to the org.pushingpixels.trident plugin -->
-								<site>http://download.eclipse.org/tools/orbit/downloads/drops/S20190521195709/repository</site>
-							</associateSites>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 </project>
