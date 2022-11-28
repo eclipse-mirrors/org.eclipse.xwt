@@ -19,12 +19,11 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.xwt.databinding.copy.BeansObservables;
+import org.eclipse.core.databinding.beans.typed.BeanProperties;
 import org.eclipse.core.databinding.observable.Observables;
 import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.map.IObservableMap;
-import org.eclipse.xwt.databinding.copy.SWTObservables;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -42,6 +41,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.xwt.databinding.copy.SWTObservables;
 
 /**
  * An example showing how to create a {@link ILabelProvider label provider} that
@@ -89,10 +89,14 @@ public class Snippet007ColorLabelProvider {
 
 				// this does not have to correspond to the columns in the table,
 				// we just list all attributes that affect the table content.
-				IObservableMap[] attributes = BeansObservables.observeMaps(
-						contentProvider.getKnownElements(), Person.class,
-						new String[] { "name", "gender" });
-
+				
+				String[] propertyNames =new String[] { "name", "gender" };
+				IObservableMap[] attributes = new IObservableMap[propertyNames .length];
+				for (int i = 0; i < propertyNames.length; i++) {
+					attributes[i] = BeanProperties.value(Person.class, propertyNames[i]).observeDetail(
+							contentProvider.getKnownElements());
+				}
+				
 				class ColorLabelProvider extends ObservableMapLabelProvider
 						implements ITableColorProvider {
 					Color male = display.getSystemColor(SWT.COLOR_BLUE);

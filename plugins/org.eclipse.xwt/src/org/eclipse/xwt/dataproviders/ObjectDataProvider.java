@@ -17,6 +17,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.databinding.beans.IBeanListProperty;
+import org.eclipse.core.databinding.beans.typed.BeanProperties;
+import org.eclipse.core.databinding.beans.typed.PojoProperties;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.set.IObservableSet;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
@@ -25,10 +28,6 @@ import org.eclipse.xwt.XWT;
 import org.eclipse.xwt.XWTException;
 import org.eclipse.xwt.core.IBinding;
 import org.eclipse.xwt.databinding.JFaceXWTDataBinding;
-import org.eclipse.core.databinding.beans.typed.BeanProperties;
-import org.eclipse.xwt.databinding.copy.BeansObservables;
-import org.eclipse.xwt.databinding.copy.PojoObservables;
-import org.eclipse.core.databinding.beans.typed.PojoProperties;
 import org.eclipse.xwt.metadata.IMetaclass;
 import org.eclipse.xwt.metadata.IProperty;
 
@@ -320,41 +319,58 @@ public class ObjectDataProvider extends AbstractDataProvider implements
 	@Override
 	protected IObservableList observeList(Object bean, String propertyName) {
 		if (JFaceXWTDataBinding.isBeanSupport(bean)) {
-			return BeansObservables.observeList(XWT.getRealm(), bean,
-					propertyName);
+			IBeanListProperty list = BeanProperties.list(bean.getClass(), propertyName, (Class) null);
+			IObservableList res = list.observe(XWT.getRealm(), bean);
+			return res;
 		}
-		return PojoObservables.observeList(XWT.getRealm(), bean, propertyName);
+		return PojoProperties.list(bean.getClass(), propertyName,(Class) null)
+				.observe(XWT.getRealm(), bean);
 	}
 
 	@Override
 	protected IObservableSet observeSet(Object bean, String propertyName) {
 		if (JFaceXWTDataBinding.isBeanSupport(bean)) {
-			return BeansObservables.observeSet(XWT.getRealm(), bean,
-					propertyName);
+			return BeanProperties.set(bean.getClass(), propertyName, (Class) null)
+					.observe(XWT.getRealm(), bean);
 		}
-		return PojoObservables.observeSet(XWT.getRealm(), bean, propertyName);
+		return PojoProperties.set(bean.getClass(), propertyName,(Class) null)
+		.observe(XWT.getRealm(), bean);
 	}
 
 	@Override
 	protected IObservableList observeDetailList(IObservableValue bean,
 			Object elementType, String propertyName, Object propertyType) {
 		if (JFaceXWTDataBinding.isBeanSupport(bean)) {
-			return BeansObservables.observeDetailList(bean, propertyName,
-					(Class<?>) propertyType);
+			Class beanClass = null;
+			if (bean.getValueType() instanceof Class)
+				beanClass = (Class) bean.getValueType();
+			return BeanProperties.list(beanClass, propertyName, (Class<?>) propertyType)
+					.observeDetail(bean);
 		}
-		return PojoObservables.observeDetailList(bean, propertyName,
-				(Class<?>) propertyType);
+		
+		Class pojoClass = null;
+		if (bean.getValueType() instanceof Class)
+			pojoClass = (Class) bean.getValueType();
+		return PojoProperties.list(pojoClass, propertyName).observeDetail(
+				bean);
 	}
 
 	@Override
 	protected IObservableSet observeDetailSet(IObservableValue bean,
 			Object elementType, String propertyName, Object propertyType) {
 		if (JFaceXWTDataBinding.isBeanSupport(bean)) {
-			return BeansObservables.observeDetailSet(bean, propertyName,
-					(Class<?>) propertyType);
+			 Class beanClass = null;
+			if (bean.getValueType() instanceof Class)
+				beanClass = (Class) bean.getValueType();
+			return BeanProperties.set(beanClass, propertyName, (Class<?>)propertyType)
+					.observeDetail(bean);
 		}
-		return PojoObservables.observeDetailSet(bean, propertyName,
-				(Class<?>) propertyType);
+
+		Class pojoClass = null;
+		if (bean.getValueType() instanceof Class)
+			pojoClass = (Class) bean.getValueType();
+		return PojoProperties.set(pojoClass, propertyName,(Class<?>) propertyType)
+				.observeDetail(bean);
 	}
 
 	@Override
