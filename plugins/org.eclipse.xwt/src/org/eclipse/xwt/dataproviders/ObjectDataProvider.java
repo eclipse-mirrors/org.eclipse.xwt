@@ -17,10 +17,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.databinding.beans.BeanProperties;
-import org.eclipse.core.databinding.beans.BeansObservables;
-import org.eclipse.core.databinding.beans.PojoObservables;
-import org.eclipse.core.databinding.beans.PojoProperties;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.set.IObservableSet;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
@@ -29,6 +25,10 @@ import org.eclipse.xwt.XWT;
 import org.eclipse.xwt.XWTException;
 import org.eclipse.xwt.core.IBinding;
 import org.eclipse.xwt.databinding.JFaceXWTDataBinding;
+import org.eclipse.core.databinding.beans.typed.BeanProperties;
+import org.eclipse.xwt.databinding.copy.BeansObservables;
+import org.eclipse.xwt.databinding.copy.PojoObservables;
+import org.eclipse.core.databinding.beans.typed.PojoProperties;
 import org.eclipse.xwt.metadata.IMetaclass;
 import org.eclipse.xwt.metadata.IProperty;
 
@@ -312,10 +312,9 @@ public class ObjectDataProvider extends AbstractDataProvider implements
 	@Override
 	protected IObservableValue observeValue(Object bean, String propertyName) {
 		if (JFaceXWTDataBinding.isBeanSupport(bean)) {
-			return BeansObservables.observeValue(XWT.getRealm(), bean,
-					propertyName);
+			return BeanProperties.value((Class<Object>) bean.getClass(), propertyName).observe(XWT.getRealm(), bean);
 		}
-		return PojoObservables.observeValue(XWT.getRealm(), bean, propertyName);
+		return PojoProperties.value((Class<Object>) bean.getClass(), propertyName).observe(XWT.getRealm(), bean);
 	}
 
 	@Override

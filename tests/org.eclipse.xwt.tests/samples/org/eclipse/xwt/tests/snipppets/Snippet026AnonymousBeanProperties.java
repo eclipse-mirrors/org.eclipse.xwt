@@ -23,7 +23,6 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.core.databinding.observable.set.SetDiff;
 import org.eclipse.core.databinding.observable.value.ComputedValue;
@@ -35,10 +34,10 @@ import org.eclipse.core.databinding.property.NativePropertyListener;
 import org.eclipse.core.databinding.property.set.DelegatingSetProperty;
 import org.eclipse.core.databinding.property.set.ISetProperty;
 import org.eclipse.core.databinding.property.set.SimpleSetProperty;
-import org.eclipse.jface.databinding.swt.SWTObservables;
-import org.eclipse.jface.databinding.swt.WidgetProperties;
-import org.eclipse.jface.databinding.viewers.ViewerProperties;
 import org.eclipse.jface.databinding.viewers.ViewerSupport;
+import org.eclipse.jface.internal.databinding.swt.WidgetEnabledProperty;
+import org.eclipse.jface.internal.databinding.swt.WidgetTextWithEventsProperty;
+import org.eclipse.jface.internal.databinding.viewers.SelectionProviderSingleSelectionProperty;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -52,6 +51,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
+import org.eclipse.core.databinding.beans.typed.BeanProperties;
+import org.eclipse.xwt.databinding.copy.SWTObservables;
 
 /**
  * @since 3.2
@@ -378,21 +379,21 @@ public class Snippet026AnonymousBeanProperties {
 
 		contactViewer.expandAll();
 
-		final IObservableValue selection = ViewerProperties.singleSelection()
+		final IObservableValue selection = new SelectionProviderSingleSelectionProperty(false)
 				.observe(contactViewer);
 
 		DataBindingContext dbc = new DataBindingContext();
 
-		dbc.bindValue(WidgetProperties.text(SWT.Modify).observe(nameText),
+		dbc.bindValue( new WidgetTextWithEventsProperty((new int[] { SWT.Modify }).clone()).observe(nameText),
 				BeanProperties.value("name").observeDetail(selection));
 
 		statusViewer.setContentProvider(new ArrayContentProvider());
 		statusViewer.setInput(statuses);
 
-		dbc.bindValue(ViewerProperties.singleSelection().observe(statusViewer),
+		dbc.bindValue(new SelectionProviderSingleSelectionProperty(false).observe(statusViewer),
 				BeanProperties.value("status").observeDetail(selection));
 
-		dbc.bindValue(WidgetProperties.enabled().observe(
+		dbc.bindValue(new WidgetEnabledProperty().observe(
 				statusViewer.getControl()), new ComputedValue() {
 			protected Object calculate() {
 				return Boolean.valueOf(selection.getValue() instanceof Contact);

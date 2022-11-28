@@ -30,8 +30,8 @@ import org.eclipse.xwt.XWT;
 import org.eclipse.xwt.metadata.IMetaclass;
 import org.eclipse.xwt.metadata.IProperty;
 import org.eclipse.jface.databinding.swt.IWidgetValueProperty;
-import org.eclipse.jface.databinding.swt.WidgetProperties;
-import org.eclipse.jface.databinding.viewers.ViewerProperties;
+import org.eclipse.jface.databinding.swt.typed.WidgetProperties;
+import org.eclipse.jface.databinding.viewers.typed.ViewerProperties;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Widget;
 

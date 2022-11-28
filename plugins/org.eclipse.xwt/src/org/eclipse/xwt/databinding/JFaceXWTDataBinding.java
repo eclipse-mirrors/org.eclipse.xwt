@@ -23,9 +23,8 @@ import org.eclipse.core.databinding.observable.IObservable;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.property.value.SimpleValueProperty;
 import org.eclipse.core.internal.databinding.property.value.SimplePropertyObservableValue;
-import org.eclipse.jface.databinding.swt.SWTObservables;
-import org.eclipse.jface.databinding.viewers.ViewerProperties;
-import org.eclipse.jface.databinding.viewers.ViewersObservables;
+import org.eclipse.jface.databinding.swt.typed.WidgetProperties;
+import org.eclipse.jface.databinding.viewers.typed.ViewerProperties;
 import org.eclipse.jface.internal.databinding.swt.DateTimeSelectionProperty;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
@@ -38,6 +37,8 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.xwt.IDataProvider;
 import org.eclipse.xwt.XWT;
 import org.eclipse.xwt.XWTException;
+import org.eclipse.xwt.databinding.copy.SWTObservables;
+import org.eclipse.xwt.databinding.copy.ViewersObservables;
 import org.eclipse.xwt.internal.core.ScopeManager;
 import org.eclipse.xwt.internal.core.UpdateSourceTrigger;
 import org.eclipse.xwt.internal.databinding.menuitem.MenuItemEnabledObservableValue;
@@ -385,8 +386,7 @@ public class JFaceXWTDataBinding {
 				default:
 					throw new IllegalStateException("UpdateSourceTrigger of value " + updateSourceTrigger.name());
 				}
-				IObservableValue observableValue = SWTObservables.observeText(
-						control, event);
+				IObservableValue observableValue = WidgetProperties.text(event).observe(control);
 				if (observableValue != null) {
 					return observableValue;
 				}
@@ -396,15 +396,14 @@ public class JFaceXWTDataBinding {
 				return null;
 			}
 			if (control instanceof DateTime) {
-				IObservableValue observableValue = SWTObservables.observeSelection(control);
+				IObservableValue observableValue = WidgetProperties.widgetSelection().observe(control);
 				if (observableValue != null) {
 					return observableValue;
 				}
 			}
 			
 			try {
-				IObservableValue observableValue = SWTObservables
-						.observeText(control);
+				IObservableValue observableValue = WidgetProperties.text().observe(control);
 				if (observableValue != null) {
 					return observableValue;
 				}

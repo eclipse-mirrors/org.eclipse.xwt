@@ -14,7 +14,7 @@ package org.eclipse.xwt.internal.databinding.menuitem;
 
 import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.core.databinding.observable.value.AbstractObservableValue;
-import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.jface.databinding.swt.DisplayRealm;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.MenuItem;
@@ -32,7 +32,7 @@ public abstract class AbstractMenuItemObservableValue extends AbstractObservable
 	 * @param widget
 	 */
 	protected AbstractMenuItemObservableValue(MenuItem menuItem) {
-		this(SWTObservables.getRealm(menuItem.getDisplay()), menuItem);
+		this(DisplayRealm.getRealm(menuItem.getDisplay()), menuItem);
 	}
 
 	/**
