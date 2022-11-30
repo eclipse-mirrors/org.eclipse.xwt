@@ -21,15 +21,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.beans.BeanProperties;
-import org.eclipse.core.databinding.beans.BeansObservables;
+import org.eclipse.core.databinding.beans.typed.BeanProperties;
 import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.core.databinding.observable.list.WritableList;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.databinding.viewers.ObservableValueEditingSupport;
 import org.eclipse.jface.databinding.viewers.ViewerSupport;
-import org.eclipse.jface.databinding.viewers.ViewersObservables;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.TableViewer;
@@ -43,6 +40,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
+import org.eclipse.xwt.databinding.copy.SWTObservables;
+import org.eclipse.xwt.databinding.copy.ViewersObservables;
 
 /**
  * Demonstrates binding a TableViewer to a collection using the 3.3 Viewer APIs.
@@ -175,7 +174,7 @@ public class Snippet013TableViewerEditing {
 
 		protected IObservableValue doCreateElementObservable(Object element,
 				ViewerCell cell) {
-			return BeansObservables.observeValue(element, "name");
+			return BeanProperties.value((Class<Object>) element.getClass(), "name").observe(Realm.getDefault(), element);
 		}
 	}
 
@@ -229,9 +228,11 @@ public class Snippet013TableViewerEditing {
 			// bind selectedCommitter label to the name of the current selection
 			IObservableValue selection = ViewersObservables
 					.observeSingleSelection(peopleViewer);
-			bindingContext.bindValue(SWTObservables
-					.observeText(selectedCommitter), BeansObservables
-					.observeDetailValue(selection, "name", String.class));
+			Class beanClass = null;
+			if (selection.getValueType() instanceof Class)
+				beanClass = (Class) selection.getValueType();
+			IObservableValue observeDetailValue = BeanProperties.value(String.class, "name", beanClass).observeDetail(selection);
+			bindingContext.bindValue(SWTObservables.observeText(selectedCommitter), observeDetailValue);
 		}
 	}
 

@@ -19,15 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.beans.BeanProperties;
-import org.eclipse.core.databinding.beans.BeansObservables;
+import org.eclipse.core.databinding.beans.typed.BeanProperties;
 import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.core.databinding.observable.value.ComputedValue;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.observable.value.WritableValue;
-import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.databinding.viewers.ViewerSupport;
-import org.eclipse.jface.databinding.viewers.ViewersObservables;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -45,6 +42,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.xwt.databinding.copy.SWTObservables;
+import org.eclipse.xwt.databinding.copy.ViewersObservables;
 
 public class Snippet019TreeViewerWithListFactory {
 
@@ -232,10 +231,12 @@ public class Snippet019TreeViewerWithListFactory {
 		IObservableValue treeViewerSelectionObserveSelection = ViewersObservables
 				.observeSingleSelection(beanViewer);
 		IObservableValue textTextObserveWidget = SWTObservables.observeText(
-				beanText, SWT.Modify);
-		IObservableValue treeViewerValueObserveDetailValue = BeansObservables
-				.observeDetailValue(treeViewerSelectionObserveSelection,
-						"text", String.class);
+				beanText, SWT.Modify);		
+		Class beanClass = null;
+		if (treeViewerSelectionObserveSelection.getValueType() instanceof Class)
+			beanClass = (Class) treeViewerSelectionObserveSelection.getValueType();
+		IObservableValue treeViewerValueObserveDetailValue = BeanProperties.value(beanClass,  "text", String.class).observeDetail(treeViewerSelectionObserveSelection);
+		
 		//
 		//
 		DataBindingContext bindingContext = new DataBindingContext();

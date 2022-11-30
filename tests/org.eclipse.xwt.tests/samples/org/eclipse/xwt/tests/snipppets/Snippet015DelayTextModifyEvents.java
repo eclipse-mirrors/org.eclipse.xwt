@@ -17,9 +17,8 @@ import org.eclipse.core.databinding.observable.Observables;
 import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
-import org.eclipse.jface.databinding.swt.SWTObservables;
-import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.internal.databinding.provisional.swt.ControlUpdater;
+import org.eclipse.jface.internal.databinding.swt.WidgetTextWithEventsProperty;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.resource.JFaceResources;
@@ -33,6 +32,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.xwt.databinding.copy.SWTObservables;
 
 public class Snippet015DelayTextModifyEvents {
 
@@ -52,9 +52,9 @@ public class Snippet015DelayTextModifyEvents {
 
 		createLabel(shell, SWT.NONE, "1000ms delay");
 
-		final ISWTObservableValue delayed1 = WidgetProperties.text(SWT.Modify)
+		final ISWTObservableValue delayed1 = new WidgetTextWithEventsProperty(new int[] { SWT.Modify }.clone())
 				.observeDelayed(200, text1);
-		final ISWTObservableValue delayed2 = WidgetProperties.text(SWT.Modify)
+		final ISWTObservableValue delayed2 = new WidgetTextWithEventsProperty(new int[] { SWT.Modify }.clone())
 				.observeDelayed(1000, text2);
 
 		// (In a real application,you would want to dispose the resource manager

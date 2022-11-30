@@ -26,8 +26,8 @@ import java.util.Set;
 import java.util.Stack;
 
 import org.eclipse.core.databinding.conversion.IConverter;
-import org.eclipse.core.databinding.conversion.NumberToStringConverter;
-import org.eclipse.core.databinding.conversion.StringToNumberConverter;
+import org.eclipse.core.databinding.conversion.text.NumberToStringConverter;
+import org.eclipse.core.databinding.conversion.text.StringToNumberConverter;
 import org.eclipse.core.databinding.observable.IChangeListener;
 import org.eclipse.core.databinding.observable.IObservable;
 import org.eclipse.core.databinding.observable.Realm;
@@ -35,10 +35,9 @@ import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.masterdetail.IObservableFactory;
 import org.eclipse.core.databinding.observable.set.IObservableSet;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.jface.databinding.swt.DisplayRealm;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.databinding.viewers.ObservableSetContentProvider;
-import org.eclipse.jface.internal.databinding.swt.DateTimeSelectionProperty;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ControlEditor;
 import org.eclipse.swt.custom.TableEditor;
@@ -234,7 +233,7 @@ public class XWTLoader implements IXWTLoader {
 		if (display == null) {
 			display = Display.getDefault();
 		}
-		return SWTObservables.getRealm(display);
+		return DisplayRealm.getRealm(display);
 	}
 
 	protected Core getCurrentCore() {

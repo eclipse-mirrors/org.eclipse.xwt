@@ -11,13 +11,13 @@ location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R202108
 /*** Update from simrel ***/
 
 //updateFrom("Eclipse",0)
-location platform "https://download.eclipse.org/eclipse/updates/4.24/R-4.24-202206070700/" {
+location platform "https://download.eclipse.org/eclipse/updates/4.26-I-builds/I20221123-1800" {
 	org.eclipse.sdk.feature.group lazy
 	org.eclipse.swt lazy
 }
 
 //updateFrom("EMF (Core)",0)
-location emf "https://download.eclipse.org/modeling/emf/emf/builds/release/2.30" {
+location emf "https://download.eclipse.org/modeling/emf/emf/builds/release/2.32" {
 	org.eclipse.emf.sdk.feature.group lazy
 	org.eclipse.xsd.sdk.feature.group lazy
 }
@@ -27,12 +27,12 @@ location swtbot "https://download.eclipse.org/technology/swtbot/releases/4.0.0/"
 	org.eclipse.swtbot.feature.group lazy
 }
 
-//updateFrom("Web Tools Platform 3.26 for SimRel 2022-06",0)
-location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.26.0/S-3.26RC1-20220526191850/repository/" {
+//updateFrom("Web Tools Platform 3.28",0)
+location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.28.0/S-3.28RC1-20221120050827/repository/" {
 	org.eclipse.wst.xml_ui.feature.feature.group lazy
 }
 
 //updateFrom("GEF",0)
-location gef "https://download.eclipse.org/tools/gef/classic/releases/3.14.0" {
+location gef "https://download.eclipse.org/tools/gef/classic/releases/3.15.0RC1" {
 	org.eclipse.gef.sdk.feature.group lazy
 }
