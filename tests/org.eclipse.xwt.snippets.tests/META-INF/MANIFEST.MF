@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: XWT Snippets Based Tests
 Bundle-SymbolicName: org.eclipse.xwt.snippets.tests
-Bundle-Version: 0.11.0.qualifier
+Bundle-Version: 0.12.0.qualifier
 Bundle-Vendor: Eclipse XWT
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.xwt;bundle-version="[1.4.0,2.0.0)",
