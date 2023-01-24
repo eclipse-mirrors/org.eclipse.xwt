@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="org.eclipse.xwt.feature_1.7.0.qualifier.jar" id="org.eclipse.xwt.feature" version="1.7.0.qualifier">
+   <feature url="org.eclipse.xwt.feature_1.8.0.qualifier.jar" id="org.eclipse.xwt.feature" version="1.8.0.qualifier">
       <category name="org.eclipse.xwt.core.category"/>
    </feature>
-   <feature url="org.eclipse.xwt.feature.source_1.7.0.qualifier.jar" id="org.eclipse.xwt.feature.source" version="1.7.0.qualifier">
+   <feature url="org.eclipse.xwt.feature.source_1.8.0.qualifier.jar" id="org.eclipse.xwt.feature.source" version="1.8.0.qualifier">
       <category name="org.eclipse.xwt.core.category"/>
    </feature>
      
@@ -37,6 +37,6 @@
          XWT Tests Features
       </description>
    </category-def>
-   <repository-reference location="https://download.eclipse.org/tools/orbit/downloads/drops/R20190531194818/repository" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/tools/orbit/downloads/drops/R20210825222808/repository" enabled="true" />
 </site>
 

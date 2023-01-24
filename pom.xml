@@ -11,8 +11,8 @@
 
 	<properties>
 		<!-- https://repo.maven.apache.org/maven2/ -->
-		<tycho-version>2.4.0</tycho-version>
-		<tychoExtrasVersion>2.4.0</tychoExtrasVersion>
+		<tycho-version>2.7.4</tycho-version>
+		<tychoExtrasVersion>2.7.4</tychoExtrasVersion>
 		<xtext.version>2.23.0</xtext.version>
 		<maven.resources.version>3.2.0</maven.resources.version>
 		<maven.clean.version>3.1.0</maven.clean.version>

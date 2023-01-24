@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import org.eclipse.core.databinding.conversion.IConverter;
-import org.eclipse.core.databinding.conversion.StringToNumberConverter;
+import org.eclipse.core.databinding.conversion.text.StringToNumberConverter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.xwt.IConstants;
 import org.eclipse.xwt.XWT;
