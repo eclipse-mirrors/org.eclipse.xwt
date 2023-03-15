@@ -33,7 +33,7 @@ contributions are always welcome!
 
 ## Eclipse Contributor Agreement
 
-Before your contribution can be accepted by the project team contributors must
+Before your contribution can be accepted by the project team, contributors must
 electronically sign the Eclipse Contributor Agreement (ECA).
 
 * http://www.eclipse.org/legal/ECA.php
