@@ -93,7 +93,7 @@ public class MenuFigure extends Figure implements Expandable {
 	 * @see org.soyatec.xaml.ve.xwt.editparts.figures.Expandable#expand()
 	 */
 	public void expand() {
-		List<IFigure> children = getChildren();
+		List<? extends IFigure> children = getChildren();
 		int width = 0;
 		int height = 0;
 		for (IFigure figure : children) {
@@ -130,7 +130,7 @@ public class MenuFigure extends Figure implements Expandable {
 
 		public void layout(IFigure parent) {
 			super.layout(parent);
-			List<IFigure> children = parent.getChildren();
+			List<? extends IFigure> children = parent.getChildren();
 			for (IFigure child : children) {
 				Rectangle r = child.getBounds().getCopy();
 				int height = r.height - getVerticalSpacing() * 2;

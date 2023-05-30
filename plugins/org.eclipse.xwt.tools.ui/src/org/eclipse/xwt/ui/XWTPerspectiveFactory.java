@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2010 Soyatec (http://www.soyatec.com) and others.
+ * Copyright (c) 2006, 2010, 2023 Soyatec (http://www.soyatec.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  * 
  * Contributors:
  *     Soyatec - initial API and implementation
+ *     Pauline DEVILLE (CEA LIST) pauline.deville@cea.fr - Bug 581994
  *******************************************************************************/
 package org.eclipse.xwt.ui;
 
@@ -37,7 +38,7 @@ public class XWTPerspectiveFactory implements IPerspectiveFactory {
 		String editorArea = factory.getEditorArea();
 		// Left Top
 		IFolderLayout leftTop = factory.createFolder("leftTop", IPageLayout.LEFT, (float) 0.25, editorArea); //$NON-NLS-1$
-		leftTop.addPlaceholder(IPageLayout.ID_RES_NAV);
+		//leftTop.addPlaceholder(IPageLayout.ID_RES_NAV);
 		leftTop.addView(JavaUI.ID_PACKAGES);
 
 		// Left Top
@@ -86,7 +87,7 @@ public class XWTPerspectiveFactory implements IPerspectiveFactory {
 
 	private void addViewShortcuts() {
 		factory.addShowViewShortcut(JavaUI.ID_PACKAGES);
-		factory.addShowViewShortcut(IPageLayout.ID_RES_NAV);
+		//factory.addShowViewShortcut(IPageLayout.ID_RES_NAV);
 		factory.addShowViewShortcut(IPageLayout.ID_PROBLEM_VIEW);
 		factory.addShowViewShortcut(IPageLayout.ID_OUTLINE);
 	}
