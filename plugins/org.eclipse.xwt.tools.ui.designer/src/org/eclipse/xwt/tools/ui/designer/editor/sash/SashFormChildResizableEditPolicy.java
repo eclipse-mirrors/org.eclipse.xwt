@@ -74,7 +74,7 @@ public class SashFormChildResizableEditPolicy extends NewResizableEditPolicy {
 			SelectionRequest locationRequest = (SelectionRequest) request;
 			Point location = locationRequest.getLocation().getCopy();
 			location = transposer.t(location);
-			List<EditPart> children = sashFormEditPart.getChildren();
+			List<? extends EditPart> children = sashFormEditPart.getChildren();
 			int index = children.indexOf(editPart);
 			if (index != 0 && location.x <= bounds.x + WIDTH) {
 				return children.get(index - 1);

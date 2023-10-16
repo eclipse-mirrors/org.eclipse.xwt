@@ -40,8 +40,8 @@ public class ToolDrawerEditPart extends DrawerEditPart {
 					return createToolTip();
 				}
 			};
-			fig.setExpanded(getDrawer().isInitiallyOpen());
-			fig.setPinned(getDrawer().isInitiallyPinned());
+			fig.setExpanded(getModel().isInitiallyOpen());
+			fig.setPinned(getModel().isInitiallyPinned());
 
 			fig.getCollapseToggle().addFocusListener(new FocusListener.Stub() {
 

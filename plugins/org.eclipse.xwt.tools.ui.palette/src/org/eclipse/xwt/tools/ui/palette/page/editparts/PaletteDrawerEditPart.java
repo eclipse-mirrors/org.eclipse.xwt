@@ -35,8 +35,8 @@ public class PaletteDrawerEditPart extends DrawerEditPart {
 	public IFigure createFigure() {
 		if (getParent() instanceof PaletteDrawerEditPart) {
 			PaletteDrawerFigure fig = new PaletteDrawerFigure(getViewer().getControl());
-			fig.setExpanded(getDrawer().isInitiallyOpen());
-			fig.setPinned(getDrawer().isInitiallyPinned());
+			fig.setExpanded(getModel().isInitiallyOpen());
+			fig.setPinned(getModel().isInitiallyPinned());
 			fig.getCollapseToggle().addFocusListener(new FocusListener.Stub() {
 				public void focusGained(FocusEvent fe) {
 					getViewer().select(PaletteDrawerEditPart.this);

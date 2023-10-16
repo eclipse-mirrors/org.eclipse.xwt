@@ -62,7 +62,7 @@ public class ExpandableEditPolicy extends GraphicalEditPolicy implements EditPar
 			part.addEditPartListener(this);
 			listenedParts.add(part);
 		}
-		List<EditPart> childList = part.getChildren();
+		List<? extends EditPart> childList = part.getChildren();
 		if (childList != null) {
 			for (EditPart ep : childList) {
 				addFocusListener(ep);
@@ -78,7 +78,7 @@ public class ExpandableEditPolicy extends GraphicalEditPolicy implements EditPar
 			part.removeEditPartListener(focusListener);
 			part.removeEditPartListener(this);
 		}
-		List<EditPart> childList = part.getChildren();
+		List<? extends EditPart> childList = part.getChildren();
 		if (childList != null) {
 			for (EditPart ep : childList) {
 				removeFocusListener(ep);
