@@ -1,25 +1,24 @@
 target "XWT Main" with requirements source
-// I-build should be referenced lazily due to their volatility, unless a specific version is needed
 
+// I-build should be referenced lazily due to their volatility, unless a specific version is needed
 /*** Manual referencing ***/
 
-location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20210825222808/repository/" {
-	org.pushingpixels.trident lazy
-	org.pushingpixels.trident.source lazy
-	javax.inject 1.0.0
-	javax.annotation [1.3.5,1.4.0)
-	org.w3c.css.sac [1.3.1,2.0.0)
+// manualUpdate
+location orbit "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/nightly/latest" {
+	org.pushingpixels.trident [1.3.0,2.0.0)
+	org.eclipse.orbit.xml-apis-ext [1.0.0,2.0.0] // for org.w3c.css.sac package
 }
 
 /*** Update from simrel ***/
-
-//updateFrom("Eclipse",0)
+// updateFrom("Eclipse",0)
 location platform "https://download.eclipse.org/eclipse/updates/4.30/R-4.30-202312010110" {
 	org.eclipse.sdk.feature.group lazy
 	org.eclipse.swt lazy
+	jakarta.inject.jakarta.inject-api [1.0.0,1.1.0)
+	jakarta.annotation-api [1.3.5,1.4.0)
 }
 
-//updateFrom("EMF (Core)",0)
+// updateFrom("EMF (Core)",0)
 location emf "https://download.eclipse.org/modeling/emf/emf/builds/release/2.36.0" {
 	org.eclipse.emf.sdk.feature.group lazy
 	org.eclipse.xsd.sdk.feature.group lazy
@@ -30,12 +29,14 @@ location swtbot "https://download.eclipse.org/technology/swtbot/releases/4.1.0/"
 	org.eclipse.swtbot.feature.group lazy
 }
 
-//updateFrom("Web Tools Platform",0)
+// updateFrom("Web Tools Platform",0)
 location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.32.0/S-3.32M3a-20231114230950/repository/" {
 	org.eclipse.wst.xml_ui.feature.feature.group lazy
 }
 
-//updateFrom("GEF",0)
-location gef "https://download.eclipse.org/tools/gef/classic/releases/3.18.0" {
+// updateFrom("GEF",0)
+location gef "https://download.eclipse.org/tools/gef/classic/release/3.18.0" {
 	org.eclipse.gef.sdk.feature.group lazy
 }
+
+

@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="XWT Main" sequenceNumber="1702893203">
+<target name="XWT Main" sequenceNumber="1703172091">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.pushingpixels.trident" version="0.0.0"/>
-      <unit id="org.pushingpixels.trident.source" version="0.0.0"/>
-      <unit id="javax.inject" version="1.0.0.v20091030"/>
-      <unit id="javax.annotation" version="1.3.5.v20200909-1856"/>
-      <unit id="org.w3c.css.sac" version="1.3.1.v200903091627"/>
-      <repository id="orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20210825222808/repository/"/>
+      <unit id="org.pushingpixels.trident" version="1.3.0.v20231219-1530"/>
+      <unit id="org.eclipse.orbit.xml-apis-ext" version="1.0.0.v20230923-0644"/>
+      <repository id="orbit" location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/nightly/latest"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.swt" version="0.0.0"/>
+      <unit id="jakarta.inject.jakarta.inject-api" version="1.0.5"/>
+      <unit id="jakarta.annotation-api" version="1.3.5"/>
       <repository id="platform" location="https://download.eclipse.org/eclipse/updates/4.30/R-4.30-202312010110"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
@@ -31,7 +30,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gef.sdk.feature.group" version="0.0.0"/>
-      <repository id="gef" location="https://download.eclipse.org/tools/gef/classic/releases/3.18.0"/>
+      <repository id="gef" location="https://download.eclipse.org/tools/gef/classic/release/3.18.0"/>
     </location>
   </locations>
 </target>
