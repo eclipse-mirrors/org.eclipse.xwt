@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.xwt.IConstants;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.swt.SWT;
@@ -26,6 +25,7 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Sash;
+import org.eclipse.xwt.IConstants;
 import org.eclipse.xwt.tools.ui.designer.XWTDesignerPlugin;
 import org.eclipse.xwt.tools.ui.designer.core.parts.VisualEditPart;
 import org.eclipse.xwt.tools.ui.designer.core.util.StringUtil;
@@ -85,8 +85,8 @@ public class ChangeWeightsCommand extends Command {
 	}
 
 	private VisualEditPart getEditPart() {
-		List<VisualEditPart> editParts = new ArrayList<VisualEditPart>(request
-				.getEditParts());
+		@SuppressWarnings("unchecked")
+		List<VisualEditPart> editParts = new ArrayList<VisualEditPart>((List<VisualEditPart>) request.getEditParts());
 		if (editParts.size() > 0) {
 			return editParts.get(0);
 		}
