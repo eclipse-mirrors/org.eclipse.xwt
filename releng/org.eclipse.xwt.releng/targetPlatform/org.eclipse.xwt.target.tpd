@@ -14,7 +14,7 @@ location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R202108
 /*** Update from simrel ***/
 
 //updateFrom("Eclipse",0)
-location platform "https://download.eclipse.org/eclipse/updates/4.30-I-builds/I20231115-1800" {
+location platform "https://download.eclipse.org/eclipse/updates/4.30/R-4.30-202312010110" {
 	org.eclipse.sdk.feature.group lazy
 	org.eclipse.swt lazy
 }
@@ -36,6 +36,6 @@ location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.32.0
 }
 
 //updateFrom("GEF",0)
-location gef "https://download.eclipse.org/tools/gef/classic/releases/3.18.0RC1" {
+location gef "https://download.eclipse.org/tools/gef/classic/releases/3.18.0" {
 	org.eclipse.gef.sdk.feature.group lazy
 }
